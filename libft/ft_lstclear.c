@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 04:53:27 by bsirikam         ###   ########.fr       */
+/*   Created: 2022/07/29 19:06:58 by bsirikam          #+#    #+#             */
+/*   Updated: 2022/08/06 21:12:31 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (ac != 2)
-		return (1);
-	printf("%zu\n", ft_strlen(av[1]));
-	return (0);
+	t_list	*tmp;
+
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		del((*lst)->content);
+		free((*lst));
+		(*lst) = tmp;
+	}
 }

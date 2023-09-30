@@ -1,0 +1,13 @@
+{
+	"makefile.extensionOutputFolder": "./.vscode",
+	"files.associations": {
+		"libft.h": "c",
+		"*.tcc": "c",
+		"stdio.h": "c",
+		"string_view": "cpp",
+		"type_traits": "cpp",
+		"iostream": "cpp",
+		"ostream": "cpp"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}

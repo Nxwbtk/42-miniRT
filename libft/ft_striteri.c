@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 04:53:27 by bsirikam         ###   ########.fr       */
+/*   Created: 2022/08/08 16:36:53 by bsirikam          #+#    #+#             */
+/*   Updated: 2022/08/08 16:45:13 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (ac != 2)
-		return (1);
-	printf("%zu\n", ft_strlen(av[1]));
-	return (0);
+	size_t	len;
+	size_t	i;
+
+	if (!s || !f)
+		return ;
+	len = ft_strlen(s);
+	i = 0;
+	while (i < len && *s)
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

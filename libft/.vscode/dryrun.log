@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/buntakansirikamonthip/42Cursus/Libft'
+make: Nothing to be done for `all'.
+ 
+make: Leaving directory `/Users/buntakansirikamonthip/42Cursus/Libft'
+ 

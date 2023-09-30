@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 04:53:27 by bsirikam         ###   ########.fr       */
+/*   Created: 2022/07/29 19:00:34 by bsirikam          #+#    #+#             */
+/*   Updated: 2022/08/06 21:12:38 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (ac != 2)
-		return (1);
-	printf("%zu\n", ft_strlen(av[1]));
-	return (0);
+	if (lst)
+	{
+		del(lst->content);
+		free(lst);
+	}
 }

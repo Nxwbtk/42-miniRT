@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 04:53:27 by bsirikam         ###   ########.fr       */
+/*   Created: 2022/08/08 16:46:31 by bsirikam          #+#    #+#             */
+/*   Updated: 2022/08/08 17:07:30 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (ac != 2)
-		return (1);
-	printf("%zu\n", ft_strlen(av[1]));
-	return (0);
+	write(fd, &c, 1);
 }
