@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 04:53:27 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/10/01 05:29:28 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	main(int ac, char **av)
 {
 	if (ac != 2)
 		return (1);
-	printf("%zu\n", ft_strlen(av[1]));
+	printf("%d\n", open(av[1], O_RDONLY));
 	return (0);
 }
