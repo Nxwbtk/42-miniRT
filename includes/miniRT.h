@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 14:56:12 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/10/10 15:04:35 by ksaelim          ###   ########.fr       */
+/*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
+/*   Updated: 2023/10/24 11:52:13 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10000
-#endif
+#ifndef MINIRT_H
+# define MINIRT_H
 
 # include <unistd.h>
-# include <stdlib.h>
+# include <stdio.h>
+# include "parse.h"
+# include "mlx.h"
+# include "render.h"
 
-char	*get_next_line(int fd);
-char	*get_keep(char *str, size_t cut_line);
-char	*get_cut_line(char *str, size_t cut_line);
-size_t	ft_strlen_mode(char *str, char c);
-char	*ft_strrchr_gnl(char *str);
-char	*read_line(int fd, char *keep);
-char	*ft_strjoin_gnl(char *s1, char *s2);
+# define FRACTIONAL_BIT 16
+// # define HEIGHT 900
+// # define WIDTH 400
+
+// typedef struct s_vec
+// {
+// 	int		x;
+// 	int		y;
+// 	int		z;
+// }	t_vec;
+
+// void	input_coord(t_coord *coord, float x, float y, float z) {
+// 	coord->x = x;
+// 	coord->y = y;
+// 	coord->z = z;
+// }
+
+
 #endif

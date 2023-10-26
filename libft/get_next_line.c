@@ -3,117 +3,110 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 13:33:17 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 05:11:23 by bsirikam         ###   ########.fr       */
+/*   Created: 2022/08/25 10:12:11 by ksaelim           #+#    #+#             */
+/*   Updated: 2023/10/10 15:03:46 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*free_line(char *line)
+char	*get_keep(char *str, size_t cut_len)
 {
-	if (line)
-		free(line);
-	return (NULL);
-}
+	char	*new;
+	size_t	i;
 
-char	*teelua(char *line)
-{
-	char	*tmp;
-	ssize_t	i;
-
-	if (!line && !line[0])
+	if (!str[cut_len])
 	{
-		line = free_line(line);
+		free(str);
 		return (NULL);
 	}
-	if (!(ft_strlen_gnl(line) - ft_piset_len(line)))
+	if (str[cut_len] == '\n')
+		cut_len++;
+	new = malloc(ft_strlen_mode(&str[cut_len], '\0') + 1);
+	if (!new)
 	{
-		line = free_line(line);
+		free(str);
 		return (NULL);
 	}
-	tmp = (char *)malloc(sizeof(char) * ((ft_strlen_gnl(line) - \
-		ft_piset_len(line)) + 2));
-	if (!tmp)
-		return (NULL);
-	i = -1;
-	while (++i < (ft_strlen_gnl(line) - ft_piset_len(line)))
-		tmp[i] = line[i + ft_piset_len(line)];
-	if (line[i + ft_piset_len(line)] == '\n')
-		tmp[i] = line[i + ft_piset_len(line)];
-	tmp[i] = '\0';
-	line = free_line(line);
-	return (tmp);
-}
-
-char	*find_result(char *s)
-{
-	char	*result;
-	int		i;
-
 	i = 0;
-	if (!s[0])
+	while (str[cut_len])
+		new[i++] = str[cut_len++];
+	new[i] = '\0';
+	free(str);
+	return (new);
+}
+
+char	*get_cut_line(char *str, size_t cut_len)
+{
+	char	*new;
+	size_t	i;
+
+	if (!str[0])
 		return (NULL);
-	result = (char *)malloc(sizeof(char) * (ft_piset_len(s) + 1));
-	if (!result)
+	if (str[cut_len] == '\n')
+		cut_len++;
+	new = malloc(sizeof(char) * (cut_len + 1));
+	if (!new)
 		return (NULL);
-	while (s[i])
+	i = 0;
+	while (str[i] && i < cut_len)
 	{
-		result[i] = s[i];
-		if (s[i] == '\n')
-		{
-			i++;
-			break ;
-		}
+		new[i] = str[i];
 		i++;
 	}
-	result[i] = '\0';
-	return (result);
+	new[i] = '\0';
+	return (new);
 }
 
-char	*arn(int fd, char *buff, char *line)
+char	*read_line(int fd, char *keep)
 {
-	int			khanhad;
+	char	*buff;
+	int		read_byte;
 
-	khanhad = read(fd, buff, BUFFER_SIZE);
-	while (khanhad)
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (NULL);
+	read_byte = 1;
+	while (read_byte > 0)
 	{
-		buff[khanhad] = '\0';
-		line = ft_strjoin(line, buff);
-		if ((khanhad < BUFFER_SIZE && khanhad > 0) || ha_nee(line, '\n'))
+		read_byte = read(fd, buff, BUFFER_SIZE);
+		if (read_byte < 0)
+		{
+			free(buff);
+			return (NULL);
+		}
+		buff[read_byte] = '\0';
+		keep = ft_strjoin_gnl(keep, buff);
+		if (ft_strrchr_gnl(buff))
 			break ;
-		khanhad = read(fd, buff, BUFFER_SIZE);
 	}
-	return (line);
+	free(buff);
+	return (keep);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
-	char		*res;
-	char		*buff;
+	char		*cut_line;
+	static char	*keep;
+	size_t		cut_len;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	if (!line)
+	if (!keep)
 	{
-		line = malloc(1);
-		if (!line)
-			return (NULL);
-		*line = '\0';
+		keep = malloc(1);
+		keep[0] = '\0';
 	}
-	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buff)
+	keep = read_line(fd, keep);
+	if (!keep)
 	{
-		free (line);
+		free(keep);
 		return (NULL);
 	}
-	line = arn(fd, buff, line);
-	if (buff)
-		free (buff);
-	res = find_result(line);
-	line = teelua(line);
-	return (res);
+	cut_len = ft_strlen_mode(keep, '\n');
+	cut_line = get_cut_line(keep, cut_len);
+	keep = get_keep(keep, cut_len);
+	return (cut_line);
 }

@@ -3,49 +3,65 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+         #
+#    By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/10/01 05:02:16 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/10/19 10:09:34 by ksaelim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+#===================================================#
+#------------- Variables / Compile Flag ------------#
+#===================================================#
 
 NAME = miniRT
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-# CPPFLAGS = -std=c++98
+
+LIBFT_DIR = libft/
+LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
+
+MLX_DIR = mlx/
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+
+INCLUDES_DIR = includes/
+INCLUDES = -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(INCLUDES_DIR)
 
 OBJS = $(SRCS:.c=.o)
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(OBJS))
 
-$(OBJ_DIR)/%.o: %.c $(HEADER)
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 RM = rm -rf
-LIBFT_PATH = libft/
-LIBFT_A = libft/libft.a
 
-SRCS = main.c
-HEADER = miniRT.h
+
+SRCS = src/parse/utils.c
+
+#===================================================#
+#------------------- Define Target -----------------#
+#===================================================#
 
 all: $(NAME)
 
 $(NAME): libft $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT_A)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
 libft:
-	@make -C $(LIBFT_PATH) 1> /dev/null
+	@make -C $(LIBFT_DIR)
+	@make -C $(MLX_DIR)
 
 clean:
+	@make fclean -C $(LIBFT_DIR)
+	@make clean -C $(MLX_DIR)
 	@$(RM) $(OBJ_DIR)
-	@make -C $(LIBFT_PATH) clean 1> /dev/null
 
 fclean: clean
 	@$(RM) $(NAME)
-	@make -C $(LIBFT_PATH) fclean 1> /dev/null
 
 re: fclean all
 
