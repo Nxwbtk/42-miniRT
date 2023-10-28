@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/10/01 04:46:01 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:07:53 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "./libft/libft.h"
+
+int		ft_check(char *str);
+int		ft_isopenable(char *str);
+int		ft_isfile(char *str);
+void	free_split(char **split);
 
 #endif

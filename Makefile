@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/10/01 05:02:16 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/10/28 20:08:25 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ RM = rm -rf
 LIBFT_PATH = libft/
 LIBFT_A = libft/libft.a
 
-SRCS = main.c
+SRCS = main.c check_input1.c
 HEADER = miniRT.h
 
 all: $(NAME)
