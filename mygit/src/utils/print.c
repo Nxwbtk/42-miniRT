@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/10/24 11:53:07 by ksaelim          ###   ########.fr       */
+/*   Created: 2023/11/07 09:44:10 by ksaelim           #+#    #+#             */
+/*   Updated: 2023/11/07 09:44:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "miniRT.h"
 
-# define FRACTIONAL_BIT 16
-
-# include "libft.h"
-# include "maths.h"
-
-
-typedef struct s_cam
+void	print_error(char *s)
 {
-	t_vec	orig;
-	t_vec	dir;
-	double	fov;
-}	t_cam;
+	while (*s)
+		wrtie(STDERR_FILENO, s++, 1);
+}
 
-
-// typedef struct s_sc
-
-#endif
+void	print_errorl(char *s)
+{
+	print_error(s);
+	print_error("\n");
+}

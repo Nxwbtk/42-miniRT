@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/10/24 11:55:58 by ksaelim          ###   ########.fr       */
+/*   Created: 2023/11/07 10:09:51 by ksaelim           #+#    #+#             */
+/*   Updated: 2023/11/07 10:20:50 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-#define	RENDER_H
 
-typedef struct	s_img
+#ifndef CAMERA_H
+# define CAMERA_H
+
+typedef struct s_camera
 {
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			line;
-	int			endian;
-}				t_img;
+	t_vec	*orig;
+	t_vec	*dir;
+	float	fov;
+}	t_camera;
 
-typedef struct s_param
-{
-	void		*mlx;
-	void		*win;
-	t_img		img;
-	int		width;
-	int		height;
-	double	aspect_ratio;
-}				t_param;
-
+t_camera	*new_camera(t_vec *orig, t_vec *dir, float fov);
 
 #endif
