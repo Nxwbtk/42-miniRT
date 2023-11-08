@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/08 00:32:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/09 00:40:07 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct s_cord
 	double	z;
 }				t_cord;
 
+typedef struct s_normal
+{
+	float	x;
+	float	y;
+	float	z;
+}				t_normal;
+
 typedef struct s_ambient
 {
 	double	ratio;
@@ -39,9 +46,9 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
-	t_cord	*cord;
-	float	normal[3];
-	float	fov;
+	t_cord		*cord;
+	t_normal	*normal;
+	float		fov;
 }				t_camera;
 
 typedef struct s_light
@@ -60,18 +67,18 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_cord	*cord;
-	float	normal[3];
-	t_rgb	*rgb;
+	t_cord		*cord;
+	t_normal	*normal;
+	t_rgb		*rgb;
 }				t_plane;
 
 typedef struct s_cylinder
 {
-	t_cord	*cord;
-	float	normal[3];
-	double	diameter;
-	double	height;
-	t_rgb	*rgb;
+	t_cord		*cord;
+	t_normal	*normal;
+	double		diameter;
+	double		height;
+	t_rgb		*rgb;
 }				t_cylinder;
 
 typedef struct s_obj
@@ -92,9 +99,15 @@ typedef struct s_scene
 int		ft_check(char *str);
 int		ft_isopenable(char *str);
 int		ft_isfile(char *str);
-void	free_split(char **split);
+int		ft_isspace(char c);
 char	**ft_split_space(char *line);
-void	init_ambient(char **line);
-void	init_camera(char **line);
+void	free_split(char **split);
+void	init_ambient(char **split, t_scene *scene, char *line);
+void	init_camera(char **split, t_scene *scene, char *line);
+void	free_scene(t_scene *scene);
+void	free_double_config(char **split, t_scene *scene, char *line);
+void	error_input(char *line, char **split_line, t_scene *scene);
+double	ft_atof(char *str);
+t_scene	*init_struct(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/11/08 00:32:26 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/11/09 00:28:45 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ RM = rm -rf
 LIBFT_PATH = libft/
 LIBFT_A = libft/libft.a
 
-SRCS = main.c check_input1.c check_input2.c init_data1.c
+SRCS = main.c passing_utils1.c passing_utils2.c passing_utils3.c \
+init_data1.c init_data2.c
 HEADER = miniRT.h
 
 all: $(NAME)
