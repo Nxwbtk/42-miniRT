@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 17:44:21 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:20:53 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,13 @@ char	**ft_split_space(char *line);
 void	free_split(char **split);
 void	init_ambient(char **split, t_scene *scene, char *line);
 void	init_camera(char **split, t_scene *scene, char *line);
+void	init_obj(char **split, t_scene *scene, char *line);
 void	free_scene(t_scene *scene);
 void	free_double_config(char **split, t_scene *scene, char *line);
 void	error_input(char *line, char **split_line, t_scene *scene);
 void	init_light(char **split, t_scene *scene, char *line);
 double	ft_atof(char *str);
 t_scene	*init_struct(void);
+t_plane	*new_plane(char **split);
 
 #endif

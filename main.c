@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 17:44:13 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:42:33 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ void	check_line(char *line, t_scene *scene)
 		init_camera(split_line, scene, line);
 	else if (split_line[0] && ft_strncmp("L", split_line[0], 2) == 0)
 		init_light(split_line, scene, line);
+	else if (split_line[0] && (ft_strncmp("pl", split_line[0], 3) == 0 || \
+	ft_strncmp("sp", split_line[0], 3) == 0 || \
+	ft_strncmp("cy", split_line[0], 3) == 0))
+		init_obj(split_line, scene, line);
 	else
 		error_input(line, split_line, scene);
 	free_split(split_line);
