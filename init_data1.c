@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 00:30:03 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 00:33:49 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:40:41 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,10 @@ void	init_ambient(char **split, t_scene *scene, char *line)
 	if (scene->ambient)
 		free_double_config(split, scene, line);
 	scene->ambient = init_ambient2();
-	if (!scene->ambient)
+	if (!scene->ambient || !split[1] || !split[2])
 		error_input(line, split, scene);
 	scene->ambient->ratio = ft_atof(split[1]);
 	if (scene->ambient->ratio < 0 || scene->ambient->ratio > 1)
 		error_input(line, split, scene);
 	init_rgb(scene, line, split);
-	printf("A %f %f,%f,%f\n", scene->ambient->ratio, scene->ambient->rgb->r, scene->ambient->rgb->g, scene->ambient->rgb->b);
 }
