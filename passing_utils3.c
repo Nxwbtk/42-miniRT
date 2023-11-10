@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 22:02:31 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/11 00:54:44 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/11 01:08:39 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free_obj(t_obj *obj)
 	t_sphere	*sphere;
 	t_cylinder	*cylinder;
 
-	if (obj->type == 1)
+	if (obj && obj->type == 1)
 	{
 		plane = (t_plane *)obj->obj;
 		if (plane->cord)
@@ -29,7 +29,7 @@ void	free_obj(t_obj *obj)
 			free(plane->rgb);
 		free(plane);
 	}
-	if (obj->type == 2)
+	if (obj && obj->type == 2)
 	{
 		sphere = (t_sphere *)obj->obj;
 		if (sphere->cord)
@@ -38,7 +38,7 @@ void	free_obj(t_obj *obj)
 			free(sphere->rgb);
 		free(sphere);
 	}
-	if (obj->type == 3)
+	if (obj && obj->type == 3)
 	{
 		cylinder = (t_cylinder *)obj->obj;
 		if (cylinder->cord)

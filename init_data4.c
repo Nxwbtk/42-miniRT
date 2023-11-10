@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/11 00:44:12 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/11 01:25:12 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	init_pl(t_scene *scene, char **split, char *line)
 
 	(void)scene;
 	plane = new_plane(split);
+	if (!plane)
+		error_input(line, split, scene);
 	exit(0);
 }
 
