@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_plane.c                                       :+:      :+:    :+:   */
+/*   init_plane1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:20:18 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/10 23:47:31 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:25:47 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,22 @@ t_normal	*put_normal(char *cord)
 	return (new_normal);
 }
 
+t_rgb	*put_rgb_plane(char *cord)
+{
+	t_rgb	*new_rgb;
+	char	**rgb;
+
+	new_rgb = (t_rgb *)malloc(sizeof(t_rgb));
+	if (!new_rgb)
+		return (NULL);
+	rgb = ft_split(cord, ',');
+	new_rgb->r = ft_atof(rgb[0]);
+	new_rgb->g = ft_atof(rgb[1]);
+	new_rgb->b = ft_atof(rgb[2]);
+	free_split(rgb);
+	return (new_rgb);
+}
+
 t_plane	*new_plane(char **split)
 {
 	t_plane	*plane;
@@ -79,5 +95,8 @@ t_plane	*new_plane(char **split)
 		return (NULL);
 	plane->cord = put_cord(split[1]);
 	plane->normal = put_normal(split[2]);
-	return (NULL);
+	plane->rgb = put_rgb_plane(split[3]);
+	if (isel_valid(plane) == 0)
+		return (NULL);
+	return (plane);
 }

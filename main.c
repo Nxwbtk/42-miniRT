@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 20:42:33 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:54:01 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_scene(t_scene *scene)
 	while (scene->obj)
 	{
 		tmp = scene->obj->next;
-		free(scene->obj);
+		free_obj(scene->obj);
 		scene->obj = tmp;
 	}
 	free(scene);

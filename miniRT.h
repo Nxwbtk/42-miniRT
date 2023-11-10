@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 22:20:53 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:53:40 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		ft_check(char *str);
 int		ft_isopenable(char *str);
 int		ft_isfile(char *str);
 int		ft_isspace(char c);
+int		isel_valid(t_plane *plane);
 char	**ft_split_space(char *line);
 void	free_split(char **split);
 void	init_ambient(char **split, t_scene *scene, char *line);
@@ -109,6 +110,7 @@ void	free_scene(t_scene *scene);
 void	free_double_config(char **split, t_scene *scene, char *line);
 void	error_input(char *line, char **split_line, t_scene *scene);
 void	init_light(char **split, t_scene *scene, char *line);
+void	free_obj(t_obj *obj);
 double	ft_atof(char *str);
 t_scene	*init_struct(void);
 t_plane	*new_plane(char **split);
