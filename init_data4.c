@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data4.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 22:21:12 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/10 23:24:34 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@ void	init_pl(t_scene *scene, char **split)
 {
 	t_plane	*plane;
 
+	(void)scene;
 	plane = new_plane(split);
+	exit(0);
 }
 
 void	init_sp(t_scene *scene, char **split)
 {
-
+	(void)scene;
+	(void)split;
 }
 
 void	init_cy(t_scene *scene, char **split)
 {
-
+	(void)scene;
+	(void)split;
 }
 
 void	init_obj(char **split, t_scene *scene, char *line)

@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/goinfre/bsirikam/42-miniRT",
-      "program": "/goinfre/bsirikam/42-miniRT/build/Debug/outDebug"
+      "cwd": "/goinfre/bsirikam/42Cursus/42-miniRT",
+      "program": "/goinfre/bsirikam/42Cursus/42-miniRT/build/Debug/outDebug"
     }
   ]
 }
