@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 03:06:55 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:29:14 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ typedef struct s_cylinder
 
 typedef struct s_obj
 {
-	void	*obj;
-	int		type;
-	void	*next;
+	void			*obj;
+	int				type;
+	struct s_obj	*next;
 }				t_obj;
 
 typedef struct s_scene
