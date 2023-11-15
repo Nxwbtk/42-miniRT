@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_plane1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:20:18 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/11 00:25:47 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 01:45:48 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_normal	*put_normal(char *cord)
 	return (new_normal);
 }
 
-t_rgb	*put_rgb_plane(char *cord)
+t_rgb	*put_rgb(char *cord)
 {
 	t_rgb	*new_rgb;
 	char	**rgb;
@@ -95,7 +95,7 @@ t_plane	*new_plane(char **split)
 		return (NULL);
 	plane->cord = put_cord(split[1]);
 	plane->normal = put_normal(split[2]);
-	plane->rgb = put_rgb_plane(split[3]);
+	plane->rgb = put_rgb(split[3]);
 	if (isel_valid(plane) == 0)
 		return (NULL);
 	return (plane);

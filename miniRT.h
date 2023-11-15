@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/11 00:53:40 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 01:56:33 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,23 +96,29 @@ typedef struct s_scene
 	t_obj		*obj;
 }				t_scene;
 
-int		ft_check(char *str);
-int		ft_isopenable(char *str);
-int		ft_isfile(char *str);
-int		ft_isspace(char c);
-int		isel_valid(t_plane *plane);
-char	**ft_split_space(char *line);
-void	free_split(char **split);
-void	init_ambient(char **split, t_scene *scene, char *line);
-void	init_camera(char **split, t_scene *scene, char *line);
-void	init_obj(char **split, t_scene *scene, char *line);
-void	free_scene(t_scene *scene);
-void	free_double_config(char **split, t_scene *scene, char *line);
-void	error_input(char *line, char **split_line, t_scene *scene);
-void	init_light(char **split, t_scene *scene, char *line);
-void	free_obj(t_obj *obj);
-double	ft_atof(char *str);
-t_scene	*init_struct(void);
-t_plane	*new_plane(char **split);
+int			ft_check(char *str);
+int			ft_isopenable(char *str);
+int			ft_isfile(char *str);
+int			ft_isspace(char c);
+int			isel_valid(t_plane *plane);
+char		**ft_split_space(char *line);
+void		free_split(char **split);
+void		init_ambient(char **split, t_scene *scene, char *line);
+void		init_camera(char **split, t_scene *scene, char *line);
+void		init_obj(char **split, t_scene *scene, char *line);
+void		free_scene(t_scene *scene);
+void		free_double_config(char **split, t_scene *scene, char *line);
+void		error_input(char *line, char **split_line, t_scene *scene);
+void		init_light(char **split, t_scene *scene, char *line);
+void		free_obj(t_obj *obj);
+void		obj_addback(t_scene *scene, t_obj *new_obj);
+double		ft_atof(char *str);
+t_obj		*new_obj_pl(t_plane *plane);
+t_obj		*new_obj_sp(t_sphere *sphere);
+t_cord		*put_cord(char *cord);
+t_rgb		*put_rgb(char *cord);
+t_scene		*init_struct(void);
+t_plane		*new_plane(char **split);
+t_sphere	*new_sphere(char **split);
 
 #endif
