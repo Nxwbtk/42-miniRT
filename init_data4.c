@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 02:03:04 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:07:34 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,19 @@ void	init_sp(t_scene *scene, char **split, char *line)
 
 void	init_cy(t_scene *scene, char **split, char *line)
 {
-	(void)scene;
-	(void)split;
-	(void)line;
+	t_cylinder	*cylinder;
+	t_obj		*new_obj;
+
+	cylinder = new_cylinder(split);
+	if (!cylinder)
+		error_input(line, split, scene);
+	new_obj = new_obj_cy(cylinder);
+	if (!new_obj)
+	{
+		free(cylinder);
+		error_input(line, split, scene);
+	}
+	obj_addback(scene, new_obj);
 }
 
 void	init_obj(char **split, t_scene *scene, char *line)

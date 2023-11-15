@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 01:56:33 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:06:55 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,13 @@ void		obj_addback(t_scene *scene, t_obj *new_obj);
 double		ft_atof(char *str);
 t_obj		*new_obj_pl(t_plane *plane);
 t_obj		*new_obj_sp(t_sphere *sphere);
+t_obj		*new_obj_cy(t_cylinder *cylinder);
 t_cord		*put_cord(char *cord);
 t_rgb		*put_rgb(char *cord);
 t_scene		*init_struct(void);
+t_normal	*put_normal(char *cord);
 t_plane		*new_plane(char **split);
 t_sphere	*new_sphere(char **split);
+t_cylinder	*new_cylinder(char **split);
 
 #endif

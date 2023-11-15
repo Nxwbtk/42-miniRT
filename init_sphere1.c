@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:30:59 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 01:55:42 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 02:53:03 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,20 @@ int	check_arg_sphere(char **split)
 		return (0);
 	check_split = ft_split(split[1], ',');
 	if (!check_split[0] || !check_split[1] || !check_split[2])
+	{
+		free_split(check_split);
 		return (0);
+	}
 	free_split(check_split);
 	check_split = ft_split(split[3], ',');
 	if (!check_split[0] || !check_split[1] || !check_split[2] \
 	|| (atof(check_split[0]) < 0 || atof(check_split[0]) > 255 \
 	|| atof(check_split[1]) < 0 || atof(check_split[1]) > 255 \
 	|| atof(check_split[2]) < 0 || atof(check_split[2]) > 255))
+	{
+		free_split(check_split);
 		return (0);
+	}
 	free_split(check_split);
 	return (1);
 }
