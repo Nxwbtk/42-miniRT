@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 03:24:47 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:42:54 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ void	run(char *filename)
 	int		fd;
 	char	*line;
 	t_scene	*scene;
-	t_plane	*testpl;
-	t_sphere	*testsp;
-	t_cylinder	*testcy;
 
 	scene = init_struct();
 	if (!scene)
@@ -101,34 +98,6 @@ void	run(char *filename)
 	}
 	free(line);
 	close(fd);
-	while (scene->obj)
-	{
-		printf("%d\n", scene->obj->type);
-		if (scene->obj->type == 1)
-		{
-			testpl = (t_plane *)scene->obj->obj;
-			printf("plane cord: %f %f %f\n", testpl->cord->x, testpl->cord->y, testpl->cord->z);
-			printf("plane normal: %f %f %f\n", testpl->normal->x, testpl->normal->y, testpl->normal->z);
-			printf("plane rgb: %f %f %f\n", testpl->rgb->r, testpl->rgb->g, testpl->rgb->b);
-		}
-		if (scene->obj->type == 2)
-		{
-			testsp = (t_sphere *)scene->obj->obj;
-			printf("sphere cord: %f %f %f\n", testsp->cord->x, testsp->cord->y, testsp->cord->z);
-			printf("sphere diameter: %f\n", testsp->diameter);
-			printf("sphere rgb: %f %f %f\n", testsp->rgb->r, testsp->rgb->g, testsp->rgb->b);
-		}
-		if (scene->obj->type == 3)
-		{
-			testcy = (t_cylinder *)scene->obj->obj;
-			printf("cylinder cord: %f %f %f\n", testcy->cord->x, testcy->cord->y, testcy->cord->z);
-			printf("cylinder normal: %f %f %f\n", testcy->normal->x, testcy->normal->y, testcy->normal->z);
-			printf("cylinder diameter: %f\n", testcy->diameter);
-			printf("cylinder height: %f\n", testcy->height);
-			printf("cylinder rgb: %f %f %f\n", testcy->rgb->r, testcy->rgb->g, testcy->rgb->b);
-		}
-		scene->obj = scene->obj->next;
-	}
 }
 
 int	main(int ac, char **av)

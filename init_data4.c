@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data4.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 03:25:59 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:40:08 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
