@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 04:01:31 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/18 04:19:24 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,12 @@ void	run(char *filename)
 	line = get_next_line(fd);
 	while (line)
 	{
+		if (ft_strncmp(line, "\n", 2) == 0)
+		{
+			free(line);
+			line = get_next_line(fd);
+			continue ;
+		}
 		check_line(line, scene);
 		free(line);
 		line = get_next_line(fd);
