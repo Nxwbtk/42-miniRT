@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+         #
+#    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/10/19 10:09:34 by ksaelim          ###   ########.fr        #
+#    Updated: 2023/11/16 02:28:25 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,10 @@ RM = rm -rf
 
 SRCS = src/parse/utils.c
 
-#===================================================#
-#------------------- Define Target -----------------#
-#===================================================#
+SRCS = main.c passing_utils1.c passing_utils2.c passing_utils3.c \
+init_data1.c init_data2.c init_data3.c init_data4.c init_plane1.c \
+init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c
+HEADER = miniRT.h
 
 all: $(NAME)
 
