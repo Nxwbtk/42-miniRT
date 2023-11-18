@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/10/01 05:02:16 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/11/16 02:28:25 by bsirikam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ RM = rm -rf
 LIBFT_PATH = libft/
 LIBFT_A = libft/libft.a
 
-SRCS = main.c
+SRCS = main.c passing_utils1.c passing_utils2.c passing_utils3.c \
+init_data1.c init_data2.c init_data3.c init_data4.c init_plane1.c \
+init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c
 HEADER = miniRT.h
 
 all: $(NAME)
