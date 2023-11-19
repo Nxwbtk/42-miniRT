@@ -26,4 +26,20 @@
 # define BLACK_PIXEL 0x000000
 # define TRAN_PIXEL 0xD000FF00
 
+# include "coordinate.h"
+
+typedef struct s_rgb
+{
+	int	r;
+	int g;
+	int b;
+}	t_rgb;
+
+t_rgb	new_rgb(int r, int g, int b);
+t_rgb	vec_to_rgb(t_vec3f vec);
+t_rgb	clamp_clr(t_rgb clr);
+int	rgb_to_clr(t_rgb clr);
+void write_color(t_vec3f pixel_color);
+t_rgb	ray_color(t_ray ray);
+
 #endif

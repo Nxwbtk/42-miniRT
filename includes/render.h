@@ -13,14 +13,7 @@
 #ifndef RENDER_H
 #define	RENDER_H
 
-typedef struct	s_img
-{
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			line;
-	int			endian;
-}				t_img;
+#include "img.h"
 
 typedef struct s_param
 {
@@ -31,6 +24,5 @@ typedef struct s_param
 	int		height;
 	double	aspect_ratio;
 }				t_param;
-
 
 #endif

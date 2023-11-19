@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
+#    By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/11/16 02:28:25 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/10/19 10:09:34 by ksaelim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,17 +20,29 @@ NAME = miniRT
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_DIR = libft/
+### lib directory ###
+LIB_DIR = lib/
+
+### libft flags ###
+LIBFT_DIR = $(LIB_DIR)libft/
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 
-MLX_DIR = mlx/
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+### mlx flags ###
+UNAME = $(shell uname -s)
+ifeq ($(UNAME), Linux)
+	MLX_DIR = $(LIB_DIR)mlx_linux/
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
+else
+	MLX_DIR = $(LIB_DIR)mlx_mac/
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+endif
 
+### header ###
 INCLUDES_DIR = includes/
 INCLUDES = -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(INCLUDES_DIR)
 
 OBJS = $(SRCS:.c=.o)
-OBJ_DIR = obj
+OBJ_DIR = .obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(OBJS))
 
 $(OBJ_DIR)/%.o: %.c
@@ -39,20 +51,19 @@ $(OBJ_DIR)/%.o: %.c
 
 RM = rm -rf
 
+SRC_DIR = src
+SRCS = $(shell find $(SRC_DIR) -name '*.c')
 
-SRCS = src/parse/utils.c
-
-SRCS = main.c passing_utils1.c passing_utils2.c passing_utils3.c \
-init_data1.c init_data2.c init_data3.c init_data4.c init_plane1.c \
-init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c
-HEADER = miniRT.h
+#===================================================#
+#------------------- Define Target -----------------#
+#===================================================#
 
 all: $(NAME)
 
-$(NAME): libft $(OBJ)
+$(NAME): cclib $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
-libft:
+cclib:
 	@make -C $(LIBFT_DIR)
 	@make -C $(MLX_DIR)
 
