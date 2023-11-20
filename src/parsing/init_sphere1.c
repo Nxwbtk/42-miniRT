@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_sphere1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:30:59 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 02:53:03 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:52:20 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
-t_obj	*new_obj_sp(t_sphere *sphere)
+t_obj	*new_obj_sp(t_sp *sphere)
 {
 	t_obj	*new_obj;
 
@@ -51,26 +51,28 @@ int	check_arg_sphere(char **split)
 	return (1);
 }
 
-t_sphere	*new_sphere(char **split)
+void	ft_putel_sp(char **split, t_sp *sphere)
 {
-	t_sphere	*sphere;
+	char	**xyz;
+
+	xyz = ft_split(split[1], ',');
+	(*sphere).origin = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	ft_atof(xyz[2]));
+	free_split(xyz);
+	xyz = ft_split(split[3], ',');
+	(*sphere).clr = put_rgb(split[3]);
+	(*sphere).diameter = ft_atof(split[2]);
+}
+
+t_sp	*new_sphere(char **split)
+{
+	t_sp	*sphere;
 
 	if (!check_arg_sphere(split))
 		return (NULL);
-	sphere = (t_sphere *)malloc(sizeof(t_sphere));
+	sphere = (t_sp *)malloc(sizeof(t_sp));
 	if (!sphere)
 		return (NULL);
-	sphere->origin = put_cord3f(split[1]);
-	sphere->rgb = put_rgb(split[3]);
-	sphere->diameter = ft_atof(split[2]);
-	if (!sphere->origin || !sphere->rgb)
-	{
-		if (sphere->origin)
-			free(sphere->origin);
-		if (sphere->rgb)
-			free(sphere->rgb);
-		free(sphere);
-		return (NULL);
-	}
+	ft_putel_sp(split, sphere);
 	return (sphere);
 }

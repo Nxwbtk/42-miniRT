@@ -6,11 +6,11 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 03:40:08 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 01:34:53 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 void	init_pl(t_scene *scene, char **split, char *line)
 {
@@ -31,7 +31,7 @@ void	init_pl(t_scene *scene, char **split, char *line)
 
 void	init_sp(t_scene *scene, char **split, char *line)
 {
-	t_sphere	*sphere;
+	t_sp		*sphere;
 	t_obj		*new_obj;
 
 	sphere = new_sphere(split);
@@ -48,8 +48,8 @@ void	init_sp(t_scene *scene, char **split, char *line)
 
 void	init_cy(t_scene *scene, char **split, char *line)
 {
-	t_cylinder	*cylinder;
-	t_obj		*new_obj;
+	t_cy	*cylinder;
+	t_obj	*new_obj;
 
 	cylinder = new_cylinder(split);
 	if (!cylinder)

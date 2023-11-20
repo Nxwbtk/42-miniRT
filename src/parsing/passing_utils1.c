@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:06:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 17:40:51 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:30:47 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 void	free_split(char **split)
 {

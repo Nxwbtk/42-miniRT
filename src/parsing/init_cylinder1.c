@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_cylinder1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 02:28:26 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 03:06:39 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/21 02:39:28 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
-t_obj	*new_obj_cy(t_cylinder *cylinder)
+t_obj	*new_obj_cy(t_cy *cylinder)
 {
 	t_obj	*new_obj;
 
@@ -59,13 +59,13 @@ int	check_arg_cylinder(char **split)
 	return (1);
 }
 
-t_cylinder	*new_cylinder(char **split)
+t_cy	*new_cylinder(char **split)
 {
-	t_cylinder	*cylinder;
+	t_cy	*cylinder;
 
 	if (!check_arg_cylinder(split))
 		return (NULL);
-	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
+	cylinder = (t_cy *)malloc(sizeof(t_cy));
 	if (!cylinder)
 		return (NULL);
 	cylinder->origin = put_cord3f(split[1]);

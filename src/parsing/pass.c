@@ -3,41 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pass.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/18 04:19:24 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:12:28 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 void	free_scene(t_scene *scene)
 {
 	t_obj	*tmp;
 
-	if (scene->ambient)
-	{
-		if (scene->ambient->rgb)
-			free(scene->ambient->rgb);
-		free(scene->ambient);
-	}
-	if (scene->camera)
-	{
-		if (scene->camera->origin)
-			free(scene->camera->origin);
-		if (scene->camera->dir)
-			free(scene->camera->dir);
-		free(scene->camera);
-	}
-	if (scene->light)
-	{
-		if (scene->light->origin)
-			free(scene->light->origin);
-		if (scene->light->rgb)
-			free(scene->light->rgb);
-		free(scene->light);
-	}
 	while (scene->obj)
 	{
 		tmp = scene->obj->next;
@@ -76,18 +54,11 @@ void	check_line(char *line, t_scene *scene)
 	free_split(split_line);
 }
 
-void	run(char *filename)
+void	run(char *filename, t_scene *scene)
 {
 	int		fd;
 	char	*line;
-	t_scene	*scene;
 
-	scene = init_struct();
-	if (!scene)
-	{
-		printf("Error\n");
-		exit(1);
-	}
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
@@ -115,6 +86,6 @@ int	parsing(int ac, char **av, t_scene *scene)
 		printf("Error\n");
 		return (1);
 	}
-	run(av[1]);
+	run(av[1], scene);
 	return (0);
 }

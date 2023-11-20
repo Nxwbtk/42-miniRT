@@ -3,50 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 22:02:31 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/11 01:08:39 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/20 23:09:41 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 void	free_obj(t_obj *obj)
 {
 	t_plane		*plane;
-	t_sphere	*sphere;
-	t_cylinder	*cylinder;
+	t_sp		*sphere;
+	t_cy		*cylinder;
 
 	if (obj && obj->type == 1)
 	{
 		plane = (t_plane *)obj->obj;
-		if (plane->origin)
-			free(plane->origin);
-		if (plane->dir)
-			free(plane->dir);
-		if (plane->rgb)
-			free(plane->rgb);
 		free(plane);
 	}
 	if (obj && obj->type == 2)
 	{
-		sphere = (t_sphere *)obj->obj;
-		if (sphere->origin)
-			free(sphere->origin);
-		if (sphere->rgb)
-			free(sphere->rgb);
+		sphere = (t_sp *)obj->obj;
 		free(sphere);
 	}
 	if (obj && obj->type == 3)
 	{
-		cylinder = (t_cylinder *)obj->obj;
-		if (cylinder->origin)
-			free(cylinder->origin);
-		if (cylinder->dir)
-			free(cylinder->dir);
-		if (cylinder->rgb)
-			free(cylinder->rgb);
+		cylinder = (t_cy *)obj->obj;
 		free(cylinder);
 	}
 }
@@ -60,11 +44,11 @@ void	free_double_config(char **split, t_scene *scene, char *line)
 	exit(1);
 }
 
-double	ft_atof(char *str)
+float	ft_atof(char *str)
 {
-	double	res;
+	float	res;
 	int		sign;
-	double	factor;
+	float	factor;
 
 	res = 0.0;
 	sign = 1;

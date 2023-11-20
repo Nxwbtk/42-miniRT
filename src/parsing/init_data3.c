@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_data3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:43 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/09 20:28:22 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:26:02 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 int	check_arg_light(char **split)
 {
@@ -35,16 +35,16 @@ int	check_arg_light(char **split)
 	return (1);
 }
 
-t_light	*init_light2(void)
+t_light	init_light2(void)
 {
-	t_light	*light;
+	t_light	light;
 
-	light = (t_light *)malloc(sizeof(t_light));
-	if (!light)
-		return (NULL);
-	light->origin = NULL;
-	light->rgb = NULL;
-	light->ratio = 0;
+	light.origin = new_vec(0, 0, 0);
+	light.clr.r = 0;
+	light.clr.g = 0;
+	light.clr.b = 0;
+	light.ratio = 0;
+	light.is_init = 1;
 	return (light);
 }
 
@@ -53,30 +53,23 @@ void	put_xyz_light(t_scene *scene, char **split)
 	char	**xyz;
 
 	xyz = ft_split(split[1], ',');
-	scene->light->origin->x = ft_atof(xyz[0]);
-	scene->light->origin->y = ft_atof(xyz[1]);
-	scene->light->origin->z = ft_atof(xyz[2]);
+	(*scene).light.origin = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	ft_atof(xyz[2]));
 	free_split(xyz);
 	xyz = ft_split(split[3], ',');
-	scene->light->rgb->r = ft_atof(xyz[0]);
-	scene->light->rgb->g = ft_atof(xyz[1]);
-	scene->light->rgb->b = ft_atof(xyz[2]);
+	(*scene).light.clr.r = ft_atoi(xyz[0]);
+	(*scene).light.clr.g = ft_atoi(xyz[1]);
+	(*scene).light.clr.b = ft_atoi(xyz[2]);
 	free_split(xyz);
-	scene->light->ratio = ft_atof(split[2]);
+	(*scene).light.ratio = ft_atof(split[2]);
 }
 
 void	init_light(char **split, t_scene *scene, char *line)
 {
-	if (scene->light)
+	if ((*scene).light.is_init == 1)
 		free_double_config(split, scene, line);
-	scene->light = init_light2();
-	if (!scene->light || check_arg_light(split) == 0)
-		error_input(line, split, scene);
-	scene->light->origin = (t_cord3f *)malloc(sizeof(t_cord3f));
-	if (!scene->light->origin)
-		error_input(line, split, scene);
-	scene->light->rgb = (t_rgb *)malloc(sizeof(t_rgb));
-	if (!scene->light->rgb)
+	(*scene).light = init_light2();
+	if (check_arg_light(split) == 0)
 		error_input(line, split, scene);
 	put_xyz_light(scene, split);
 }

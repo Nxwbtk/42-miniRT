@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_plane1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:20:18 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/16 03:17:41 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/21 01:31:35 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 int	check_arg_plane(char **split)
 {
@@ -45,48 +45,26 @@ int	check_arg_plane(char **split)
 	return (1);
 }
 
-t_cord3f	*put_cord3f(char *cord)
+t_cor	put_cord3f(char *cord)
 {
 	char	**xyz;
-	t_cord3f	*new_cord;
+	t_cor	new_cord;
 
 	xyz = ft_split(cord, ',');
-	new_cord = (t_cord3f *)malloc(sizeof(t_cord3f));
-	if (!new_cord)
-		return (NULL);
-	new_cord->x = ft_atof(xyz[0]);
-	new_cord->y = ft_atof(xyz[1]);
-	new_cord->z = ft_atof(xyz[2]);
+	new_cord = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
 	free_split(xyz);
 	return (new_cord);
 }
 
-t_vec3f	*put_vec3f(char *cord)
+t_rgb	put_rgb(char *cord)
 {
-	t_vec3f	*new_dir;
-	char		**xyz;
-
-	new_dir = (t_vec3f *)malloc(sizeof(t_vec3f));
-	if (!new_dir)
-		return (NULL);
-	xyz = ft_split(cord, ',');
-	new_dir = new_vec3f(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
-	free_split(xyz);
-	return (new_dir);
-}
-
-t_rgb	*put_rgb(char *cord)
-{
-	t_rgb	*new_rgb;
+	t_rgb	new_rgb;
 	char	**rgb;
 
-	new_rgb = (t_rgb *)malloc(sizeof(t_rgb));
-	if (!new_rgb)
-		return (NULL);
 	rgb = ft_split(cord, ',');
-	new_rgb->r = ft_atof(rgb[0]);
-	new_rgb->g = ft_atof(rgb[1]);
-	new_rgb->b = ft_atof(rgb[2]);
+	new_rgb.r = ft_atof(rgb[0]);
+	new_rgb.g = ft_atof(rgb[1]);
+	new_rgb.b = ft_atof(rgb[2]);
 	free_split(rgb);
 	return (new_rgb);
 }
@@ -100,9 +78,9 @@ t_plane	*new_plane(char **split)
 	plane = (t_plane *)malloc(sizeof(t_plane));
 	if (!plane)
 		return (NULL);
-	plane->origin = put_cord3f(split[1]);
-	plane->dir = put_vec3f(split[2]);
-	plane->rgb = put_rgb(split[3]);
+	(*plane).origin = put_cord3f(split[1]);
+	(*plane).dir = put_cord3f(split[2]);
+	(*plane).clr = put_rgb(split[3]);
 	if (isel_valid(plane) == 0)
 		return (NULL);
 	return (plane);

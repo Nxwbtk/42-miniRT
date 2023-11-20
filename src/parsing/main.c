@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   passing_utils4.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 01:19:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 19:31:10 by buntakansirikamo ###   ########.fr       */
+/*   Created: 2023/11/20 19:03:43 by buntakansirikamo  #+#    #+#             */
+/*   Updated: 2023/11/20 21:06:23 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-t_obj	*obj_last(t_obj *obj)
+int	main(int ac, char **av)
 {
-	while (obj && obj->next)
-		obj = obj->next;
-	return (obj);
-}
+	t_scene	*scene;
 
-void	obj_addback(t_scene *scene, t_obj *new_obj)
-{
-	t_obj	*last;
-
-	if (scene && new_obj)
+	// scene = init_struct();
+	scene = (t_scene *)malloc(sizeof(t_scene));
+	scene->obj = NULL;
+	if (!scene)
 	{
-		if (!scene->obj)
-			scene->obj = new_obj;
-		else
-		{
-			last = obj_last(scene->obj);
-			last->next = new_obj;
-		}
+		printf("Error\n");
+		exit(1);
 	}
+	printf("%d\n", (*scene).ambient.clr.r);
+	printf("%d\n", (*scene).ambient.clr.r);
+	printf("%d\n", (*scene).ambient.clr.r);
+	if (parsing(ac, av, scene))
+		return (1);
+	return (0);
 }
