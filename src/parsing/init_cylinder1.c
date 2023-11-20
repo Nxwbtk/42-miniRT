@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 02:28:26 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 02:40:20 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 02:55:18 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ int	check_arg_cylinder(char **split)
 	return (1);
 }
 
+t_cor	init_cor(char *cord)
+{
+	char	**xyz;
+	t_cor	new_cord;
+
+	xyz = ft_split(cord, ',');
+	new_cord = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
+	free_split(xyz);
+	return (new_cord);
+}
+
 t_cy	*new_cylinder(char **split)
 {
 	t_cy	*cylinder;
@@ -68,8 +79,8 @@ t_cy	*new_cylinder(char **split)
 	cylinder = (t_cy *)malloc(sizeof(t_cy));
 	if (!cylinder)
 		return (NULL);
-	cylinder->origin = put_cord3f(split[1]);
-	cylinder->dir = put_vec3f(split[2]);
+	(*cylinder).origin = init_cor(split[1]);
+	(*cylinder).dir = init_cor(split[2]);
 	cylinder->diameter = ft_atof(split[3]);
 	cylinder->height = ft_atof(split[4]);
 	(*cylinder).clr = put_rgb(split[5]);
