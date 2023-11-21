@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 22:02:31 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 23:09:41 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 22:16:16 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	free_obj(t_obj *obj)
 		cylinder = (t_cy *)obj->obj;
 		free(cylinder);
 	}
+	free(obj);
 }
 
 void	free_double_config(char **split, t_scene *scene, char *line)

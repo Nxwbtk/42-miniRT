@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_plane1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:20:18 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 17:50:52 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 22:08:02 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_cor	put_cord3f(char *cord)
 	t_cor	new_cord;
 
 	xyz = ft_split(cord, ',');
-	new_cord = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
+	new_cord = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	ft_atof(xyz[2]));
 	free_split(xyz);
 	return (new_cord);
 }

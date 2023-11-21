@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sphere1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:30:59 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 17:50:52 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 22:10:11 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	ft_putel_sp(char **split, t_sp *sphere)
 	(*sphere).origin = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
 	ft_atof(xyz[2]));
 	free_split(xyz);
-	xyz = ft_split(split[3], ',');
 	(*sphere).clr = put_rgb(split[3]);
 	(*sphere).diameter = ft_atof(split[2]);
+
 }
 
 t_sp	*new_sphere(char **split)
