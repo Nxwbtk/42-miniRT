@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 22:31:05 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 03:00:10 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define FRACTIONAL_BIT 16
 
 # include "../lib/libft/libft.h"
+# include "miniRT.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -108,7 +109,6 @@ int		ft_check(char *str);
 int		ft_isopenable(char *str);
 int		ft_isfile(char *str);
 int		ft_isspace(char c);
-int		isel_valid(t_plane *plane);
 char	**ft_split_space(char *line);
 void	free_split(char **split);
 void	init_ambient(char **split, t_scene *scene, char *line);

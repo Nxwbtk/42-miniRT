@@ -6,7 +6,7 @@
 #    By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/11/20 19:05:20 by buntakansirikamo ###   ########.fr        #
+#    Updated: 2023/11/21 03:10:01 by buntakansirikamo ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ RM = rm -rf
 LIBFT_PATH = ../../lib/libft/
 LIBFT_A = ../../lib/libft/libft.a
 
-SRCS = pass.c passing_utils1.c passing_utils2.c passing_utils3.c \
+SRCS = main.c pass.c passing_utils1.c passing_utils2.c passing_utils3.c \
 init_data1.c init_data2.c init_data3.c init_data4.c init_plane1.c \
-init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c
-HEADER = miniRT.h main.c
+init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c new_vec.c
+HEADER = parsing.h
 
 all: $(NAME)
 

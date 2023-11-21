@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 18:35:02 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/21 03:09:28 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
-#define RENDER_H
+# define RENDER_H
 
-#include "parsing.h"
+# include "parsing.h"
 
 // typedef struct s_param
 // {

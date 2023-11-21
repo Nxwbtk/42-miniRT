@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:20:18 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 01:31:35 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 02:57:03 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,5 @@ t_plane	*new_plane(char **split)
 	(*plane).origin = put_cord3f(split[1]);
 	(*plane).dir = put_cord3f(split[2]);
 	(*plane).clr = put_rgb(split[3]);
-	if (isel_valid(plane) == 0)
-		return (NULL);
 	return (plane);
 }
