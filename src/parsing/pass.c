@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 22:12:28 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 18:09:22 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	run(char *filename, t_scene *scene)
 	}
 	free(line);
 	close(fd);
+	free_scene(scene);
+	exit(0);
 }
 
 int	parsing(int ac, char **av, t_scene *scene)

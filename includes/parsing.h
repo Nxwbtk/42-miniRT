@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/21 03:00:10 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 17:49:11 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define FRACTIONAL_BIT 16
 
 # include "../lib/libft/libft.h"
-# include "miniRT.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -165,6 +164,7 @@ t_cy	*new_cylinder(char **split);
 
 t_cor	new_vec(float x, float y, float z);
 t_cor	new_vec1(float x, float y, float z);
+t_cor	new_vec_parsing(float x, float y, float z);
 t_cor	vec_norm(t_cor vec);
 t_cor	vec_add(t_cor vec1, t_cor vec2);
 t_cor	vec_sub(t_cor vec1, t_cor vec2);

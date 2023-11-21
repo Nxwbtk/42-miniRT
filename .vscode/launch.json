@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/buntakansirikamonthip/42Cursus/42-miniRT",
-      "program": "/Users/buntakansirikamonthip/42Cursus/42-miniRT/build/Debug/outDebug"
+      "cwd": "/Users/buntakansirikamonthip/42Cursus/42-miniRT/src/parsing",
+      "program": "/Users/buntakansirikamonthip/42Cursus/42-miniRT/src/parsing/build/Debug/outDebug"
     }
   ]
 }

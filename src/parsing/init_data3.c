@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:43 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 22:26:02 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 17:50:56 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_light	init_light2(void)
 {
 	t_light	light;
 
-	light.origin = new_vec(0, 0, 0);
+	light.origin = new_vec_parsing(0, 0, 0);
 	light.clr.r = 0;
 	light.clr.g = 0;
 	light.clr.b = 0;
@@ -53,7 +53,7 @@ void	put_xyz_light(t_scene *scene, char **split)
 	char	**xyz;
 
 	xyz = ft_split(split[1], ',');
-	(*scene).light.origin = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	(*scene).light.origin = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
 	ft_atof(xyz[2]));
 	free_split(xyz);
 	xyz = ft_split(split[3], ',');

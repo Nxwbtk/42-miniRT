@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 02:28:26 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 02:55:18 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 17:50:57 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_cor	init_cor(char *cord)
 	t_cor	new_cord;
 
 	xyz = ft_split(cord, ',');
-	new_cord = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
+	new_cord = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
 	free_split(xyz);
 	return (new_cord);
 }

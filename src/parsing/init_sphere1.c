@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:30:59 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 22:52:20 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 17:50:52 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_putel_sp(char **split, t_sp *sphere)
 	char	**xyz;
 
 	xyz = ft_split(split[1], ',');
-	(*sphere).origin = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	(*sphere).origin = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
 	ft_atof(xyz[2]));
 	free_split(xyz);
 	xyz = ft_split(split[3], ',');

@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 00:28:17 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 22:11:23 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 17:50:59 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_camera	init_camera2(void)
 {
 	t_camera	camera;
 
-	camera.origin = new_vec(0, 0, 0);
-	camera.dir = new_vec(0, 0, 0);
+	camera.origin = new_vec_parsing(0, 0, 0);
+	camera.dir = new_vec_parsing(0, 0, 0);
 	camera.fov = 0;
 	camera.is_init = 1;
 	return (camera);
@@ -51,11 +51,11 @@ void	put_xyz(t_scene *scene, char **split)
 	char	**xyz;
 
 	xyz = ft_split(split[1], ',');
-	(*scene).camera.origin = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	(*scene).camera.origin = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
 	ft_atof(xyz[2]));
 	free_split(xyz);
 	xyz = ft_split(split[2], ',');
-	(*scene).camera.dir = new_vec(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	(*scene).camera.dir = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
 	ft_atof(xyz[2]));
 	free_split(xyz);
 }

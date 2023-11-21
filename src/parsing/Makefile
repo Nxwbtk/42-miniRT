@@ -6,11 +6,11 @@
 #    By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/11/21 03:10:01 by buntakansirikamo ###   ########.fr        #
+#    Updated: 2023/11/21 17:55:11 by buntakansirikamo ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = miniRT
+NAME = parsing
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -19,10 +19,8 @@ CFLAGS = -Wall -Wextra -Werror
 OBJS = $(SRCS:.c=.o)
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(OBJS))
+HEADER = ../../includes/parsing.h
 
-$(OBJ_DIR)/%.o: %.c $(HEADER)
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
 
 RM = rm -rf
 LIBFT_PATH = ../../lib/libft/
@@ -30,8 +28,11 @@ LIBFT_A = ../../lib/libft/libft.a
 
 SRCS = main.c pass.c passing_utils1.c passing_utils2.c passing_utils3.c \
 init_data1.c init_data2.c init_data3.c init_data4.c init_plane1.c \
-init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c new_vec.c
-HEADER = parsing.h
+init_plane2.c passing_utils4.c init_sphere1.c init_cylinder1.c
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 

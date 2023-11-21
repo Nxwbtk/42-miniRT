@@ -6,7 +6,7 @@
 /*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:06:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 19:30:47 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/21 18:06:44 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	ft_check(char *str)
 	int		i;
 
 	split = NULL;
-	if (ft_isfile(str) == 0)
-		return (0);
+	// if (ft_isfile(str) == 0)
+	// 	return (0);
 	i = 0;
 	split = ft_split(str, ' ');
 	while (split[i])
