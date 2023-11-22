@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/22 08:38:50 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 09:00:16 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 # include <unistd.h>
 # include <math.h>
 
-
 # include "render.h"
-# include "parsing.h"
+# include "mlx.h"
 
 #if defined(__linux__)
 #include "keycode_linux.h"

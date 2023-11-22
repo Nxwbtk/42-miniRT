@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:24:53 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/21 15:13:22 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:46:41 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ t_ray new_ray(t_cor oringin, t_cor dir)
 }
 
 // now only for sphere
-t_rgb ray_tracing(t_param *param, t_ray ray)
-{
-	if (hit_sphere(new_vec(0, 0, -1), 0.5, ray))
-	{
-		printf("hit\n");
-		return vec_to_rgb(new_vec(1, 0, 0));
-	}
-printf("not hit\n");
-(void)param;
-	t_cor unit_dir = vec_norm(ray.dir);
-	float a = 0.5 * (unit_dir.y + 1.0);
-	return (vec_to_rgb(vec_add(vec_multi_scalar(new_vec(1.0, 1.0, 1.0), 1.0 - a), vec_multi_scalar(new_vec(0.5, 0.7, 1.0), a))));
-}
+// t_rgb ray_tracing(t_param *param, t_ray ray)
+// {
+// 	if (hit_sphere(new_vec(0, 0, -1), 0.5, ray))
+// 	{
+// 		printf("hit\n");
+// 		return vec_to_rgb(new_vec(1, 0, 0));
+// 	}
+// printf("not hit\n");
+// (void)param;
+// 	t_cor unit_dir = vec_norm(ray.dir);
+// 	float a = 0.5 * (unit_dir.y + 1.0);
+// 	return (vec_to_rgb(vec_add(vec_multi_scalar(new_vec(1.0, 1.0, 1.0), 1.0 - a), vec_multi_scalar(new_vec(0.5, 0.7, 1.0), a))));
+// }
 
 t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel)
 {
@@ -47,7 +47,7 @@ t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel)
 	return (new_ray(viewport->origin, pixel_center));
 }
 
-t_cor ray_point(t_ray ray, float t)
+t_cor ray_point(t_ray ray)
 {
-	return (vec_add(ray.oringin, vec_multi_scalar(ray.dir, t)));
+	return (vec_add(ray.oringin, vec_multi_scalar(ray.dir, ray.t)));
 }

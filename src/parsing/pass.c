@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   pass.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 22:16:21 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:02:53 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-void	free_scene(t_scene *scene)
+void free_scene(t_scene *scene)
 {
-	t_obj	*tmp;
+	t_obj *tmp;
 
 	while (scene->obj)
 	{
@@ -25,7 +25,7 @@ void	free_scene(t_scene *scene)
 	free(scene);
 }
 
-void	error_input(char *line, char **split_line, t_scene *scene)
+void error_input(char *line, char **split_line, t_scene *scene)
 {
 	free(line);
 	free_split(split_line);
@@ -34,9 +34,9 @@ void	error_input(char *line, char **split_line, t_scene *scene)
 	exit(1);
 }
 
-void	check_line(char *line, t_scene *scene)
+void check_line(char *line, t_scene *scene)
 {
-	char	**split_line;
+	char **split_line;
 
 	split_line = ft_split_space(line);
 	if (split_line[0] && ft_strncmp("A", split_line[0], 2) == 0)
@@ -45,41 +45,43 @@ void	check_line(char *line, t_scene *scene)
 		init_camera(split_line, scene, line);
 	else if (split_line[0] && ft_strncmp("L", split_line[0], 2) == 0)
 		init_light(split_line, scene, line);
-	else if (split_line[0] && (ft_strncmp("pl", split_line[0], 3) == 0 || \
-	ft_strncmp("sp", split_line[0], 3) == 0 || \
-	ft_strncmp("cy", split_line[0], 3) == 0))
+	else if (split_line[0] && (ft_strncmp("pl", split_line[0], 3) == 0 ||
+							   ft_strncmp("sp", split_line[0], 3) == 0 ||
+							   ft_strncmp("cy", split_line[0], 3) == 0))
 		init_obj(split_line, scene, line);
 	else
 		error_input(line, split_line, scene);
 	free_split(split_line);
 }
 
-void	run(char *filename, t_scene *scene)
+void run(char *filename, t_scene *scene)
 {
-	int		fd;
-	char	*line;
+	int fd;
+	char *line;
 
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
+	printf("check1\n");
 	while (line)
 	{
 		if (ft_strncmp(line, "\n", 2) == 0)
 		{
 			free(line);
 			line = get_next_line(fd);
-			continue ;
+			continue;
 		}
 		check_line(line, scene);
 		free(line);
 		line = get_next_line(fd);
 	}
 	free(line);
+	printf("check2\n");
 	close(fd);
-	free_scene(scene);
-	exit(0);
+	// free_scene(scene);
+	// exit(0);
 }
 
-int	parsing(int ac, char **av, t_scene *scene)
+int parsing(int ac, char **av, t_scene *scene)
 {
 	if (ac != 2)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/22 08:41:44 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:01:55 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define FRACTIONAL_BIT 16
 
-# include "../lib/libft/libft.h"
+# include "libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -108,8 +108,6 @@ typedef struct s_scene
 	t_obj		*obj; // t_obj is
 }				t_scene;
 
-
-
 int		parsing(int ac, char **av, t_scene *scene);
 int		ft_check(char *str);
 int		ft_isopenable(char *str);
@@ -132,7 +130,7 @@ t_obj	*new_obj_sp(t_sp *sphere);
 t_obj	*new_obj_cy(t_cy *cylinder);
 t_cor	*put_cor(char *cord);
 t_rgb	put_rgb(char *cord);
-t_scene	*init_struct(void);
+t_scene	init_struct(void);
 t_cor	*put_cor(char *cord);
 t_plane	*new_plane(char **split);
 t_sp	*new_sphere(char **split);

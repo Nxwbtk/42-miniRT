@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:28:09 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/21 16:00:33 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:43:21 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,31 @@
 //     }
 // }
 
-float   hit_sphere(t_cor center, float radius, t_ray r)
+bool    isHitSphere(t_ray *ray, t_sp *sphere)
 {
-    t_cor oc = vec_sub(r.oringin, center);
-    float a = vec_dot_product(r.dir, r.dir);
-    float b = vec_dot_product(oc, r.dir) * 2.0;
-	float c = vec_dot_product(oc, oc) - (radius*radius);
-    float discriminant = b*b - 4*a*c;
+    t_cor oc;
+    float a;
+    float b;
+	float c;
+    float distance;
 
-    if (discriminant >= 0)
-        return (1);
-    return 0;
-    // if (discriminant < 0) {
-    //     return -1.0;
-    // } else {
-    //     return (-b - sqrt(discriminant) ) / (2.0*a);
-    // }
+    oc = vec_sub(ray->oringin, sphere->origin);
+    a = vec_dot_product(ray->dir, ray->dir);
+    b = vec_dot_product(oc, ray->dir) * 2.0;
+    c = vec_dot_product(oc, oc) - (sphere->radius*sphere->radius);
+    distance = b*b - 4*a*c;
+    if (distance < 0)
+        return (false);
+    if (distance <= ray->t)
+        ray->t = distance;
+    return (true);
+}
+
+void hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint)
+{
+    if (!isHitSphere(ray, sphere))
+        return ;
+    hitPoint->origin = ray_point(*ray);
+    hitPoint->dir = sphere->origin;
+    hitPoint->clr = sphere->clr;
 }

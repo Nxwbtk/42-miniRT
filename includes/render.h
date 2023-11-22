@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/22 08:44:06 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:44:29 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ typedef struct s_param
 	// t_select	*select;
 } t_param;
 
+typedef struct s_hitpoint
+{
+	t_cor	origin;
+	t_cor	dir;
+	t_rgb	clr;
+}	t_hitpoint;
+
 typedef struct s_pixel
 {
 	int x;
@@ -68,12 +75,15 @@ typedef struct s_ray
 {
 	t_cor oringin;
 	t_cor dir;
+	t_cor point;
+	t_rgb clr;
+	float t;
 } t_ray;
 
 // ray
 t_ray new_ray(t_cor oringin, t_cor dir);
-t_cor ray_point(t_ray ray, float t);
-int	ray_color(t_ray ray, t_sphere sphere, t_plane plane);
+t_cor ray_point(t_ray ray);
+int	ray_tracing(t_ray *ray, t_obj *obj);
 t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel);
 
 // pixel
@@ -84,6 +94,7 @@ void put_pixel_to_image(t_img *img, t_pixel pixel);
 int render_scene(t_param *param);
 
 //sphere
-float	hit_sphere(t_cor center, float radius, t_ray r);
+void hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
+void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
 
 #endif

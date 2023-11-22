@@ -58,6 +58,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "minirt.h": "c",
-    "parsing.h": "c"
+    "parsing.h": "c",
+    "render.h": "c"
   }
 }

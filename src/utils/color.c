@@ -57,45 +57,102 @@ float ft_abs(float a)
 	return (a);
 }
 
-float hit_plane(t_cor plane_center, t_cor plane_direction, t_ray ray)
+// float hit_plane(t_cor plane_center, t_cor plane_direction, t_ray ray)
+// {
+// 	float denom = vec_dot_product(ray.dir, plane_direction);
+// 	float t;
+// 	static int i = 0; // debug
+// 	if (denom > 1e-6)
+// 	{
+// 		t_cor ray0_plane0 = vec_sub(plane_center, ray.oringin);
+// 		t = ft_abs(vec_dot_product(ray0_plane0, plane_direction)) / denom;
+// 		if (i++ < 10)
+// 			printf("distance t %f\n", t);
+// 		return (t);
+// 	}
+// 	return (0);
+// }
+bool	isHitPlane(t_ray *ray, t_plane *plane)
 {
-	float denom = vec_dot_product(ray.dir, plane_direction);
-	float t;
-	static int i = 0; // debug
+	float denom = vec_dot_product(ray->dir, plane->dir);
+	float distance;
 	if (denom > 1e-6)
 	{
-		t_cor ray0_plane0 = vec_sub(plane_center, ray.oringin);
-		t = ft_abs(vec_dot_product(ray0_plane0, plane_direction)) / denom;
-		if (i++ < 10)
-			printf("distance t %f\n", t);
-		return (t);
+		t_cor ray0_plane0 = vec_sub(plane->origin, ray->oringin);
+		distance = ft_abs(vec_dot_product(ray0_plane0, plane->dir)) / denom;
+		if (distance < 0)
+			return (false);
+		if (distance <= ray->t)
+			ray->t = distance;
+		return (true);
 	}
-	return (0);
+	return (false);
 }
 
-int	ray_color(t_ray ray, t_sphere sphere, t_plane plane)
+void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint)
 {
-	t_rgb	rgb;
-	float	t;
-	static int i = 0; // debug
+	if (!isHitPlane(ray, plane))
+		return ;
+	hitPoint->origin = ray_point(*ray);
+	hitPoint->dir = plane->origin;
+	hitPoint->clr = plane->clr;
+}
 
-	// printf("ray_color\n");
-	// t = hit_sphere(sphere.origin, sphere.radius, ray);
-	(void)sphere;
-	t = hit_plane(plane.origin, plane.dir, ray);
-	if (t > 0.0)
+
+t_hitpoint  new_hitPoint(t_ray *ray, t_obj *obj)
+{
+    t_hitpoint  hit;
+
+    hit.origin = ray_point(*ray);
+
+    if (obj->type == 1)
+    {
+        hit.dir = ((t_sp *)obj->obj)->origin;
+        hit.clr = ((t_sp *)obj->obj)->clr;
+    }
+    else if (obj->type == 2)
+    {
+        hit.dir = ((t_plane *)obj->obj)->origin;
+        hit.clr = ((t_plane *)obj->obj)->clr;
+    }
+    else
+    {
+        hit.dir = ((t_cy *)obj->obj)->origin;
+        hit.clr = ((t_cy *)obj->obj)->clr;
+    }
+    return (hit);
+}
+
+void	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
+{
+	// only one hit object
+	ray->t = -1;
+	while (obj != NULL)
 	{
-		if (i++ == 0)
-			printf("form ray color\n");
-		// t_cor N = vec_norm(vec_sub(vec_multi_scalar(ray.dir, t), new_vec(0,0,-1)));
-        // return (0.5 * rgb_to_clr(vec_to_rgb(vec_add(N, new_vec(1,1,1)))));
-		// return (rgb_to_clr(sphere.clr));
-		return (rgb_to_clr(plane.clr));
+		if (obj->type == 1)
+			hitPointSphere(ray, (t_sp *)obj->obj, hitPoint);
+		else if (obj->type == 2)
+			hitPointPlane(ray, (t_plane *)obj->obj, hitPoint);
+		// else
+		// 	hit_cylinder(ray, (t_cy *)obj->obj, hitPoint);
+		obj  = obj->next;
 	}
-	// t_cor unit_dir = vec_norm(ray.dir);
-	float	a = 0.5 * (ray.dir.y + 1.0);
-	rgb = vec_to_rgb(vec_add(vec_multi_scalar(new_vec(1.0, 1.0, 1.0), 1.0 - a), vec_multi_scalar(new_vec(0.5, 0.7, 1.0), a)));
-int clr = rgb_to_clr(rgb);
-// printf("not hit\n");
-	return (clr);
+	if (ray->t < 0) {
+		float	a = 0.5 * (ray->dir.y + 1.0);
+		t_rgb rgb = vec_to_rgb(vec_add(vec_multi_scalar(new_vec(1.0, 1.0, 1.0), 1.0 - a), vec_multi_scalar(new_vec(0.5, 0.7, 1.0), a)));
+		hitPoint->clr = rgb;
+	}
+}
+
+
+int	ray_tracing(t_ray *ray, t_obj *obj)
+{
+	// t_rgb	rgb;
+	t_hitpoint	hitPoint;
+
+	hit_object(ray, obj, &hitPoint);
+	// if (ray->t > 0.0) {
+	// 	return (rgb_to_clr(rgb));
+	// }
+	return (rgb_to_clr(hitPoint.clr));
 }
