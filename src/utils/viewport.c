@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:09:21 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/21 17:06:57 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/23 00:59:18 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_viewport(t_viewport *viewport, t_camera camera)
 	// viewport->width = 2 * tanf(ft_radian(camera.fov) / 2);
 	// viewport->height = viewport->width * ((float)WD_HEIGHT / (float)WD_WIDTH);
 	viewport->height = 2.0;
-    viewport->width = viewport->height * (WD_WIDTH/WD_HEIGHT);
+    viewport->width = viewport->height * ((float)WD_WIDTH / (float)WD_HEIGHT);
 	// viewport->axis = calculate_axis(vec_norm(camera.dir));
 	// viewport_u = vec_multi_scalar(viewport->axis.hor, viewport->width);
 	// viewport_v = vec_multi_scalar(viewport->axis.ver, viewport->height);

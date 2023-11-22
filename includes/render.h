@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/22 15:44:29 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/23 00:59:56 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_viewport
 	t_cor pixel_delta_y;
 	t_cor pixel_upper_left;
 	t_axis axis;
-	int width;
-	int height;
+	float width;
+	float height;
 } t_viewport;
 
 typedef struct	s_img
@@ -96,5 +96,9 @@ int render_scene(t_param *param);
 //sphere
 void hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
+void print_sphere(t_sp *sphere);
+void print_plane(t_plane *plane);
+void print_obj(t_obj *obj);
+void print_camera(t_camera *camera);
 
 #endif

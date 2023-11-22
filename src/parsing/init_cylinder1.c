@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cylinder1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 02:28:26 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 17:50:57 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/22 19:35:26 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_cy	*new_cylinder(char **split)
 	(*cylinder).origin = init_cor(split[1]);
 	(*cylinder).dir = init_cor(split[2]);
 	cylinder->diameter = ft_atof(split[3]);
+	cylinder->radius = cylinder->diameter / 2;
 	cylinder->height = ft_atof(split[4]);
 	(*cylinder).clr = put_rgb(split[5]);
 	return (cylinder);

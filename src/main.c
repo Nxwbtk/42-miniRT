@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/22 15:59:50 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 19:38:37 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	main(int ac, char **av)
 	printf("after parsing\n");
 	(void)ac;
 	(void)av;
-	// param.scene.plane = new_plane(new_vec(0, -1, 0), new_vec(0, -1, 0), new_rgb(0, 255, 0));
 	// param.scene.camera = new_camera(new_vec(0, 0, 0), new_vec(0, 0, -1), 90);
 	// param.scene.sphere = new_sphere(new_vec(0, 0, -1), 0.5, new_rgb(255, 0, 0));
+	// param.scene.plane = new_plane(new_vec(0, -1, 0), new_vec(0, -1, 0), new_rgb(0, 255, 0));
 	init_viewport(&param.viewport, param.scene.camera);
 	create_img(&param);
 	render_scene(&param);

@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/22 18:12:32 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 19:51:40 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 void print_sphere(t_sp *sphere)
 {
+	printf("### sphere ###\n");
 	printf("origin: (%f, %f, %f)\n", sphere->origin.x, sphere->origin.y, sphere->origin.z);
 	printf("radius: %f\n", sphere->radius);
 	printf("color: %d, %d, %d\n", sphere->clr.r, sphere->clr.g, sphere->clr.b);
@@ -32,6 +33,7 @@ void print_sphere(t_sp *sphere)
 
 void print_plane(t_plane *plane)
 {
+	printf("### plane ###\n");
 	printf("origin: (%f, %f, %f)\n", plane->origin.x, plane->origin.y, plane->origin.z);
 	printf("direction: (%f, %f, %f)\n", plane->dir.x, plane->dir.y, plane->dir.z);
 	printf("color: %d, %d, %d\n", plane->clr.r, plane->clr.g, plane->clr.b);
@@ -39,11 +41,30 @@ void print_plane(t_plane *plane)
 
 void print_obj(t_obj *obj)
 {
-	printf("obj->type: %d\n", obj->type);
-	if (obj->type == 1)
-		print_plane(obj->obj);
-	else if (obj->type == 2)
-		print_spherej(obj->obj);
+	t_obj	*tmp;
+
+	tmp = obj;
+	while (tmp)
+	{
+		printf("\n");
+		// printf("obj->type: %d\n", tmp->type);
+		if (tmp->type == 1)
+			print_plane(tmp->obj);
+		else if (tmp->type == 2)
+			print_sphere(tmp->obj);
+		tmp = tmp->next;
+
+	}
+}
+
+void print_camera(t_camera *camera)
+{
+	printf("\n");
+	printf("### camera ###\n");
+	printf("origin: (%f, %f, %f)\n", camera->origin.x, camera->origin.y, camera->origin.z);
+	printf("direction: (%f, %f, %f)\n", camera->dir.x, camera->dir.y, camera->dir.z);
+	printf("fov: %f\n", camera->fov);
+
 }
 
 int	render_scene(t_param *param)
@@ -52,13 +73,8 @@ int	render_scene(t_param *param)
 	t_ray	ray;
 
 	pixel = new_pixel(0, 0, 0);
-	while (param->scene.obj)
-	{
-		printf("\n");
-		print_obj(param->scene.obj);
-		param->scene.obj = param->scene.obj->next;
-
-	}
+	print_camera(&param->scene.camera);
+	print_obj(param->scene.obj);
 	// print_obj(param->scene.obj);
 	while (pixel.y < WD_HEIGHT)
 	{
