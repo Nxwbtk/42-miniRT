@@ -6,11 +6,10 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:38:26 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/05/03 00:02:21 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/20 22:22:12 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "miniRT.h"
 
 // void	free_all(t_data *data)

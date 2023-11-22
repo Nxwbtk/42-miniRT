@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 18:35:02 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:57:00 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define RENDER_H
 
 #include "parsing.h"
+#include <stdbool.h>
 
 // typedef struct s_param
 // {
@@ -31,6 +32,7 @@ typedef struct s_viewport
 	t_cor pixel_delta_x;
 	t_cor pixel_delta_y;
 	t_cor pixel_upper_left;
+	t_axis axis;
 	int width;
 	int height;
 } t_viewport;
@@ -71,6 +73,8 @@ typedef struct s_ray
 // ray
 t_ray new_ray(t_cor oringin, t_cor dir);
 t_cor ray_point(t_ray ray, float t);
+int	ray_color(t_ray ray, t_sphere sphere, t_plane plane);
+t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel);
 
 // pixel
 t_pixel new_pixel(int x, int y, int color);
@@ -78,5 +82,8 @@ void put_pixel_to_image(t_img *img, t_pixel pixel);
 
 // render
 int render_scene(t_param *param);
+
+//sphere
+float	hit_sphere(t_cor center, float radius, t_ray r);
 
 #endif

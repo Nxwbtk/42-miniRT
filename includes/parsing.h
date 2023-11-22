@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 18:47:13 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:57:52 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct s_cor
 	float z;
 	float len;
 } t_cor;
+
+typedef struct s_axis
+{
+	t_cor dir;
+	t_cor hor;
+	t_cor ver;
+} t_axis;
 
 typedef struct s_rgb
 {
@@ -69,7 +76,7 @@ typedef struct s_sphere
 	t_rgb clr;
 	float diameter;
 	float radius; // radius = diameter / 2
-} t_sp;
+} t_sphere;
 
 typedef struct s_cy
 {
@@ -79,7 +86,7 @@ typedef struct s_cy
 	float height;
 	float diameter;
 	float radius;
-} t_cy;
+} t_cylinder;
 
 typedef struct s_obj
 {
@@ -94,6 +101,8 @@ typedef struct s_scene
 	t_camera camera;
 	t_light light;
 	t_obj obj; // t_obj is
+	t_sphere sphere;
+	t_plane plane;
 } t_scene;
 
 int parsing(int ac, char **av, t_scene *scene);
@@ -121,8 +130,8 @@ t_cor *put_cor(char *cord);
 t_rgb *put_rgb(char *cord);
 t_scene *init_struct(void);
 t_cor *put_cor(char *cord);
-t_plane *new_plane(char **split);
-t_sphere *new_sphere(char **split);
+// t_plane *new_plane(char **split);
+// t_sphere *new_sphere(char **split);
 t_cylinder *new_cylinder(char **split);
 
 // typedef struct s_vec
@@ -156,6 +165,7 @@ t_cylinder *new_cylinder(char **split);
 
 // vector
 
+t_axis	calculate_axis(t_cor dir);
 t_cor new_vec(float x, float y, float z);
 t_cor new_vec1(float x, float y, float z);
 t_cor vec_norm(t_cor vec);
@@ -173,6 +183,5 @@ t_rgb vec_to_rgb(t_cor vec);
 t_rgb clamp_clr(t_rgb clr);
 int rgb_to_clr(t_rgb clr);
 void write_color(t_cor pixel_color);
-t_rgb ray_color(t_ray ray);
 
 #endif

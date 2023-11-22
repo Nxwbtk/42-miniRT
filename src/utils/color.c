@@ -1,7 +1,5 @@
 
-#include "parsing.h"
-#include <stdio.h>
-#include <stdbool.h>
+#include "miniRT.h"
 
 t_rgb	new_rgb(int r, int g, int b)
 {
@@ -13,7 +11,7 @@ t_rgb	new_rgb(int r, int g, int b)
 	return (rgb);
 }
 
-t_rgb	vec_to_rgb(t_vec3f vec)
+t_rgb	vec_to_rgb(t_cor vec)
 {
 	return(new_rgb((int)(255.999 * vec.x), (int)(255.999 * vec.y), (int)(255.999 * vec.z)));
 }
@@ -42,20 +40,62 @@ int	rgb_to_clr(t_rgb clr)
 	// return (15069183);
 }
 
-void write_color(t_vec3f pixel_color) {
+void write_color(t_cor pixel_color) {
 	// Write the translated [0,255] value of each color component.
 	printf("%d %d %d\n",  (int)(255.999 * pixel_color.x),
 			(int)(255.999 * pixel_color.y),
 			(int)(255.999 * pixel_color.z));
 }
 
+// ray: ray_point = camera_center + t * ray_direction
+// plane: vec_dot((ray_point - plane_center), plane_direction) = 0
+// t = vec_div(vec_sub(vec_dot(plane_center, plane_direction), vec_dot(camera_center, plane_direction)), vec_dot(ray_direction, plane_direction));
+float ft_abs(float a)
+{
+	if (a < 0)
+		return (-a);
+	return (a);
+}
 
-t_rgb	ray_color(t_ray ray) {
+float hit_plane(t_cor plane_center, t_cor plane_direction, t_ray ray)
+{
+	float denom = vec_dot_product(ray.dir, plane_direction);
+	float t;
+	static int i = 0; // debug
+	if (denom > 1e-6)
+	{
+		t_cor ray0_plane0 = vec_sub(plane_center, ray.oringin);
+		t = ft_abs(vec_dot_product(ray0_plane0, plane_direction)) / denom;
+		if (i++ < 10)
+			printf("distance t %f\n", t);
+		return (t);
+	}
+	return (0);
+}
 
-	if (hit_sphere(new_vec3f(0, 0, -1), 0.5, ray))
-        return vec_to_rgb(new_vec3f(1, 0, 0));
+int	ray_color(t_ray ray, t_sphere sphere, t_plane plane)
+{
+	t_rgb	rgb;
+	float	t;
+	static int i = 0; // debug
 
-	t_vec3f unit_dir = vec3f_normalize(ray.dir);
-	float	a = 0.5 * (unit_dir.y + 1.0);
-	return (vec_to_rgb(vec3f_add(vec3f_multi_scalar(new_vec3f(1.0, 1.0, 1.0), 1.0 - a), vec3f_multi_scalar(new_vec3f(0.5, 0.7, 1.0), a))));
+	// printf("ray_color\n");
+	// t = hit_sphere(sphere.origin, sphere.radius, ray);
+	(void)sphere;
+	t = hit_plane(plane.origin, plane.dir, ray);
+	if (t > 0.0)
+	{
+		if (i++ == 0)
+			printf("form ray color\n");
+		// t_cor N = vec_norm(vec_sub(vec_multi_scalar(ray.dir, t), new_vec(0,0,-1)));
+        // return (0.5 * rgb_to_clr(vec_to_rgb(vec_add(N, new_vec(1,1,1)))));
+		// return (rgb_to_clr(sphere.clr));
+		return (rgb_to_clr(plane.clr));
+	}
+	// t_cor unit_dir = vec_norm(ray.dir);
+	float	a = 0.5 * (ray.dir.y + 1.0);
+	rgb = vec_to_rgb(vec_add(vec_multi_scalar(new_vec(1.0, 1.0, 1.0), 1.0 - a), vec_multi_scalar(new_vec(0.5, 0.7, 1.0), a)));
+int clr = rgb_to_clr(rgb);
+// printf("not hit\n");
+	return (clr);
 }

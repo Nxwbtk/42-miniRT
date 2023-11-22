@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:45:40 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 18:40:04 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/20 23:20:21 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 t_cor vec_add(t_cor vec1, t_cor vec2)
 {
 	return (new_vec(vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z));
+}
+
+t_axis	calculate_axis(t_cor dir)
+{
+	t_axis	axis;
+	t_cor	y_axis;
+
+	y_axis = new_vec(0, 1.0f, 0);
+	axis.dir = dir;
+	if (dir.y == -1 || dir.y == 1)
+		y_axis = new_vec1(0, 0, 1.0f * dir.y);
+	axis.hor = vec_norm(vec_cross(axis.dir, y_axis));
+	axis.ver = vec_norm(vec_cross(axis.hor, axis.dir));
+	return (axis);
 }
 
 t_cor vec_sub(t_cor vec1, t_cor vec2)

@@ -6,7 +6,7 @@
 #    By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/10/19 10:09:34 by ksaelim          ###   ########.fr        #
+#    Updated: 2023/11/20 23:22:26 by ksaelim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,12 +64,12 @@ $(NAME): cclib $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
 cclib:
-	@make -C $(LIBFT_DIR)
-	@make -C $(MLX_DIR)
+#	@make -C $(LIBFT_DIR)
+#	@make -C $(MLX_DIR)
 
 clean:
-	@make fclean -C $(LIBFT_DIR)
-	@make clean -C $(MLX_DIR)
+#	@make fclean -C $(LIBFT_DIR)
+#	@make clean -C $(MLX_DIR)
 	@$(RM) $(OBJ_DIR)
 
 fclean: clean

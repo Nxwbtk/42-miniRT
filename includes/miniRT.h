@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/20 18:45:16 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/21 15:35:18 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void create_img(t_param *param);
 int close_win(t_param *param);
 int key_hook(int keycode, t_param *param);
 
-void init_viewport(t_viewport *viewport, t_camera *camera);
+// viewports
+void init_viewport(t_viewport *viewport, t_camera camera);
 // void	create_img(t_param *param);
 
 #endif
