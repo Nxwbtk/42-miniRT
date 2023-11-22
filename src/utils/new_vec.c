@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_vec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:38:26 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 18:48:07 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/21 03:01:37 by buntakansirikamo ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

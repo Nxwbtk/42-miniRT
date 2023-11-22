@@ -6,12 +6,12 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/21 16:57:00 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/22 08:44:06 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
-#define RENDER_H
+# define RENDER_H
 
 #include "parsing.h"
 #include <stdbool.h>
