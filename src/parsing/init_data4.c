@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data4.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 01:34:53 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/23 22:45:49 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
