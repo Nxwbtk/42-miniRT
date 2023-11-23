@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/22 16:01:55 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/23 23:01:26 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ typedef struct s_obj
 {
 	void			*obj;
 	int				type;
+	t_light			light;
+	t_rgb			ambient;
 	struct s_obj	*next;
 }				t_obj;
 
@@ -135,6 +137,7 @@ t_cor	*put_cor(char *cord);
 t_plane	*new_plane(char **split);
 t_sp	*new_sphere(char **split);
 t_cy	*new_cylinder(char **split);
+t_rgb	ratio_light(t_rgb light, float ratio);
 
 // typedef struct s_vec
 // {

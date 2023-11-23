@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:43 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:17 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/23 23:02:52 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	put_xyz_light(t_scene *scene, char **split)
 	scene->light.clr.b = ft_atoi(xyz[2]);
 	free_split(xyz);
 	scene->light.ratio = ft_atof(split[2]);
+	scene->light.clr = ratio_light(scene->light.clr, scene->light.ratio);
 }
 
 void	init_light(char **split, t_scene *scene, char *line)

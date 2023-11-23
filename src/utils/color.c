@@ -235,15 +235,70 @@ void hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
 // 		hitPoint->clr = rgb;
 // 	}
 // }
+bool	block_object(t_ray *ray, t_obj *obj)
+{
+	int		i;
 
+	i = 0;
+	while (obj)
+	{
+		if (obj->type == 1)
+		{
+			isHitSphere(ray, &sphere);
+		}
+		else if (obj->type == 2)
+		{
+			isHitPlane(ray, &plane);
+			hitPointPlane(ray, &plane, hitPoint);
+		}
+		obj = obj->next;
+	}
+	return (false);
+}
+t_rgb	shade_clr(t_rgb clr, t_rgb shade)
+{
+	clr.r = (clr.r * shade.r) >> 8;
+	clr.g = (clr.g * shade.g) >> 8;
+	clr.b = (clr.b * shade.b) >> 8;
+	return (clr);
+}
+
+t_rgb fill_ambient(t_rgb obj_clr, t_rgb ambient_clr)
+{
+	obj_clr = shade_clr(obj_clr, ambient_clr);
+	return (clamp_clr(obj_clr));
+}
+t_rgb	light_and_shadow(t_rgb origin_clr, t_hitpoint hit, t_obj *obj)
+{
+	float	shade_ratio;
+	float	light_distance;
+	t_ray	light;
+
+	light.oringin = vec_add(hit.origin, hit.dir); // hit.dir * epsilon
+	light.dir = vec_sub(obj->light.origin, hit.origin);
+	light.dir = vec_norm(light.dir);
+	light_distance = vec_len(vec_sub(light.oringin, obj->light.origin));
+	if (block_object(&light, obj))
+		return (origin_clr);
+	shade_ratio = vec_dot(hit.dir, light.dir);
+	hit.clr = shade_clr(hit.clr, obj->light.clr);
+	hit.clr = ratio_light(hit.clr, shade_ratio);
+	origin_clr.r += hit.clr.r;
+	origin_clr.g += hit.clr.g;
+	origin_clr.b += hit.clr.b;
+	return (clamp_clr(origin_clr));
+}
 int ray_tracing(t_ray *ray, t_obj *obj)
 {
 	// t_rgb	rgb;
 	t_hitpoint hitPoint;
+	t_rgb ambient_clr;
 
 	// printf("\n============================\n\n");
 	// print_obj(obj);
 	hit_object(ray, obj, &hitPoint);
+	ambient_clr = fill_ambient(hitPoint.clr, obj->ambient);
+	ambient_clr = light_and_shadow(ambient_clr, hitPoint, obj);
 	// hit_light(&hitPoint);
 	// if (ray->t > 0.0) {
 	// 	return (rgb_to_clr(rgb));

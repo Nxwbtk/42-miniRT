@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:19:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:17 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/23 23:01:19 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,24 @@ t_obj *obj_last(t_obj *obj)
 	return (obj);
 }
 
+t_rgb	ratio_light(t_rgb light, float ratio)
+{
+	t_rgb new_rgb;
+
+	new_rgb.r = light.r * ratio;
+	new_rgb.g = light.g * ratio;
+	new_rgb.b = light.b * ratio;
+	return (new_rgb);
+}
+
 void obj_addback(t_scene *scene, t_obj *new_obj)
 {
 	t_obj *last;
 
 	if (scene && new_obj)
 	{
+		new_obj->light = scene->light;
+		new_obj->ambient = ratio_light(scene->ambient.clr, scene->ambient.ratio);
 		if (!scene->obj)
 			scene->obj = new_obj;
 		else
