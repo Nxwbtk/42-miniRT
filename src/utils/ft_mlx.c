@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:31:27 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/20 23:19:31 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/23 23:36:16 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ int	key_hook(int keycode, t_param *param)
 {
 	if (keycode == KEY_ESC)
 		close_win(param);
+	else if (keycode == KEY_A)
+		printf("A key is pressed\n");
+	else if (keycode == KEY_S)
+		printf("S key is pressed\n");
+	else if (keycode == KEY_D)
+		printf("D key is pressed\n");
+	else if (keycode == KEY_W)
+		printf("W key is pressed\n");
+	else if (keycode == KEY_R)
+		printf("R key is pressed\n");
+	else if (keycode == KEY_SPACE)
+	{
+		printf("%f\n", param->viewport.origin.x);
+	}
 	return (0);
 }
 

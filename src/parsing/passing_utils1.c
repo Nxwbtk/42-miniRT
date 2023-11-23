@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:06:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 18:06:44 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/23 11:23:54 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
