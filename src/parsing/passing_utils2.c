@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buntakansirikamonthip <buntakansirikamonth +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 00:00:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 17:54:10 by buntakansirikamo ###   ########.fr       */
+/*   Updated: 2023/11/24 23:41:55 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,12 @@ int	ft_isspaces(char c)
 	return (0);
 }
 
-char	**ft_split_space(char *line)
+char	**split_space_util1(char **split, char *line)
 {
-	char	**split;
 	int		i;
 	int		j;
 	int		k;
 
-	if (!line)
-		return (NULL);
-	split = (char **)malloc(sizeof(char *) * 255);
-	if (!split)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (line[i])
@@ -47,5 +41,18 @@ char	**ft_split_space(char *line)
 		j++;
 	}
 	split[j] = NULL;
+	return (split);
+}
+
+char	**ft_split_space(char *line)
+{
+	char	**split;
+
+	if (!line)
+		return (NULL);
+	split = (char **)malloc(sizeof(char *) * 255);
+	if (!split)
+		return (NULL);
+	split = split_space_util1(split, line);
 	return (split);
 }

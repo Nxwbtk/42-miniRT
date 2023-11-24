@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 17:48:53 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/25 00:07:24 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_plane
 
 typedef struct s_sphere
 {
-	t_cor	origin;
+	t_cor	origin;	
 	t_rgb	clr;
 	float	diameter;
 	float	radius;
@@ -100,7 +100,7 @@ typedef struct s_scene
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
-	t_obj		*obj; // t_obj is
+	t_obj		*obj;
 }				t_scene;
 
 int		ft_check(char *str);

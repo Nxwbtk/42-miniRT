@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils4.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:19:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 23:01:19 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 23:54:27 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 #include <math.h>
 
-t_obj *obj_last(t_obj *obj)
+t_obj	*obj_last(t_obj *obj)
 {
 	while (obj && obj->next)
 		obj = obj->next;
@@ -22,7 +22,7 @@ t_obj *obj_last(t_obj *obj)
 
 t_rgb	ratio_light(t_rgb light, float ratio)
 {
-	t_rgb new_rgb;
+	t_rgb	new_rgb;
 
 	new_rgb.r = light.r * ratio;
 	new_rgb.g = light.g * ratio;
@@ -30,14 +30,15 @@ t_rgb	ratio_light(t_rgb light, float ratio)
 	return (new_rgb);
 }
 
-void obj_addback(t_scene *scene, t_obj *new_obj)
+void	obj_addback(t_scene *scene, t_obj *new_obj)
 {
-	t_obj *last;
+	t_obj	*last;
 
 	if (scene && new_obj)
 	{
 		new_obj->light = scene->light;
-		new_obj->ambient = ratio_light(scene->ambient.clr, scene->ambient.ratio);
+		new_obj->ambient = ratio_light(scene->ambient.clr, \
+		scene->ambient.ratio);
 		if (!scene->obj)
 			scene->obj = new_obj;
 		else
@@ -48,14 +49,14 @@ void obj_addback(t_scene *scene, t_obj *new_obj)
 	}
 }
 
-static float vec_len_parsing(t_cor vec)
+static float	vec_len_parsing(t_cor vec)
 {
 	return (sqrt((vec.x * vec.x) + (vec.y * vec.y) + (vec.z * vec.z)));
 }
 
-t_cor new_vec_parsing(float x, float y, float z)
+t_cor	new_vec_parsing(float x, float y, float z)
 {
-	t_cor vec;
+	t_cor	vec;
 
 	vec.x = x;
 	vec.y = y;

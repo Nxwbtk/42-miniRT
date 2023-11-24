@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sphere1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:30:59 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 22:46:00 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/25 00:00:26 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_putel_sp(char **split, t_sp *sphere)
 	(*sphere).clr = put_rgb(split[3]);
 	(*sphere).diameter = ft_atof(split[2]);
 	sphere->radius = sphere->diameter / 2;
-
 }
 
 t_sp	*new_sphere(char **split)

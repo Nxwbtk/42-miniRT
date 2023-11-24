@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:56:12 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/10/10 15:04:35 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/25 00:10:38 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10000
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10000
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>

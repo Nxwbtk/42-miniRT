@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/24 16:51:24 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:52:19 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # include "mlx.h"
 # include "key.h"
 
-#define FRACTIONAL_BIT 16
-#define WD_WIDTH 1280
-#define WD_HEIGHT 720
-#define KEY_ESC 53
+# define FRACTIONAL_BIT 16
+# define WD_WIDTH 1280
+# define WD_HEIGHT 720
+# define KEY_ESC 53
 
 // main
 int		parsing(int ac, char **av, t_scene *scene);
@@ -37,10 +37,10 @@ int		close_win(t_param *param);
 int		key_hook(int keycode, t_param *param);
 
 // print
-void print_sphere(t_sp *sphere);
-void print_plane(t_plane *plane);
-void print_obj(t_obj *obj);
-void print_camera(t_camera *camera);
+void	print_sphere(t_sp *sphere);
+void	print_plane(t_plane *plane);
+void	print_obj(t_obj *obj);
+void	print_camera(t_camera *camera);
 t_cor	print_cor(char *point_name, t_cor vec);
 void	print_topic(char *topic);
 

@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 18:24:36 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:08:37 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 
 typedef struct s_axis
 {
-	t_cor x;
-	t_cor y;
-	t_cor z;
-} t_axis;
+	t_cor	x;
+	t_cor	y;
+	t_cor	z;
+}				t_axis;
 
 typedef struct s_viewport
 {
@@ -61,6 +61,7 @@ typedef struct s_param
 	void		*win;
 	t_obj		*obj;
 	t_viewport	viewport;
+	//t_camera	camera;
 	int			mode;
 	// t_select	*select;
 }				t_param;
@@ -82,17 +83,16 @@ typedef struct s_pixel
 
 typedef struct s_ray
 {
-	t_cor oringin;
-	t_cor dir;
-	t_cor point;
-	t_rgb clr;
-	float t;
-} t_ray;
-
+	t_cor	oringin;
+	t_cor	dir;
+	t_cor	point;
+	t_rgb	clr;
+	float	t;
+}				t_ray;
 
 // ray
-t_ray new_ray(t_cor oringin, t_cor dir);
-t_cor ray_point(t_ray ray);
+t_ray	new_ray(t_cor oringin, t_cor dir);
+t_cor	ray_point(t_ray ray);
 
 //object
 bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);

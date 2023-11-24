@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cylinder1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 02:28:26 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 22:43:16 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 23:36:25 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ t_cor	init_cor(char *cord)
 	t_cor	new_cord;
 
 	xyz = ft_split(cord, ',');
-	new_cord = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), ft_atof(xyz[2]));
+	new_cord = new_vec_parsing(ft_atof(xyz[0]), ft_atof(xyz[1]), \
+	ft_atof(xyz[2]));
 	free_split(xyz);
 	return (new_cord);
 }

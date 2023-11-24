@@ -6,13 +6,13 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:57:49 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 18:24:43 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:53:22 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
+bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
 {
 	while (obj)
 	{
@@ -20,7 +20,7 @@ bool hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
 			hitPointPlane(ray, (t_plane *)obj->obj, hitPoint);
 		else if (obj->type == 2)
 			hitPointSphere(ray, (t_sp *)obj->obj, hitPoint);
-		// else
+		// else 
 		// 	hit_cylinder(ray, (t_cy *)tmp->obj, hitPoint);
 		obj = obj->next;
 	}

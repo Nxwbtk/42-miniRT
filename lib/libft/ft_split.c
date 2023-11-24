@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:37:42 by bsirikam          #+#    #+#             */
-/*   Updated: 2022/08/10 00:54:21 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:09:46 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*let_split(char const *s, char c, char **split, int i)
 	int	j;
 
 	while (*s == c)
-			s++;
+		s++;
 	wlen = word_len(s, c);
 	split[i] = (char *)malloc(sizeof(char) * (wlen + 1));
 	if (!(split[i]))

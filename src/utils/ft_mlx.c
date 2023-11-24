@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:31:27 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 18:17:08 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:46:58 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,41 @@ void	rotate_camera(int keycode, t_param *param)
 	if (keycode == KEY_W)
 	{
 		printf("W\n");
-		param->scene.camera.origin.z += 1;
+		param->scene.camera.origin.z -= 0.1;
+		init_viewport(&param->viewport, param->scene.camera);
 		render_scene(param);
 	}
 	else if (keycode == KEY_S)
 	{
 		printf("S\n");
-		param->scene.camera.origin.z -= 1;
+		param->scene.camera.origin.z += 0.1;
+		init_viewport(&param->viewport, param->scene.camera);
 		render_scene(param);
 	}
 	else if (keycode == KEY_A)
 	{
 		printf("A\n");
-		param->scene.camera.origin.x -= 1;
+		param->scene.camera.origin.x -= 0.1;
+		init_viewport(&param->viewport, param->scene.camera);
 		render_scene(param);
 	}
 	else if (keycode == KEY_D)
 	{
 		printf("D\n");
-		param->scene.camera.origin.x += 1;
+		param->scene.camera.origin.x += 0.1;
+		init_viewport(&param->viewport, param->scene.camera);
+		render_scene(param);
+	}
+	else if (keycode == KEY_SPACE)
+	{
+		param->scene.camera.origin.y += 0.01;
+		init_viewport(&param->viewport, param->scene.camera);
+		render_scene(param);
+	}
+	else if (keycode == KEY_R)
+	{
+		param->scene.camera.origin.y -= 0.01;
+		init_viewport(&param->viewport, param->scene.camera);
 		render_scene(param);
 	}
 }

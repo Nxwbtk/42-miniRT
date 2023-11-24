@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_data1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 00:30:03 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:57 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 23:36:51 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-t_scene init_struct(void)
+t_scene	init_struct(void)
 {
-	t_scene scene;
+	t_scene	scene;
 
 	scene.obj = NULL;
 	scene.ambient.is_init = 0;
@@ -23,9 +23,9 @@ t_scene init_struct(void)
 	return (scene);
 }
 
-t_ambient init_ambient2(void)
+t_ambient	init_ambient2(void)
 {
-	t_ambient ambient;
+	t_ambient	ambient;
 
 	ambient.ratio = 0;
 	ambient.clr.r = 0;
@@ -35,9 +35,9 @@ t_ambient init_ambient2(void)
 	return (ambient);
 }
 
-void init_rgb(t_scene *scene, char *line, char **split)
+void	init_rgb(t_scene *scene, char *line, char **split)
 {
-	char **rgb;
+	char	**rgb;
 
 	if (!split[2])
 		error_input(line, split, scene);
@@ -59,7 +59,7 @@ void init_rgb(t_scene *scene, char *line, char **split)
 	free_split(rgb);
 }
 
-void init_ambient(char **split, t_scene *scene, char *line)
+void	init_ambient(char **split, t_scene *scene, char *line)
 {
 	if (scene->ambient.is_init == 1)
 		free_double_config(split, scene, line);

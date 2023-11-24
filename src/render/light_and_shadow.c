@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light_and_shadow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:59:22 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 15:49:39 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 23:53:10 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_rgb fill_ambient(t_rgb obj_clr, t_rgb ambient_clr)
+t_rgb	fill_ambient(t_rgb obj_clr, t_rgb ambient_clr)
 {
 	obj_clr = shade_clr(obj_clr, ambient_clr);
 	return (clamp_clr(obj_clr));
@@ -21,11 +21,14 @@ t_rgb fill_ambient(t_rgb obj_clr, t_rgb ambient_clr)
 // not sure, it should be to calculate by include distance
 bool	block_object(t_ray *ray, t_obj *obj)
 {
+	t_sp	*tmp;
+
 	while (obj)
 	{
 		if (obj->type == 1)
 		{
-			if (isHitSphere(ray, (t_sp *)obj->obj))
+			tmp = (t_sp *)obj->obj;
+			if (isHitSphere(ray, &tmp))
 				return (true);
 		}
 		else if (obj->type == 2)

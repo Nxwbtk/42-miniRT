@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:06:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 11:23:54 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:39:34 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int	ft_check(char *str)
 	int		i;
 
 	split = NULL;
-	// if (ft_isfile(str) == 0)
-	// 	return (0);
 	i = 0;
 	split = ft_split(str, ' ');
 	while (split[i])

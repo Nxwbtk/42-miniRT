@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/24 23:46:32 by bsirikam          #+#    #+#             */
+/*   Updated: 2023/11/24 23:46:50 by bsirikam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_rgb new_rgb(int r, int g, int b)
+t_rgb	new_rgb(int r, int g, int b)
 {
-	t_rgb rgb;
+	t_rgb	rgb;
 
 	rgb.r = r;
 	rgb.g = g;
@@ -11,7 +22,7 @@ t_rgb new_rgb(int r, int g, int b)
 	return (rgb);
 }
 
-t_rgb clamp_clr(t_rgb clr)
+t_rgb	clamp_clr(t_rgb clr)
 {
 	if (clr.r > 255)
 		clr.r = 255;
@@ -22,7 +33,7 @@ t_rgb clamp_clr(t_rgb clr)
 	return (clr);
 }
 
-int rgb_to_clr(t_rgb clr)
+int	rgb_to_clr(t_rgb clr)
 {
 	clr = clamp_clr(clr);
 	return ((clr.r << 16) + (clr.g << 8) + clr.b);

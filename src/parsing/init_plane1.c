@@ -6,11 +6,25 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:20:18 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 22:08:02 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:59:47 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
+
+int	check_pl_utils(char **check_split)
+{
+	if (!check_split[0] || !check_split[1] || !check_split[2] || \
+	(atof(check_split[0]) < -1 || atof(check_split[0]) > 1 || \
+	atof(check_split[1]) < -1 || atof(check_split[1]) > 1 || \
+	atof(check_split[2]) < -1 || atof(check_split[2]) > 1))
+	{
+		free_split(check_split);
+		return (0);
+	}
+	free_split(check_split);
+	return (1);
+}
 
 int	check_arg_plane(char **split)
 {
@@ -26,15 +40,8 @@ int	check_arg_plane(char **split)
 	}
 	free_split(check_split);
 	check_split = ft_split(split[2], ',');
-	if (!check_split[0] || !check_split[1] || !check_split[2] || \
-	(atof(check_split[0]) < -1 || atof(check_split[0]) > 1 || \
-	atof(check_split[1]) < -1 || atof(check_split[1]) > 1 || \
-	atof(check_split[2]) < -1 || atof(check_split[2]) > 1))
-	{
-		free_split(check_split);
+	if (check_pl_utils(check_split) == 0)
 		return (0);
-	}
-	free_split(check_split);
 	check_split = ft_split(split[3], ',');
 	if (!check_split[0] || !check_split[1] || !check_split[2])
 	{
