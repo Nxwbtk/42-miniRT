@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 20:53:41 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 15:48:52 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void run(char *filename, t_scene *scene)
 
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
-	printf("check1\n");
 	while (line)
 	{
 		if (ft_strncmp(line, "\n", 2) == 0)
@@ -75,7 +74,6 @@ void run(char *filename, t_scene *scene)
 		line = get_next_line(fd);
 	}
 	free(line);
-	printf("check2\n");
 	close(fd);
 	// free_scene(scene);
 	// exit(0);

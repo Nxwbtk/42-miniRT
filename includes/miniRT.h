@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 22:02:49 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:51:10 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,35 @@
 
 # include "render.h"
 # include "mlx.h"
-# include "key.h"
 
-# define FRACTIONAL_BIT 16
-# define WD_WIDTH 1280
-# define WD_HEIGHT 720
+#if defined(__linux__)
+#include "keycode_linux.h"
+#define LINUX_OS 1
+#else
+#include "keycode_macos.h"
+#define LINUX_OS 0
+#endif
 
+#define FRACTIONAL_BIT 16
+#define WD_WIDTH 1280
+#define WD_HEIGHT 720
+#define KEY_ESC 53
+
+// main
+int		parsing(int ac, char **av, t_scene *scene);
+t_scene	init_struct(void);
+void	init_viewport(t_viewport *viewport, t_camera camera);
+void	create_img(t_param *param);
+int		render_scene(t_param *param);
 int		close_win(t_param *param);
 int		key_hook(int keycode, t_param *param);
-void	ft_init(t_param *param);
-void	create_img(t_param *param);
 
-// viewports
-void	init_viewport(t_viewport *viewport, t_camera camera);
-// void	create_img(t_param *param);
+// print
+void print_sphere(t_sp *sphere);
+void print_plane(t_plane *plane);
+void print_obj(t_obj *obj);
+void print_camera(t_camera *camera);
+t_cor	print_cor(char *point_name, t_cor vec);
+void	print_topic(char *topic);
 
 #endif
