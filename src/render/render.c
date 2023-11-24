@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 16:00:08 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:07:48 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static int ray_tracing(t_ray *ray, t_obj *obj)
 {
 	t_hitpoint hitPoint;
 
+	print_topic("ray_tracing");
+	print_obj(obj);
 	if (!hit_object(ray, obj, &hitPoint))
 		return (rgb_to_clr(obj->ambient));
 	// ambient_clr = fill_ambient(hitPoint.clr, obj->ambient);
