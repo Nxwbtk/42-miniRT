@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:57:49 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 23:53:22 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 02:22:44 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
 			hitPointPlane(ray, (t_plane *)obj->obj, hitPoint);
 		else if (obj->type == 2)
 			hitPointSphere(ray, (t_sp *)obj->obj, hitPoint);
-		// else 
-		// 	hit_cylinder(ray, (t_cy *)tmp->obj, hitPoint);
+		else if (obj->type == 3)
+			hit_cylinder(ray, (t_cy *)obj->obj, hitPoint);
 		obj = obj->next;
 	}
 	if (ray->t == -1)
