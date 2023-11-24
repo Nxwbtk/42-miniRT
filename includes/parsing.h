@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 15:28:04 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 17:48:53 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 typedef struct s_cor
 {
@@ -72,6 +73,7 @@ typedef struct s_sphere
 	t_rgb	clr;
 	float	diameter;
 	float	radius;
+	bool	inside;
 }				t_sp;
 
 typedef struct s_cy

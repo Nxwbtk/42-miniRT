@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 15:25:50 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 18:05:21 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_param
 typedef struct s_hitpoint
 {
 	t_cor	origin;
+	t_cor	obj_origin;
 	t_cor	dir;
 	t_rgb	clr;
 }	t_hitpoint;
@@ -94,7 +95,7 @@ t_cor ray_point(t_ray ray);
 
 //object
 bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);
-bool	isHitSphere(t_ray *ray, t_sp *sphere);
+bool	isHitSphere(t_ray *ray, t_sp **sphere);
 bool	isHitPlane(t_ray *ray, t_plane *plane);
 void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
