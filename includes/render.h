@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/23 00:59:56 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 15:25:50 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 // 	int		height;
 // 	double	aspect_ratio;
 // }				t_param;
+
+typedef struct s_axis
+{
+	t_cor x;
+	t_cor y;
+	t_cor z;
+} t_axis;
 
 typedef struct s_viewport
 {
@@ -80,25 +87,16 @@ typedef struct s_ray
 	float t;
 } t_ray;
 
+
 // ray
 t_ray new_ray(t_cor oringin, t_cor dir);
 t_cor ray_point(t_ray ray);
-int	ray_tracing(t_ray *ray, t_obj *obj);
-t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel);
 
-// pixel
-t_pixel new_pixel(int x, int y, int color);
-void put_pixel_to_image(t_img *img, t_pixel pixel);
-
-// render
-int render_scene(t_param *param);
-
-//sphere
-void hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
+//object
+bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);
+bool	isHitSphere(t_ray *ray, t_sp *sphere);
+bool	isHitPlane(t_ray *ray, t_plane *plane);
+void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
-void print_sphere(t_sp *sphere);
-void print_plane(t_plane *plane);
-void print_obj(t_obj *obj);
-void print_camera(t_camera *camera);
 
 #endif

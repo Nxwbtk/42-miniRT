@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   hit_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:24:53 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 14:45:07 by ksaelim          ###   ########.fr       */
+/*   Created: 2023/11/24 14:57:49 by ksaelim           #+#    #+#             */
+/*   Updated: 2023/11/24 15:47:02 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_ray new_ray(t_cor oringin, t_cor dir)
+bool hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
 {
-	t_ray ray;
-
-	ray.oringin = oringin;
-	ray.dir = dir;
-	ray.t = -1;
-	return (ray);
-}
-
-t_cor ray_point(t_ray ray)
-{
-	return (vec_add(ray.oringin, vec_multi_scalar(ray.dir, ray.t)));
+	while (obj)
+	{
+		if (obj->type == 1)
+			hitPointSphere(ray, (t_sp *)obj->obj, hitPoint);
+		else if (obj->type == 2)
+			hitPointPlane(ray, (t_plane *)obj->obj, hitPoint);
+		// else
+		// 	hit_cylinder(ray, (t_cy *)tmp->obj, hitPoint);
+		obj = obj->next;
+	}
+	if (ray->t == -1)
+		return (false);
+	return (true);
 }

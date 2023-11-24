@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/23 23:01:26 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 15:28:04 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ typedef struct s_cor
 	float	z;
 	float	len;
 }				t_cor;
-
-typedef struct s_axis
-{
-	t_cor dir;
-	t_cor hor;
-	t_cor ver;
-} t_axis;
 
 typedef struct s_rgb
 {
@@ -81,8 +74,6 @@ typedef struct s_sphere
 	float	radius;
 }				t_sp;
 
-// radius = diameter / 2
-
 typedef struct s_cy
 {
 	t_cor	origin;
@@ -110,7 +101,6 @@ typedef struct s_scene
 	t_obj		*obj; // t_obj is
 }				t_scene;
 
-int		parsing(int ac, char **av, t_scene *scene);
 int		ft_check(char *str);
 int		ft_isopenable(char *str);
 int		ft_isfile(char *str);
@@ -132,44 +122,13 @@ t_obj	*new_obj_sp(t_sp *sphere);
 t_obj	*new_obj_cy(t_cy *cylinder);
 t_cor	*put_cor(char *cord);
 t_rgb	put_rgb(char *cord);
-t_scene	init_struct(void);
 t_cor	*put_cor(char *cord);
 t_plane	*new_plane(char **split);
 t_sp	*new_sphere(char **split);
 t_cy	*new_cylinder(char **split);
 t_rgb	ratio_light(t_rgb light, float ratio);
 
-// typedef struct s_vec
-// {
-// 	float	x;
-// 	float	y;
-// 	float	z;
-// }	t_cor;
-
-// typedef	struct s_rgb
-// {
-// 	int	r;
-// 	int g;
-// 	int b;
-// }	t_rgb;
-
-// typedef struct s_ray
-// {
-// 	t_cor	oringin;
-// 	t_cor	dir;
-// }	t_ray;
-
-// typedef struct s_cam
-// {
-// 	t_cor	oringin;
-// 	t_cor	dir;
-// 	double	fov;
-// }	t_cam;
-
-// typedef struct s_sc
-
 // vector
-
 t_cor	new_vec(float x, float y, float z);
 t_cor	new_vec1(float x, float y, float z);
 t_cor	new_vec_parsing(float x, float y, float z);
@@ -180,14 +139,11 @@ t_cor	vec_multi_scalar(t_cor vec, float t);
 t_cor	vec_div(t_cor vec, float t);
 float	vec_dot_product(t_cor vec1, t_cor vec2);
 t_cor	vec_cross(t_cor vec1, t_cor vec2);
-t_cor	print_cor(char *point_name, t_cor vec);
 
 // color
 t_rgb	new_rgb(int r, int g, int b);
-t_rgb	vec_to_rgb(t_cor vec);
 t_rgb	clamp_clr(t_rgb clr);
 int		rgb_to_clr(t_rgb clr);
-void	write_color(t_cor pixel_color);
-// t_rgb ray_color(t_ray ray);
+t_rgb	shade_clr(t_rgb clr, t_rgb shade);
 
 #endif
