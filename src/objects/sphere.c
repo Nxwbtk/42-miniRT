@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:28:09 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 16:07:11 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 17:15:43 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ bool    isHitSphere(t_ray *ray, t_sp *sphere)
 
 void hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint)
 {
-	print_topic("hit_object");
-	print_sphere(sphere);
-	exit(0);
     if (!isHitSphere(ray, sphere))
         return ;
     hitPoint->origin = ray_point(*ray);

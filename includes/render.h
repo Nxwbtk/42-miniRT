@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 16:51:56 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:15:20 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_param
 	void		*win;
 	t_obj		*obj;
 	t_viewport	viewport;
+	int			mode;
 	// t_select	*select;
 }				t_param;
 

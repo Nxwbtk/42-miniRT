@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 16:07:48 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/24 17:05:24 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int ray_tracing(t_ray *ray, t_obj *obj)
 {
 	t_hitpoint hitPoint;
 
-	print_topic("ray_tracing");
-	print_obj(obj);
+	//print_topic("ray_tracing");
+	//print_obj(obj);
 	if (!hit_object(ray, obj, &hitPoint))
 		return (rgb_to_clr(obj->ambient));
 	// ambient_clr = fill_ambient(hitPoint.clr, obj->ambient);
@@ -52,9 +52,9 @@ int	render_scene(t_param *param)
 	t_pixel	pixel;
 	t_ray	ray;
 
-	print_topic("render_scene");
-	print_camera(&param->scene.camera);
-	print_obj(param->scene.obj);
+	//print_topic("render_scene");
+	//print_camera(&param->scene.camera);
+	//print_obj(param->scene.obj);
 	pixel.y = 0;
 	while (pixel.y < WD_HEIGHT)
 	{
