@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:28:09 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:12:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:22:24 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	isHitSphere(t_ray *ray, t_sp **sphere)
     float b;
 	float c;
     float distance;
-    // float closest;
+    float closest;
 
     (*sphere)->inside = 0;
     oc = vec_sub(ray->oringin, (*sphere)->origin);
@@ -29,16 +29,19 @@ bool	isHitSphere(t_ray *ray, t_sp **sphere)
     distance = b*b - 4*a*c;
     if (distance < 0)
         return (false);
-    // closest = (-b - sqrtf(distance)) / (2*a);
-    // if (closest < 0) {
-    //     closest = (-b + sqrtf(distance)) / (2*a);
-    //     (*sphere)->inside = 1;
-    // }
-    // if (closest < 0)
-    //     return (false);
-    if (distance <= ray->t || ray->t == -1)
+    closest = (-b - sqrtf(distance)) / (2*a);
+    if (closest < 0) {
+        closest = (-b + sqrtf(distance)) / (2*a);
+        (*sphere)->inside = 1;
+    }
+    if (closest < 0)
     {
-        ray->t = distance;
+        printf("closest < 0\n");
+        return (false);
+    }
+    if (closest <= ray->t || ray->t == -1)
+    {
+        ray->t = closest;
         return (true);
     }
     return (false);

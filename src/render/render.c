@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:20:12 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:22:34 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int	is_shadow(t_cor hitOrigin, t_obj *obj)
 			pl = (t_plane *)obj->obj;
 			if (isHitPlane(&shadow_ray, &pl))
 			{
+				printf("shadow\n");
 				is_shadow = 1;
 				break ;
 			}
@@ -137,6 +138,7 @@ int	is_shadow(t_cor hitOrigin, t_obj *obj)
 			sp = (t_sp *)obj->obj;
 			if (isHitSphere(&shadow_ray, &sp))
 			{
+				printf("shadow\n");
 				is_shadow = 1;
 				break ;
 			}
@@ -164,7 +166,6 @@ static t_rgb lighting(t_obj *obj, t_light light, t_hitpoint hitPoint, t_cor norm
 	// 		return (obj->ambient);
 	//ambient
 	t_rgb ambient = multi_clr(hitPoint.clr, obj->ambient);
-
 	if (is_shadow(hitPoint.origin, obj))
 			return (ambient);
 	//diffuse
