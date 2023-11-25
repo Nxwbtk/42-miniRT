@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 22:42:09 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 02:30:46 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,22 +190,10 @@ static int ray_tracing(t_ray *ray, t_obj *obj)
 	t_rgb clr;
 
 	clr = new_rgb(0, 0, 0);
-	// print_topic("ray_tracing");
-	// print_obj(obj);
 	if (!hit_object(ray, obj, &hitPoint))
 		return (rgb_to_clr(clr));
 	clr = lighting(obj, obj->light, hitPoint, hitPoint.dir);
 	return (rgb_to_clr(clr));
-	// if (hit_object(ray, obj, &hitPoint))
-	// {
-	// 	clr = rgb_add(hitPoint.clr, obj->ambient);
-	// 	shadow_ray = new_ray(hitPoint.origin, vec_norm(vec_sub(obj->light.origin, hitPoint.origin))); // ray from hitpoint to light
-	// 	if (hit_object(&shadow_ray, obj, &hitBlock)) // if hit object between hitpoint and light
-	// 		return (rgb_to_clr(obj->ambient));
-	// 	return (rgb_to_clr(shading(clr, hitPoint, obj) ));
-	// 	// return (rgb_to_clr(clr));
-	// }
-	// return (rgb_to_clr(clr));
 }
 
 int	render_scene(t_param *param)
