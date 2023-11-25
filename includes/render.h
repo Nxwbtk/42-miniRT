@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 20:57:20 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:11:59 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,12 @@ t_cor	ray_point(t_ray ray);
 //object
 bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);
 bool	isHitSphere(t_ray *ray, t_sp **sphere);
-bool	isHitPlane(t_ray *ray, t_plane *plane);
+bool	isHitPlane(t_ray *ray, t_plane **plane);
 void	hit_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitPoint);
 void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
+
+// light_and_shadow
+t_rgb	light_and_shadow(t_rgb origin_clr, t_hitpoint hit, t_obj *obj);
 
 #endif

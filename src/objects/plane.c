@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:51:57 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 17:33:16 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:12:17 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ float	ft_abs(float num)
 	return (num);
 }
 
-bool	isHitPlane(t_ray *ray, t_plane *plane)
+bool isHitPlane(t_ray *ray, t_plane **plane)
 {
-	float	denom;
-	float	distance;
-	t_cor	ray0_plane0;
-
-	denom = vec_dot_product(ray->dir, plane->dir);
-	if (denom > 1e-6)
+	(*plane)->denom = vec_dot_product(ray->dir, (*plane)->dir);
+	float distance;
+	if ((*plane)->denom > 1e-6)
 	{
-		if (denom > 0)
-			plane->dir = vec_multi_scalar(plane->dir, -1);
-		ray0_plane0 = vec_sub(plane->origin, ray->oringin);
-		distance = ft_abs(vec_dot_product(ray0_plane0, plane->dir)) / denom;
+		t_cor ray0_plane0 = vec_sub((*plane)->origin, ray->oringin);
+		distance = ft_abs(vec_dot_product(ray0_plane0, (*plane)->dir)) / (*plane)->denom;
 		if (distance < 0)
 			return (false);
 		if (distance <= ray->t || ray->t == -1)
@@ -42,9 +37,11 @@ bool	isHitPlane(t_ray *ray, t_plane *plane)
 
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint)
 {
-	if (!isHitPlane(ray, plane))
-		return ;
+	if (!isHitPlane(ray, &plane))
+		return;
 	hitPoint->origin = ray_point(*ray);
-	hitPoint->dir = plane->origin;
+	hitPoint->dir = plane->dir;
+	if (plane->denom > 0)
+		hitPoint->dir = vec_multi_scalar(hitPoint->dir, -1);
 	hitPoint->clr = plane->clr;
 }

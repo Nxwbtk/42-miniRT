@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 16:27:47 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:17:07 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,38 @@ static t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel)
 {
 	t_cor	pixel_center;
 
-	pixel_center = vec_add(viewport->pixel_upper_left, \
-	vec_multi_scalar(viewport->pixel_delta_x, pixel.x));
-	pixel_center = vec_add(pixel_center, \
-	vec_multi_scalar(viewport->pixel_delta_y, pixel.y));
-	pixel_center = vec_sub(pixel_center, viewport->origin);
+	pixel_center = vec_add(viewport->pixel_upper_left, vec_multi_scalar(viewport->pixel_delta_x, pixel.x));
+	pixel_center = vec_sub(pixel_center, vec_multi_scalar(viewport->pixel_delta_y, pixel.y));
+	// pixel_center = vec_sub(pixel_center, viewport->origin);
 	pixel_center = vec_norm(pixel_center);
 	return (new_ray(viewport->origin, pixel_center));
 }
 
-static int	ray_tracing(t_ray *ray, t_obj *obj)
+static int ray_tracing(t_ray *ray, t_obj *obj)
 {
-	t_hitpoint	hit_point;
+	t_hitpoint	hitPoint;
+	// t_hitpoint	hitBlock;
+	// t_ray	shadow_ray;
+	// t_rgb ambient_clr;
+	t_rgb clr;
 
-	if (!hit_object(ray, obj, &hit_point))
-		return (rgb_to_clr(obj->ambient));
-	// ambient_clr = fill_ambient(hit_point.clr, obj->ambient);
-	// ambient_clr = light_and_shadow(ambient_clr, hit_point, obj);
-	// return (rgb_to_clr(ambient_clr));
-	return (rgb_to_clr(hit_point.clr));
+	clr = new_rgb(0, 0, 0);
+	// print_topic("ray_tracing");
+	// print_obj(obj);
+	if (!hit_object(ray, obj, &hitPoint))
+		return (rgb_to_clr(clr));
+	clr = lighting(obj, obj->light, hitPoint, hitPoint.dir);
+	return (rgb_to_clr(clr));
+	// if (hit_object(ray, obj, &hitPoint))
+	// {
+	// 	clr = rgb_add(hitPoint.clr, obj->ambient);
+	// 	shadow_ray = new_ray(hitPoint.origin, vec_norm(vec_sub(obj->light.origin, hitPoint.origin))); // ray from hitpoint to light
+	// 	if (hit_object(&shadow_ray, obj, &hitBlock)) // if hit object between hitpoint and light
+	// 		return (rgb_to_clr(obj->ambient));
+	// 	return (rgb_to_clr(shading(clr, hitPoint, obj) ));
+	// 	// return (rgb_to_clr(clr));
+	// }
+	// return (rgb_to_clr(clr));
 }
 
 int	render_scene(t_param *param)
@@ -55,9 +68,10 @@ int	render_scene(t_param *param)
 	t_pixel	pixel;
 	t_ray	ray;
 
-	// print_topic("render_scene");
-	// print_camera(&param->scene.camera);
-	// print_obj(param->scene.obj);
+	print_light(&param->scene.light);
+	print_topic("render_scene");
+	print_camera(&param->scene.camera);
+	print_obj(param->scene.obj);
 	pixel.y = 0;
 	while (pixel.y < WD_HEIGHT)
 	{
