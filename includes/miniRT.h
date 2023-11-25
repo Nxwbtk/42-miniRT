@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 19:38:00 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 00:27:01 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 #define WD_WIDTH 1280
 #define WD_HEIGHT 720
 #define KEY_ESC 53
+#define MIN 0.0001
 
 # define PI 3.141592653589793
 // main
