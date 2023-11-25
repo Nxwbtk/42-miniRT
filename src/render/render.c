@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 00:41:45 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 02:07:05 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ bool	block_object(t_ray *ray, t_obj *obj, float light_distance)
 			if (isHitSphere(ray, &sp))
 				return (true);
 		}
+		else
+		{
+			if (hit_cylinder(ray, (t_cy *)obj->obj, NULL, 1)
+			||disk_intersection(ray, NULL, (t_cy *)obj->obj, 1))
+				return (true);
+		}
 		obj = obj->next;
 	}
 	return (false);
@@ -128,7 +134,7 @@ int	is_shadow(t_cor hitOrigin, t_obj *obj)
 			pl = (t_plane *)obj->obj;
 			if (isHitPlane(&shadow_ray, &pl))
 			{
-				printf("shadow\n");
+				// printf("shadow\n");
 				is_shadow = 1;
 				break ;
 			}
@@ -138,7 +144,17 @@ int	is_shadow(t_cor hitOrigin, t_obj *obj)
 			sp = (t_sp *)obj->obj;
 			if (isHitSphere(&shadow_ray, &sp))
 			{
-				printf("shadow\n");
+				// printf("shadow\n");
+				is_shadow = 1;
+				break ;
+			}
+		}
+		else if (obj->type == 3)
+		{
+			if (hit_cylinder(&shadow_ray, (t_cy *)obj->obj, NULL, 1)
+			||disk_intersection(&shadow_ray, NULL, (t_cy *)obj->obj, 1))
+			{
+				// printf("shadow\n");
 				is_shadow = 1;
 				break ;
 			}

@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:28:09 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 00:41:38 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 01:52:03 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint)
         return ;
     hitPoint->origin = ray_point(*ray);
     hitPoint->dir = vec_norm(vec_sub(hitPoint->origin, sphere->origin));
-    // if (sphere->inside == 1)
-    //     hitPoint->dir = vec_multi_scalar(hitPoint->dir, -1);
-    // hitPoint->origin = vec_add(hitPoint->origin, sphere->origin);
+    if (sphere->inside == 1)
+        hitPoint->dir = vec_multi_scalar(hitPoint->dir, -1);
+    hitPoint->origin = vec_add(hitPoint->origin, sphere->origin);
     hitPoint->obj_origin = sphere->origin;
     hitPoint->clr = sphere->clr;
 }

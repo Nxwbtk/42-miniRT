@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:11:59 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 01:42:16 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,13 @@ typedef struct s_fml
 // ray
 t_ray	new_ray(t_cor oringin, t_cor dir);
 t_cor	ray_point(t_ray ray);
-
+float	ft_abs(float num);
 //object
 bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);
 bool	isHitSphere(t_ray *ray, t_sp **sphere);
 bool	isHitPlane(t_ray *ray, t_plane **plane);
-void	hit_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitPoint);
+bool	hit_cylinder(t_ray *ray, t_cy *cy, t_hitpoint *hit, int mode);
+bool	disk_intersection(t_ray *ray, t_hitpoint *hit, t_cy *cy, int mode);
 void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
 
