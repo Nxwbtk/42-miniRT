@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 22:19:33 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 00:10:14 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,34 @@ float	hit_inside(t_fml fml, float disc, bool *inside)
 	return ((-fml.b + sqrtf(disc)) / (2 * fml.a));
 }
 
+// static bool	closest_cylinder(t_ray ray, t_hitpoint *hit, t_cy *cy, float distance, t_cor oc)
+// {
+// 	hit->distance = distance;
+// 	hit->point = vec_add(oc, vec_multi_scalar(ray.dir, hit->distance));
+// 	hit->dir = vec_norm(hit->point);
+// 	if (cy->inside)
+// 		hit->dir = vec_scalar(hit->dir, -1);
+// 	hit->point = vec_add(hit->point, cy->pos);
+// 	hit->clr = cy->clr;
+// 	hit->ctr = cy->pos;
+// 	hit->hit = true;
+// 	return (true);
+// }
+
+bool	is_hit_cylinder(t_ray *ray, t_cy *cy)
+{
+
+}
 void	hit_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitPoint)
 {
 	t_fml	fml;
 	float	t_closest;
 	t_cor	oc;
 	float	discriminant;
+	float	dot;
 
-	cylinder->inside;
+	cylinder->inside = false;
+	(void)hitPoint;
 	oc = vec_sub(ray->oringin, cylinder->origin);
 	fml.a = vec_dot_product(ray->dir, ray->dir) - pow(vec_dot_product(ray->dir, cylinder->dir), 2);
 	fml.b = 2 * (vec_dot_product(ray->dir, oc) - vec_dot_product(ray->dir, \
@@ -132,6 +152,9 @@ void	hit_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitPoint)
 	if (t_closest < 0.00f)
 		t_closest = hit_inside(fml, discriminant, &cylinder->inside);
 	if (t_closest < 0.00f || t_closest > ray->t)
-		return (false);
-	cylinder->
+		return ;
+	dot = vec_dot_product(ray->dir, cylinder->dir) * t_closest + vec_dot_product(oc, cylinder->dir);
+	printf("dot = %f\n", dot);
+	// if (fabs(dot) > cylinder->height / 2)
+	// 	return ;
 }
