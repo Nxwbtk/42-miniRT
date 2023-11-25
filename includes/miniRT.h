@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 21:11:17 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 00:41:10 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,20 @@
 
 # include "render.h"
 # include "mlx.h"
-# include "key.h"
 
-# define FRACTIONAL_BIT 16
-# define WD_WIDTH 1280
-# define WD_HEIGHT 720
-# define KEY_ESC 53
+#if defined(__linux__)
+#include "keycode_linux.h"
+#define LINUX_OS 1
+#else
+#include "keycode_macos.h"
+#define LINUX_OS 0
+#endif
+
+#define FRACTIONAL_BIT 16
+#define WD_WIDTH 1280
+#define WD_HEIGHT 720
+#define KEY_ESC 53
+#define MIN 0.0001
 
 # define PI 3.141592653589793
 // main

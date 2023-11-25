@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:51:57 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:12:17 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 00:41:30 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool isHitPlane(t_ray *ray, t_plane **plane)
 		distance = ft_abs(vec_dot_product(ray0_plane0, (*plane)->dir)) / (*plane)->denom;
 		if (distance < 0)
 			return (false);
-		if (distance <= ray->t || ray->t == -1)
+		if (distance > MIN && (distance < ray->t || ray->t == -1))
 			return (ray->t = distance, true);
 	}
 	return (false);
