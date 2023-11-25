@@ -2,12 +2,30 @@
 #include "miniRT.h"
 
 t_rgb new_rgb(int r, int g, int b)
-{
+{	
 	t_rgb rgb;
 
 	rgb.r = r;
 	rgb.g = g;
 	rgb.b = b;
+	return (rgb);
+}
+t_rgb add_clr(t_rgb a, t_rgb b)
+{
+	t_rgb rgb;
+
+	rgb.r = a.r + b.r;
+	rgb.g = a.g + b.g;
+	rgb.b = a.b + b.b;
+	return (rgb);
+}
+t_rgb multi_clr(t_rgb a, t_rgb b)
+{
+	t_rgb rgb;
+
+	rgb.r = (a.r * b.r) / 255;
+	rgb.g = (a.g * b.g) / 255;
+	rgb.b = (a.b * b.b) / 255;
 	return (rgb);
 }
 
@@ -21,6 +39,21 @@ t_rgb clamp_clr(t_rgb clr)
 		clr.b = 255;
 	return (clr);
 }
+
+// int	color_scale(int color, float scale)
+// {
+// 	int	r;
+// 	int	g;
+// 	int	b;
+
+// 	r = (color >> 16) & 0xFF;
+// 	g = (color >> 8) & 0xFF;
+// 	b = color & 0xFF;
+// 	r = floor(r * scale);
+// 	g = floor(g * scale);
+// 	b = floor(b * scale);
+// 	return (color2int(r, g, b));
+// }
 
 int rgb_to_clr(t_rgb clr)
 {

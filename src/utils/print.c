@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:39:25 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 16:02:17 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/25 19:37:32 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,36 @@ void	print_topic(char *topic)
 	}
 	printf("\n");
 }
+
+void print_hitPoint(t_hitpoint *hitPoint)
+{
+	printf("### hitPoint ###\n");
+	printf("origin: (%f, %f, %f)\n", hitPoint->origin.x, hitPoint->origin.y, hitPoint->origin.z);
+	printf("dir: (%f, %f, %f)\n", hitPoint->dir.x, hitPoint->dir.y, hitPoint->dir.z);
+	printf("obj_origin: (%f, %f, %f)\n", hitPoint->obj_origin.x, hitPoint->obj_origin.y, hitPoint->obj_origin.z);
+	printf("color: %d, %d, %d\n", hitPoint->clr.r, hitPoint->clr.g, hitPoint->clr.b);
+}
+
+void print_light(t_light *light)
+{
+	printf("### light ###\n");
+	printf("origin: (%f, %f, %f)\n", light->origin.x, light->origin.y, light->origin.z);
+	printf("ratio: %f\n", light->ratio);
+	printf("color: %d, %d, %d\n", light->clr.r, light->clr.g, light->clr.b);
+}
+
 t_cor print_cor(char *point_name, t_cor vec)
 {
 	printf("%s (%f, %f, %f)\n", point_name, vec.x, vec.y, vec.z);
 	return (vec);
+}
+
+void print_ray(t_ray *ray)
+{
+	printf("### ray ###\n");
+	printf("origin: (%f, %f, %f)\n", ray->oringin.x, ray->oringin.y, ray->oringin.z);
+	printf("dir: (%f, %f, %f)\n", ray->dir.x, ray->dir.y, ray->dir.z);
+	printf("t: %f\n", ray->t);
 }
 
 void print_sphere(t_sp *sphere)

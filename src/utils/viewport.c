@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:09:21 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 15:09:16 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/25 19:16:30 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_viewport(t_viewport *viewport, t_camera camera)
 	viewport_v = vec_multi_scalar(viewport->axis.y, -viewport->height);
 	viewport->pixel_delta_x = vec_div(viewport_u, WD_WIDTH);
 	viewport->pixel_delta_y = vec_div(viewport_v, WD_HEIGHT);
-	viewport_upper_left = vec_sub(vec_sub(camera.dir, new_vec(0, 0, 1.0)), vec_div(viewport_u, 2));
-	viewport_upper_left = vec_sub(viewport_upper_left, vec_div(viewport_v, 2));
+	viewport_upper_left = vec_sub(camera.dir, vec_div(viewport_u, 2));
+	viewport_upper_left = vec_add(viewport_upper_left, vec_div(viewport_v, 2));
 	viewport->pixel_upper_left = vec_add(viewport_upper_left, vec_multi_scalar(vec_add(viewport->pixel_delta_x, viewport->pixel_delta_y), 0.5));
 }

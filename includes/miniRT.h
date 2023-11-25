@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/24 15:59:51 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/25 19:38:00 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 #define WD_HEIGHT 720
 #define KEY_ESC 53
 
+# define PI 3.141592653589793
 // main
 int		parsing(int ac, char **av, t_scene *scene);
 t_scene	init_struct(void);
@@ -50,5 +51,8 @@ void print_obj(t_obj *obj);
 void print_camera(t_camera *camera);
 t_cor	print_cor(char *point_name, t_cor vec);
 void	print_topic(char *topic);
+void	print_light(t_light *light);
+void print_hitPoint(t_hitpoint *hitPoint);
+void print_ray(t_ray *ray);
 
 #endif
