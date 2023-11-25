@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:11:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:15:12 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_cy
 	float	height;
 	float	diameter;
 	float	radius;
+	bool	inside;
 }				t_cy;
 
 typedef struct s_obj

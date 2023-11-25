@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 21:10:03 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:19:33 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,46 @@
 // 	hitPoint->clr = cylinder->clr;
 // }
 
+float	ft_discriminant(float a, float b, float c)
+{
+	register float	num;
+
+	num = pow(b, 2) - 4 * a * c;
+	if (num < 0)
+		return (-1);
+	else if (num)
+		return (num);
+	else
+		return (0);
+}
+
+float	hit_inside(t_fml fml, float disc, bool *inside)
+{
+	*inside = true;
+	return ((-fml.b + sqrtf(disc)) / (2 * fml.a));
+}
+
 void	hit_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitPoint)
 {
 	t_fml	fml;
-	float	disc;
-	float	t_closet;
-	float	oc;
+	float	t_closest;
+	t_cor	oc;
+	float	discriminant;
 
-	
+	cylinder->inside;
+	oc = vec_sub(ray->oringin, cylinder->origin);
+	fml.a = vec_dot_product(ray->dir, ray->dir) - pow(vec_dot_product(ray->dir, cylinder->dir), 2);
+	fml.b = 2 * (vec_dot_product(ray->dir, oc) - vec_dot_product(ray->dir, \
+	cylinder->dir) * vec_dot_product(oc, cylinder->dir));
+	fml.c = vec_dot_product(oc, oc) - pow(vec_dot_product(oc, cylinder->dir), 2) \
+	- pow(cylinder->radius, 2);
+	discriminant = ft_discriminant(fml.a, fml.b, fml.c);
+	if (discriminant < 0.0f)
+		return ;
+	t_closest = (-fml.b - sqrtf(discriminant)) / (2 * fml.a);
+	if (t_closest < 0.00f)
+		t_closest = hit_inside(fml, discriminant, &cylinder->inside);
+	if (t_closest < 0.00f || t_closest > ray->t)
+		return (false);
+	cylinder->
 }
