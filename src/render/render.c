@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 23:46:22 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 16:27:47 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	render_scene(t_param *param)
 	t_pixel	pixel;
 	t_ray	ray;
 
-	print_topic("render_scene");
-	print_camera(&param->scene.camera);
-	print_obj(param->scene.obj);
+	// print_topic("render_scene");
+	// print_camera(&param->scene.camera);
+	// print_obj(param->scene.obj);
 	pixel.y = 0;
 	while (pixel.y < WD_HEIGHT)
 	{

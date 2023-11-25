@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:51:57 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 02:49:32 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:33:16 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ bool	isHitPlane(t_ray *ray, t_plane *plane)
 	denom = vec_dot_product(ray->dir, plane->dir);
 	if (denom > 1e-6)
 	{
+		if (denom > 0)
+			plane->dir = vec_multi_scalar(plane->dir, -1);
 		ray0_plane0 = vec_sub(plane->origin, ray->oringin);
 		distance = ft_abs(vec_dot_product(ray0_plane0, plane->dir)) / denom;
 		if (distance < 0)

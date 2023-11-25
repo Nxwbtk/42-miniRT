@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 02:31:48 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:57:20 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ typedef struct s_ray
 	t_rgb	clr;
 	float	t;
 }				t_ray;
+
+typedef struct s_fml
+{
+	float	a;
+	float	b;
+	float	c;
+}				t_fml;
 
 // ray
 t_ray	new_ray(t_cor oringin, t_cor dir);
