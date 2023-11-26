@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_and_shadow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:59:22 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:12:46 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 04:37:23 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_rgb	ratio_clr(t_rgb light, float ratio)
 	light.r *= ratio;
 	light.g *= ratio;
 	light.b *= ratio;
-	return (light);
+	return (clamp_clr(light));
 }
 
 // t_rgb	light_and_shadow(t_rgb origin_clr, t_hitpoint hit, t_obj *obj)

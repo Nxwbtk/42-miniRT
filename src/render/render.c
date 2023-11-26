@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 02:07:05 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 06:46:41 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ bool	block_object(t_ray *ray, t_obj *obj, float light_distance)
 // cos(theta) = a dot b / |a||b|
 // hit_to_light dot normal = |hit_to_light||normal|cos(theta)
 // cos(theta) = hit_to_light dot normal / |hit_to_light||normal|
-int	is_shadow(t_cor hitOrigin, t_obj *obj)
+int	is_shadow(t_hitpoint hit, t_obj *obj)
 {
 	t_ray	shadow_ray;
 	t_sp	*sp;
@@ -120,45 +120,47 @@ int	is_shadow(t_cor hitOrigin, t_obj *obj)
 	// t_ray	tmp;
 	t_obj	*lst;
 	int		is_shadow;
+	float	t_light;
 
-	shadow_ray.oringin= hitOrigin;
-	shadow_ray.dir = vec_norm(vec_sub(obj->light.origin,
-				hitOrigin));
-	shadow_ray.t = vec_sub(obj->light.origin, hitOrigin).len;
+	shadow_ray.oringin= hit.origin;
+	shadow_ray.dir = vec_norm(vec_sub(obj->light.origin, hit.origin));
+	//shadow_ray.dir = vec_norm(vec_sub(hit.origin, obj->light.origin));
+	t_light = vec_sub(obj->light.origin, hit.origin).len;
+	shadow_ray.t = t_light - 1;
 	is_shadow = 0;
 	lst = obj;
-	while (lst)
+	while (lst && shadow_ray.t < t_light)
 	{
-		if (obj->type == 1)
+		if (obj->type == 1 && hit.id != obj->id)
 		{
 			pl = (t_plane *)obj->obj;
 			if (isHitPlane(&shadow_ray, &pl))
 			{
-				// printf("shadow\n");
+				printf("shadow plane\n");
 				is_shadow = 1;
 				break ;
 			}
 		}
-		else if (obj->type == 2)
+		else if (obj->type == 2 && hit.id != obj->id)
 		{
 			sp = (t_sp *)obj->obj;
 			if (isHitSphere(&shadow_ray, &sp))
 			{
-				// printf("shadow\n");
+				// printf("shadow sphere\n");
 				is_shadow = 1;
 				break ;
 			}
 		}
-		else if (obj->type == 3)
-		{
-			if (hit_cylinder(&shadow_ray, (t_cy *)obj->obj, NULL, 1)
-			||disk_intersection(&shadow_ray, NULL, (t_cy *)obj->obj, 1))
-			{
-				// printf("shadow\n");
-				is_shadow = 1;
-				break ;
-			}
-		}
+		// else if (obj->type == 3 && hit.id != obj->id)
+		// {
+		// 	if (hit_cylinder(&shadow_ray, (t_cy *)obj->obj, NULL, 1)
+		// 	||disk_intersection(&shadow_ray, NULL, (t_cy *)obj->obj, 1))
+		// 	{
+		// 		printf("shadow sphere\n");
+		// 		is_shadow = 1;
+		// 		break ;
+		// 	}
+		// }
 		// if (is_intersect((t_obj *)(lst->content), &shadow_ray, &tmp) == 1)
 		// {
 		// 	is_shadow = 1;
@@ -171,8 +173,6 @@ int	is_shadow(t_cor hitOrigin, t_obj *obj)
 
 static t_rgb lighting(t_obj *obj, t_light light, t_hitpoint hitPoint, t_cor normal)
 {
-	// int is_shadow;
-
 	// t_ray shadow_ray;
 	t_cor hit_to_light = vec_norm(vec_sub(light.origin, hitPoint.origin));
 	
@@ -180,12 +180,17 @@ static t_rgb lighting(t_obj *obj, t_light light, t_hitpoint hitPoint, t_cor norm
 	// print_ray(&shadow_ray);
 	// 	if (block_object(&shadow_ray, obj, vec_sub(obj->light.origin, hitPoint.origin).len)) // if hit object between hitpoint and light
 	// 		return (obj->ambient);
-	if (is_shadow(hitPoint.origin, obj))
-			return (obj->ambient);
+	t_rgb ambient = ratio_clr(hitPoint.clr, 0.3);
+	if (is_shadow(hitPoint, obj))
+	{
+		// printf("ab");
+		return (ambient);
+	}
 	//ambient
-	t_rgb ambient = multi_clr(hitPoint.clr, obj->ambient);
+	// t_rgb ambient = multi_clr(hitPoint.clr, obj->ambient);
 	//diffuse
-	t_rgb diffuse = multi_clr(hitPoint.clr, light.clr);
+	// t_rgb diffuse = multi_clr(hitPoint.clr, light.clr);
+	t_rgb diffuse = ratio_clr(hitPoint.clr, 1);
 	float light_dot_normal = vec_dot_product(hit_to_light, normal);
 	// t_rgb diffuse = new_rgb(0, 0, 0);
 	if (light_dot_normal >= 0)
@@ -200,28 +205,13 @@ static t_rgb lighting(t_obj *obj, t_light light, t_hitpoint hitPoint, t_cor norm
 static int ray_tracing(t_ray *ray, t_obj *obj)
 {
 	t_hitpoint	hitPoint;
-	// t_hitpoint	hitBlock;
-	// t_ray	shadow_ray;
-	// t_rgb ambient_clr;
 	t_rgb clr;
 
 	clr = new_rgb(0, 0, 0);
-	// print_topic("ray_tracing");
-	// print_obj(obj);
 	if (!hit_object(ray, obj, &hitPoint))
 		return (rgb_to_clr(clr));
 	clr = lighting(obj, obj->light, hitPoint, hitPoint.dir);
 	return (rgb_to_clr(clr));
-	// if (hit_object(ray, obj, &hitPoint))
-	// {
-	// 	clr = rgb_add(hitPoint.clr, obj->ambient);
-	// 	shadow_ray = new_ray(hitPoint.origin, vec_norm(vec_sub(obj->light.origin, hitPoint.origin))); // ray from hitpoint to light
-	// 	if (hit_object(&shadow_ray, obj, &hitBlock)) // if hit object between hitpoint and light
-	// 		return (rgb_to_clr(obj->ambient));
-	// 	return (rgb_to_clr(shading(clr, hitPoint, obj) ));
-	// 	// return (rgb_to_clr(clr));
-	// }
-	// return (rgb_to_clr(clr));
 }
 
 int	render_scene(t_param *param)

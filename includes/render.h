@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 01:42:16 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 05:15:29 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_hitpoint
 	t_cor	obj_origin;
 	t_cor	dir;
 	t_rgb	clr;
+	int		id;
 }	t_hitpoint;
 
 typedef struct s_pixel

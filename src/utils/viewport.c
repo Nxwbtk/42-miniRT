@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   viewport.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:09:21 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 02:11:36 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 12:40:56 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	init_viewport(t_viewport *viewport, t_camera camera)
 	viewport_v = vec_multi_scalar(viewport->axis.y, viewport->height);
 	viewport->pixel_delta_x = vec_div(viewport_u, WD_WIDTH);
 	viewport->pixel_delta_y = vec_div(viewport_v, WD_HEIGHT);
-	viewport_upper_left = vec_sub(camera.dir, vec_div(viewport_u, 2));
+	viewport_upper_left = vec_sub(viewport->axis.z, vec_div(viewport_u, 2));
 	viewport_upper_left = vec_add(viewport_upper_left, vec_div(viewport_v, 2));
 	viewport->pixel_upper_left = vec_add(viewport_upper_left, vec_multi_scalar(vec_add(viewport->pixel_delta_x, viewport->pixel_delta_y), 0.5));
 }
+
+// sp 10,10,20    50   255,0,0

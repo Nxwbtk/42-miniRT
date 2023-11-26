@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 01:36:08 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 05:11:55 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ typedef struct s_obj
 {
 	void			*obj;
 	int				type;
+	int				id;
 	t_light			light;
-	t_rgb			ambient;
+	float			ambient;
 	struct s_obj	*next;
 }				t_obj;
 

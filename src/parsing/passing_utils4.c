@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils4.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:19:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/24 23:54:27 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 05:37:48 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ t_rgb	ratio_light(t_rgb light, float ratio)
 	return (new_rgb);
 }
 
+int obj_size(t_obj *obj)
+{
+	int	i;
+
+	i = 0;
+	while (obj)
+	{
+		obj = obj->next;
+		i++;
+	}
+	return (i);
+}
+
 void	obj_addback(t_scene *scene, t_obj *new_obj)
 {
 	t_obj	*last;
@@ -37,8 +50,7 @@ void	obj_addback(t_scene *scene, t_obj *new_obj)
 	if (scene && new_obj)
 	{
 		new_obj->light = scene->light;
-		new_obj->ambient = ratio_light(scene->ambient.clr, \
-		scene->ambient.ratio);
+		new_obj->ambient = scene->ambient.ratio;
 		if (!scene->obj)
 			scene->obj = new_obj;
 		else
@@ -46,6 +58,7 @@ void	obj_addback(t_scene *scene, t_obj *new_obj)
 			last = obj_last(scene->obj);
 			last->next = new_obj;
 		}
+		new_obj->id = obj_size(scene->obj);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:51:57 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 00:41:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 12:44:12 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ bool isHitPlane(t_ray *ray, t_plane **plane)
 {
 	(*plane)->denom = vec_dot_product(ray->dir, (*plane)->dir);
 	float distance;
-	if ((*plane)->denom > 1e-6)
+	if (ft_abs((*plane)->denom) > MIN)
 	{
 		t_cor ray0_plane0 = vec_sub((*plane)->origin, ray->oringin);
-		distance = ft_abs(vec_dot_product(ray0_plane0, (*plane)->dir)) / (*plane)->denom;
+		distance = vec_dot_product(ray0_plane0, (*plane)->dir) / (*plane)->denom;
 		if (distance < 0)
 			return (false);
 		if (distance > MIN && (distance < ray->t || ray->t == -1))
