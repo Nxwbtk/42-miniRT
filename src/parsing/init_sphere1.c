@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_sphere1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:30:59 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 00:00:26 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "miniRT.h"
 
 t_obj	*new_obj_sp(t_sp *sphere)
 {

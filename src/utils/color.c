@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 23:46:32 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 21:16:20 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:38:35 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ int rgb_to_clr(t_rgb clr)
 	return ((clr.r << 16) + (clr.g << 8) + clr.b);
 }
 
-t_rgb	shade_clr(t_rgb clr, t_rgb shade)
+t_rgb	ratio_clr(t_rgb light, float ratio)
 {
-	clr.r = (clr.r * shade.r) >> 8;
-	clr.g = (clr.g * shade.g) >> 8;
-	clr.b = (clr.b * shade.b) >> 8;
-	return (clr);
+	if (ratio < 0)
+		ratio = 0;
+	light.r *= ratio;
+	light.g *= ratio;
+	light.b *= ratio;
+	return (clamp_clr(light));
 }

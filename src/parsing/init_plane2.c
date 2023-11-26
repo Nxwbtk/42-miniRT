@@ -6,11 +6,11 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:14:45 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 22:45:31 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "miniRT.h"
 
 t_obj	*new_obj_pl(t_plane *plane)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/24 23:30:40 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:14:04 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	main(int ac, char **av)
 	param.scene = init_struct();
 	if (parsing(ac, av, &param.scene))
 		return (1);
-	(void)ac;
-	(void)av;
 	param.mode = 0;
 	init_viewport(&param.viewport, param.scene.camera);
 	create_img(&param);

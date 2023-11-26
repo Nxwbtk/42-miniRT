@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 05:11:55 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:40:08 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +149,11 @@ float	vec_dot_product(t_cor vec1, t_cor vec2);
 t_cor	vec_cross(t_cor vec1, t_cor vec2);
 
 // color
+int		rgb_to_clr(t_rgb clr);
 t_rgb	new_rgb(int r, int g, int b);
 t_rgb	clamp_clr(t_rgb clr);
-int		rgb_to_clr(t_rgb clr);
-t_rgb	shade_clr(t_rgb clr, t_rgb shade);
-t_rgb fill_ambient(t_rgb obj_clr, t_rgb ambient_clr);
-t_rgb add_clr(t_rgb a, t_rgb b);
+t_rgb	add_clr(t_rgb a, t_rgb b);
 t_rgb	ratio_clr(t_rgb light, float ratio);
-t_rgb multi_clr(t_rgb a, t_rgb b);
-// int	color_scale(int color, float scale);
+t_rgb	multi_clr(t_rgb a, t_rgb b);
 
 #endif

@@ -6,28 +6,17 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:19:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 05:37:48 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:55:34 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
-#include <math.h>
+#include "miniRT.h"
 
 t_obj	*obj_last(t_obj *obj)
 {
 	while (obj && obj->next)
 		obj = obj->next;
 	return (obj);
-}
-
-t_rgb	ratio_light(t_rgb light, float ratio)
-{
-	t_rgb	new_rgb;
-
-	new_rgb.r = light.r * ratio;
-	new_rgb.g = light.g * ratio;
-	new_rgb.b = light.b * ratio;
-	return (new_rgb);
 }
 
 int obj_size(t_obj *obj)

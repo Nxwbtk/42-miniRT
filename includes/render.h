@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 05:15:29 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 14:14:23 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
 
 // light_and_shadow
-t_rgb	light_and_shadow(t_rgb origin_clr, t_hitpoint hit, t_obj *obj);
+// int	is_shadow(t_hitpoint hit, t_obj *obj);
+int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj);
 
 #endif

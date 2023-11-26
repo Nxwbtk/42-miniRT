@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:39:25 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/25 21:16:24 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:18:06 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,15 @@ void print_plane(t_plane *plane)
 	printf("direction: (%f, %f, %f)\n", plane->dir.x, plane->dir.y, plane->dir.z);
 	printf("color: %d, %d, %d\n", plane->clr.r, plane->clr.g, plane->clr.b);
 }
+void print_cylinder(t_cy *cylinder)
+{
+	printf("### cylinder ###\n");
+	printf("origin: (%f, %f, %f)\n", cylinder->origin.x, cylinder->origin.y, cylinder->origin.z);
+	printf("direction: (%f, %f, %f)\n", cylinder->dir.x, cylinder->dir.y, cylinder->dir.z);
+	printf("radius: %f\n", cylinder->radius);
+	printf("height: %f\n", cylinder->height);
+	printf("color: %d, %d, %d\n", cylinder->clr.r, cylinder->clr.g, cylinder->clr.b);
+}
 
 void print_obj(t_obj *obj)
 {
@@ -115,6 +124,8 @@ void print_obj(t_obj *obj)
 			print_plane(tmp->obj);
 		else if (tmp->type == 2)
 			print_sphere(tmp->obj);
+		else if (tmp->type == 3)
+			print_cylinder(tmp->obj);
 		tmp = tmp->next;
 
 	}

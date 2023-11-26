@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:09:21 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 12:40:56 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:56:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,3 @@ void	init_viewport(t_viewport *viewport, t_camera camera)
 	viewport_upper_left = vec_add(viewport_upper_left, vec_div(viewport_v, 2));
 	viewport->pixel_upper_left = vec_add(viewport_upper_left, vec_multi_scalar(vec_add(viewport->pixel_delta_x, viewport->pixel_delta_y), 0.5));
 }
-
-// sp 10,10,20    50   255,0,0

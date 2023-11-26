@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:28:09 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 05:25:33 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 14:20:29 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,12 @@ bool	isHitSphere(t_ray *ray, t_sp **sphere)
     if (closest < 0 || closest < MIN)
         return (false);
     if (closest <= ray->t || ray->t == -1)
-    {
-        ray->t = closest;
-        return (true);
-    }
+        return (ray->t = closest, true);
     return (false);
 }
 
 void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint)
 {
-	// print_topic("hit_object");
-	// print_sphere(sphere);
-	// exit(0);
     if (!isHitSphere(ray, &sphere))
         return ;
     hitPoint->origin = ray_point(*ray);

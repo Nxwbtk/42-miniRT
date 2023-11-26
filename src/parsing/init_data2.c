@@ -6,11 +6,11 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 00:28:17 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/22 15:58:17 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "miniRT.h"
 
 t_camera	init_camera2(void)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 22:02:31 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/21 22:16:16 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "miniRT.h"
 
 void	free_obj(t_obj *obj)
 {

@@ -6,11 +6,11 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:43 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/25 03:34:44 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:52:56 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "miniRT.h"
 
 int	check_arg_light(char **split)
 {
@@ -62,7 +62,7 @@ void	put_xyz_light(t_scene *scene, char **split)
 	scene->light.clr.b = ft_atoi(xyz[2]);
 	free_split(xyz);
 	scene->light.ratio = ft_atof(split[2]);
-	scene->light.clr = ratio_light(scene->light.clr, scene->light.ratio);
+	scene->light.clr = ratio_clr(scene->light.clr, scene->light.ratio);
 }
 
 void	init_light(char **split, t_scene *scene, char *line)

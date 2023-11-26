@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 01:54:37 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:15:45 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,6 @@ bool	hit_cylinder(t_ray *ray, t_cy *cy, t_hitpoint *hit, int mode)
 		return (false);
 	if (mode)
 		return (true);
-	printf("hit_cylinder\n");
 	return (closest_cylinder(ray, hit, cy, t_closest));
 }
 

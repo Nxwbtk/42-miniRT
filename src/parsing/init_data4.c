@@ -6,11 +6,11 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/23 22:45:49 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "miniRT.h"
 
 void	init_pl(t_scene *scene, char **split, char *line)
 {
