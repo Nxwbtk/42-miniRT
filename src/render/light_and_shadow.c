@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:59:22 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 14:24:17 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 15:09:51 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj)
 			sp = (t_sp *)obj->obj;
 			if (isHitSphere(&ray_to_light, &sp))
 			{
-				// printf("shadow sphere\n");
+				printf("shadow sphere\n");
 				is_shadow = 1;
 				break ;
 			}

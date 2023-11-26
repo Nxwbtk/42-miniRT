@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 16:21:40 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,15 @@ void	init_cy(t_scene *scene, char **split, char *line)
 {
 	t_cy	*cylinder;
 	t_obj	*new_obj;
+	t_cor	half_pos;
+	
 
 	cylinder = new_cylinder(split);
 	if (!cylinder)
 		error_input(line, split, scene);
+	half_pos = vec_multi_scalar(cylinder->dir, (cylinder->height / 2));
+	cylinder->top = vec_add(cylinder->origin, half_pos);
+	cylinder->bot = vec_sub(cylinder->origin, half_pos);
 	new_obj = new_obj_cy(cylinder);
 	if (!new_obj)
 	{

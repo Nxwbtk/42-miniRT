@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 14:30:24 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 15:02:31 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static t_rgb light_and_shadow(t_obj *obj, t_light light, t_hitpoint hitPoint)
 	
 	//ambient
 	t_rgb ambient = ratio_clr(hitPoint.clr, obj->ambient);
-	// if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
-	// 	return (ambient);
+	if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
+		return (ambient);
 	
 	//diffuse
 	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);
@@ -62,8 +62,8 @@ static t_rgb light_and_shadow(t_obj *obj, t_light light, t_hitpoint hitPoint)
 
 	// don't delete this now	
 	// return ((void)diffuse, ambient);
-	return ((void)ambient, diffuse);
-	// return (add_clr(ambient, diffuse));
+	// return ((void)ambient, diffuse);
+	return (add_clr(ambient, diffuse));
 }
 
 static int ray_tracing(t_ray *ray, t_obj *obj)

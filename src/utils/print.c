@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:39:25 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 13:18:06 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 16:22:12 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,11 @@ void print_cylinder(t_cy *cylinder)
 	printf("### cylinder ###\n");
 	printf("origin: (%f, %f, %f)\n", cylinder->origin.x, cylinder->origin.y, cylinder->origin.z);
 	printf("direction: (%f, %f, %f)\n", cylinder->dir.x, cylinder->dir.y, cylinder->dir.z);
-	printf("radius: %f\n", cylinder->radius);
-	printf("height: %f\n", cylinder->height);
 	printf("color: %d, %d, %d\n", cylinder->clr.r, cylinder->clr.g, cylinder->clr.b);
+	printf("height: %f\n", cylinder->height);
+	printf("radius: %f\n", cylinder->radius);
+	printf("top: (%f, %f, %f)\n", cylinder->top.x, cylinder->top.y, cylinder->top.z);
+	printf("bot: (%f, %f, %f)\n", cylinder->bot.x, cylinder->bot.y, cylinder->bot.z);
 }
 
 void print_obj(t_obj *obj)

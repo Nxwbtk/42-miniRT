@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 00:42:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:16:00 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "key.h"
 
 #define FRACTIONAL_BIT 16
-#define WD_WIDTH 1280
-#define WD_HEIGHT 720
+#define WD_WIDTH 640
+#define WD_HEIGHT 360
 #define KEY_ESC 53
 #define MIN 0.0001
 
@@ -48,5 +48,6 @@ void	print_topic(char *topic);
 void	print_light(t_light *light);
 void print_hitPoint(t_hitpoint *hitPoint);
 void print_ray(t_ray *ray);
+void print_cylinder(t_cy *cylinder);
 
 #endif

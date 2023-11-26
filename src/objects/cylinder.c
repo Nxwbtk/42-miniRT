@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 13:15:45 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/26 17:47:17 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ bool	disk_intersection(t_ray *ray, t_hitpoint *hit, t_cy *cy, int mode)
 	return (hit->origin = tmp_hitpoint, closest_disk(hit, cy, denom));
 }
 
-static bool	closest_cylinder(t_ray *ray, t_hitpoint *hit, t_cy *cy, float distance)
+bool	closest_cylinder(t_ray *ray, t_hitpoint *hit, t_cy *cy, float distance, t_cor oc)
 {
 	ray->t = distance;
-	hit->origin = vec_add(ray->oringin, vec_multi_scalar(ray->dir, ray->t));
+	hit->origin = vec_add(oc, vec_multi_scalar(ray->dir, ray->t));
 	hit->dir = vec_norm(hit->origin);
 	if (cy->inside)
 		hit->dir = vec_multi_scalar(hit->dir, -1);
@@ -148,30 +148,39 @@ bool	hit_cylinder(t_ray *ray, t_cy *cy, t_hitpoint *hit, int mode)
 	float	t_closest;
 	
 	cy->inside = false;
+	// print_cylinder(cy);
+	// exit(0);
+	// print_ray(ray);
+	// printf("cy->origin = %f, %f, %f\n", cy->origin.x, cy->origin.y, cy->origin.z);
 	oc = vec_sub(ray->oringin, cy->origin);
+	// printf("oc = %f, %f, %f\n", oc.x, oc.y, oc.z);
 	a = vec_dot_product(ray->dir, ray->dir) - ft_pow2(vec_dot_product(ray->dir, cy->dir));
-	b = 2 * (vec_dot_product(ray->dir, ray->oringin) - vec_dot_product(ray->dir, cy->dir)
-			* vec_dot_product(ray->oringin, cy->dir));
-	c = vec_dot_product(ray->oringin, ray->oringin) - ft_pow2(vec_dot_product(ray->oringin, cy->dir))
+	b = 2 * (vec_dot_product(ray->dir, oc) - vec_dot_product(ray->dir, cy->dir)
+			* vec_dot_product(oc, cy->dir));
+	c = vec_dot_product(oc, oc) - ft_pow2(vec_dot_product(oc, cy->dir))
 		- ft_pow2(cy->radius);
-	distance = b * b - 4 * a * c;
+	distance = b * b -  4 * a * c;
+	// printf("distance = %f\n", distance);
 	if (distance < 0.0f)
 		return (false);
-	t_closest = (-b - sqrtf(distance)) / (2*a);
-    if (t_closest < 0 || t_closest < MIN) {
-        t_closest = (-b + sqrtf(distance)) / (2*a);
+	t_closest = (-b - sqrtf(distance)) / (2 * a);
+    if (t_closest < 0) {
+        t_closest = (-b + sqrtf(distance)) / (2 * a);
         cy->inside = true;
     }
-	if ((t_closest < 0.00f || t_closest > ray->t) && t_closest < MIN)
+	if ((t_closest < 0.00f || t_closest > ray->t))
 		return (false);
 	else
 		ray->t = t_closest;
-	cy->m = vec_dot_product(ray->dir, cy->dir) * t_closest + vec_dot_product(ray->oringin, cy->dir);
+	cy->m = vec_dot_product(ray->dir, vec_multi_scalar(cy->dir, t_closest)) + vec_dot_product(oc, cy->dir);
+	// printf("cy->m = %f\n", cy->m);
 	if (ft_abs(cy->m) > cy->height / 2)
 		return (false);
 	if (mode)
 		return (true);
-	return (closest_cylinder(ray, hit, cy, t_closest));
+	return (closest_cylinder(ray, hit, cy, t_closest, oc));
+	// (void)hit;
+	// return (true);
 }
 
 // void	hit_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitPoint)
