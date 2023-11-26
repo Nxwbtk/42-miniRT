@@ -4,6 +4,7 @@
 ### C ###
 # Prerequisites
 *.d
+settings.json
 
 # Object files
 obj/
