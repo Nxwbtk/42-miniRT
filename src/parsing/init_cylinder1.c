@@ -83,7 +83,7 @@ t_cy	*new_cylinder(char **split)
 	(*cylinder).origin = init_cor(split[1]);
 	(*cylinder).dir = init_cor(split[2]);
 	cylinder->diameter = ft_atof(split[3]);
-	printf("cylinder->diameter: %f\n", cylinder->diameter);
+	// printf("cylinder->diameter: %f\n", cylinder->diameter);
 	cylinder->radius = cylinder->diameter / 2;
 	cylinder->height = ft_atof(split[4]);
 	(*cylinder).clr = put_rgb(split[5]);

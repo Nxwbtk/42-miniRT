@@ -88,7 +88,9 @@ typedef struct s_cy
 	float	diameter;
 	float	radius;
 	float 	m;
-	bool	inside;
+	bool	inside_body;
+	bool	inside_disk;
+	bool	disk;
 }				t_cy;
 
 typedef struct s_obj

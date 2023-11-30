@@ -33,8 +33,7 @@ bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint)
 		}
 		else if (obj->type == 3)
 		{
-			hit_cylinder(ray, (t_cy *)obj->obj, hitPoint, 0);
-			disk_intersection(ray, hitPoint, (t_cy *)obj->obj, 0);
+			hitpoint_cylinder(ray, (t_cy *)obj->obj, hitPoint);
 			if (ray->t != -1 || old_t > ray->t)
 				hitPoint->id = obj->id;
 		}

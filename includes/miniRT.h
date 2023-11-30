@@ -23,9 +23,8 @@
 # include "key.h"
 
 #define FRACTIONAL_BIT 16
-#define WD_WIDTH 640
-#define WD_HEIGHT 360
-#define KEY_ESC 53
+#define WD_WIDTH 1280
+#define WD_HEIGHT 720
 #define MIN 0.0001
 
 # define PI 3.141592653589793

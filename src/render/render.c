@@ -29,6 +29,8 @@ static t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel)
 	pixel_center = vec_add(viewport->pixel_upper_left, vec_multi_scalar(viewport->pixel_delta_x, pixel.x));
 	pixel_center = vec_sub(pixel_center, vec_multi_scalar(viewport->pixel_delta_y, pixel.y));
 	pixel_center = vec_norm(pixel_center);
+	// printf("check init camera direction\n");
+	// printf("camera_dit: %f %f %f\n\n", pixel_center.x, pixel_center.y, pixel_center.z);
 	return (new_ray(viewport->origin, pixel_center));
 }
 
@@ -39,7 +41,6 @@ static t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel)
 
 static t_rgb light_and_shadow(t_obj *obj, t_light light, t_hitpoint hitPoint)
 {
-	
 	t_rgb diffuse;
 	float light_dot_normal;
 	t_cor hitpoint_to_light;
@@ -50,8 +51,10 @@ static t_rgb light_and_shadow(t_obj *obj, t_light light, t_hitpoint hitPoint)
 	//ambient
 	t_rgb ambient = ratio_clr(hitPoint.clr, obj->ambient);
 	if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
+	{
+		// printf("is_shadow\nj");
 		return (ambient);
-	
+	}
 	//diffuse
 	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);
 	light_dot_normal = vec_dot_product(hitpoint_to_light, hitPoint.dir);

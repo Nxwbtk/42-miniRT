@@ -106,8 +106,9 @@ float	ft_abs(float num);
 bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);
 bool	isHitSphere(t_ray *ray, t_sp **sphere);
 bool	isHitPlane(t_ray *ray, t_plane **plane);
-bool	hit_cylinder(t_ray *ray, t_cy *cy, t_hitpoint *hit, int mode);
-bool	disk_intersection(t_ray *ray, t_hitpoint *hit, t_cy *cy, int mode);
+void    hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint);
+bool    is_hit_cylinder(t_ray *ray, t_cy **cylinder);
+bool	disk_intersection(t_ray *ray, t_cy **cy);
 void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
 void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
 

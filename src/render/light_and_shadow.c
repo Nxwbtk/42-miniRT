@@ -42,24 +42,26 @@ int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj)
 			sp = (t_sp *)obj->obj;
 			if (isHitSphere(&ray_to_light, &sp))
 			{
-				printf("shadow sphere\n");
+				// printf("shadow sphere\n");
+				// exit(0);
 				is_shadow = 1;
 				break ;
 			}
 		}
 		else if (obj->type == 3 && hit.id != obj->id)
 		{
-			if (hit_cylinder(&ray_to_light, (t_cy *)obj->obj, NULL, 1)
-			||disk_intersection(&ray_to_light, NULL, (t_cy *)obj->obj, 1))
+			t_cy *cy = (t_cy *)obj->obj;
+			if (is_hit_cylinder(&ray_to_light, &cy) || disk_intersection(&ray_to_light, &cy))
 			{
-				printf("shadow sphere\n");
+				// printf("shadow cylinder\n");
+				// exit(0);
 				is_shadow = 1;
 				break ;
 			}
 		}
 		lst = lst->next;
 	}
-	if (ray_to_light.t > t_light)
+	if (ray_to_light.t > t_light || ray_to_light.t == -1)
 		is_shadow = 0;
 	return (is_shadow);
 }
