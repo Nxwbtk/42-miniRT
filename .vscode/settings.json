@@ -60,6 +60,7 @@
     "minirt.h": "c",
     "parsing.h": "c",
     "render.h": "c",
-    "mlx.h": "c"
+    "mlx.h": "c",
+    "random": "c"
   }
 }

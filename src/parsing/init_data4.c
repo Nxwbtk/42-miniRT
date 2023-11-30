@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data4.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 16:21:40 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/01 00:32:58 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	init_cy(t_scene *scene, char **split, char *line)
 	t_cy	*cylinder;
 	t_obj	*new_obj;
 	t_cor	half_pos;
-	
 
 	cylinder = new_cylinder(split);
 	if (!cylinder)

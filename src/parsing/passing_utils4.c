@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils4.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:19:49 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 13:55:34 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/30 23:30:10 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_obj	*obj_last(t_obj *obj)
 	return (obj);
 }
 
-int obj_size(t_obj *obj)
+int	obj_size(t_obj *obj)
 {
 	int	i;
 

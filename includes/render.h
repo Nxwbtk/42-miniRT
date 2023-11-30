@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:24:47 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 14:14:23 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/30 23:27:57 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 
 # include "parsing.h"
 # include <stdbool.h>
-
-// typedef struct s_param
-// {
-// 	void		*mlx;
-// 	void		*win;
-// 	t_img		img;
-// 	int		width;
-// 	int		height;
-// 	double	aspect_ratio;
-// }				t_param;
 
 typedef struct s_axis
 {
@@ -61,9 +51,7 @@ typedef struct s_param
 	void		*win;
 	t_obj		*obj;
 	t_viewport	viewport;
-	//t_camera	camera;
 	int			mode;
-	// t_select	*select;
 }				t_param;
 
 typedef struct s_hitpoint
@@ -104,16 +92,26 @@ t_cor	ray_point(t_ray ray);
 float	ft_abs(float num);
 //object
 bool	hit_object(t_ray *ray, t_obj *obj, t_hitpoint *hitPoint);
-bool	isHitSphere(t_ray *ray, t_sp **sphere);
-bool	isHitPlane(t_ray *ray, t_plane **plane);
-void    hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint);
-bool    is_hit_cylinder(t_ray *ray, t_cy **cylinder);
+bool	is_hit_sphere(t_ray *ray, t_sp **sphere);
+bool	is_hit_plane(t_ray *ray, t_plane **plane);
+void	hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint);
+bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder);
 bool	disk_intersection(t_ray *ray, t_cy **cy);
-void	hitPointSphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
-void	hitPointPlane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
+void	hp_sphere(t_ray *ray, t_sp *sphere, t_hitpoint *hitPoint);
+void	hit_point_plane(t_ray *ray, t_plane *plane, t_hitpoint *hitPoint);
 
 // light_and_shadow
 // int	is_shadow(t_hitpoint hit, t_obj *obj);
-int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj);
+int		is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj);
 
 #endif
+
+// typedef struct s_param
+// {
+// 	void		*mlx;
+// 	void		*win;
+// 	t_img		img;
+// 	int		width;
+// 	int		height;
+// 	double	aspect_ratio;
+// }				t_param;

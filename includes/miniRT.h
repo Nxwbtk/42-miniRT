@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 17:16:00 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/30 23:29:08 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,20 @@
 # include "mlx.h"
 # include "key.h"
 
-#define FRACTIONAL_BIT 16
-#define WD_WIDTH 1280
-#define WD_HEIGHT 720
-#define MIN 0.0001
+# define FRACTIONAL_BIT 16
+# define WD_WIDTH 1280
+# define WD_HEIGHT 720
+# define MIN 0.0001
 
 # define PI 3.141592653589793
+
+typedef struct s_abc
+{
+	float	a;
+	float	b;
+	float	c;
+}				t_abc;
+
 // main
 int		parsing(int ac, char **av, t_scene *scene);
 t_scene	init_struct(void);
@@ -45,8 +53,8 @@ void	print_camera(t_camera *camera);
 t_cor	print_cor(char *point_name, t_cor vec);
 void	print_topic(char *topic);
 void	print_light(t_light *light);
-void print_hitPoint(t_hitpoint *hitPoint);
-void print_ray(t_ray *ray);
-void print_cylinder(t_cy *cylinder);
+void	print_hitPoint(t_hitpoint *hitPoint);
+void	print_ray(t_ray *ray);
+void	print_cylinder(t_cy *cylinder);
 
 #endif

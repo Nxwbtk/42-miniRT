@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:31:27 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/24 23:46:58 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/11/30 23:24:58 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,59 +26,6 @@ int	close_win(t_param *param)
 			free(param->mlx);
 	}
 	exit (0);
-	return (0);
-}
-
-void	rotate_camera(int keycode, t_param *param)
-{
-	if (keycode == KEY_W)
-	{
-		printf("W\n");
-		param->scene.camera.origin.z -= 0.1;
-		init_viewport(&param->viewport, param->scene.camera);
-		render_scene(param);
-	}
-	else if (keycode == KEY_S)
-	{
-		printf("S\n");
-		param->scene.camera.origin.z += 0.1;
-		init_viewport(&param->viewport, param->scene.camera);
-		render_scene(param);
-	}
-	else if (keycode == KEY_A)
-	{
-		printf("A\n");
-		param->scene.camera.origin.x -= 0.1;
-		init_viewport(&param->viewport, param->scene.camera);
-		render_scene(param);
-	}
-	else if (keycode == KEY_D)
-	{
-		printf("D\n");
-		param->scene.camera.origin.x += 0.1;
-		init_viewport(&param->viewport, param->scene.camera);
-		render_scene(param);
-	}
-	else if (keycode == KEY_SPACE)
-	{
-		param->scene.camera.origin.y += 0.01;
-		init_viewport(&param->viewport, param->scene.camera);
-		render_scene(param);
-	}
-	else if (keycode == KEY_R)
-	{
-		param->scene.camera.origin.y -= 0.01;
-		init_viewport(&param->viewport, param->scene.camera);
-		render_scene(param);
-	}
-}
-
-int	key_hook(int keycode, t_param *param)
-{
-	if (keycode == KEY_ESC)
-		close_win(param);
-	if (param->mode == 0)
-		rotate_camera(keycode, param);
 	return (0);
 }
 

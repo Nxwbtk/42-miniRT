@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/26 13:40:08 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/11/30 23:28:35 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct s_light
 
 typedef struct s_plane
 {
-	// t_axis	axis;
 	t_cor	origin;
 	t_cor	dir;
 	t_rgb	clr;
@@ -70,7 +69,7 @@ typedef struct s_plane
 
 typedef struct s_sphere
 {
-	t_cor	origin;	
+	t_cor	origin;
 	t_rgb	clr;
 	float	diameter;
 	float	radius;
@@ -87,7 +86,7 @@ typedef struct s_cy
 	float	height;
 	float	diameter;
 	float	radius;
-	float 	m;
+	float	m;
 	bool	inside_body;
 	bool	inside_disk;
 	bool	disk;
