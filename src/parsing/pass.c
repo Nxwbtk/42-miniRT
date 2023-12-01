@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/01 19:36:31 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:23:20 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	free_scene(t_scene *scene)
 		free_obj(scene->obj);
 		scene->obj = tmp;
 	}
-	free(scene);
 }
 
 void	error_input(char *line, char **split_line, t_scene *scene)
