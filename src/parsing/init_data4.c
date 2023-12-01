@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data4.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:43:19 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/01 00:32:58 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:53:01 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	init_cy(t_scene *scene, char **split, char *line)
 	half_pos = vec_multi_scalar(cylinder->dir, (cylinder->height / 2));
 	cylinder->top = vec_add(cylinder->origin, half_pos);
 	cylinder->bot = vec_sub(cylinder->origin, half_pos);
+	cylinder->disk = false;
 	new_obj = new_obj_cy(cylinder);
 	if (!new_obj)
 	{

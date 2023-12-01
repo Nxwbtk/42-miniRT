@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/30 23:09:05 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:56:47 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ bool	disk_intersection(t_ray *ray, t_cy **cy)
 	float	distance_bot;
 	t_cor	pos;
 
+	(*cy)->inside_disk = false;
 	denom = vec_dot_product(ray->dir, (*cy)->dir);
 	if (ft_abs(denom) < MIN)
 		return (false);
 	if (denom > 0)
-		(*cy)->inside_disk = 1;
+		(*cy)->inside_disk = true;
 	pos = (*cy)->top;
 	distance = vec_dot_product(vec_sub(pos, ray->oringin), (*cy)->dir) / denom;
 	distance_bot = vec_dot_product(vec_sub((*cy)->bot, ray->oringin), \
@@ -70,7 +71,7 @@ bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder)
 	float	closest;
 	t_cor	oc;
 
-	(*cylinder)->inside_body = 0;
+	(*cylinder)->inside_body = false;
 	oc = vec_sub(ray->oringin, (*cylinder)->origin);
 	abc = find_abc(ray, cylinder, oc);
 	distance = (abc.b * abc.b) - (4 * abc.a * abc.c);
@@ -80,7 +81,7 @@ bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder)
 	if (closest < 0)
 	{
 		closest = (-abc.b + sqrtf(distance)) / (2 * abc.a);
-		(*cylinder)->inside_body = 1;
+		(*cylinder)->inside_body = true;
 	}
 	if (closest < 0 || (closest > ray->t && ray->t != -1))
 		return (false);
@@ -88,7 +89,8 @@ bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder)
 	closest + vec_dot_product(oc, (*cylinder)->dir);
 	if (ft_abs((*cylinder)->m) > (*cylinder)->height / 2)
 		return (false);
-	return (ray->t = closest, true);
+	ray->t = closest;
+	return (true);
 }
 
 void	hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint)
@@ -100,15 +102,31 @@ void	hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint)
 	{
 		hitpoint->dir = cylinder->dir;
 		if (cylinder->inside_disk)
-		hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
-		hitpoint->origin = vec_add(hitpoint->origin, cylinder->origin);
+			hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
 	}
 	else
 	{
 		hitpoint->dir = vec_norm(hitpoint->origin);
 		if (cylinder->inside_body)
-		hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
+			hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
+		hitpoint->origin = vec_add(hitpoint->origin, cylinder->origin);
 	}
+	
+	// if (!is_hit_cylinder(ray, &cylinder))
+	// 	return ;
+	// hitpoint->origin = ray_point(*ray);
+	// hitpoint->dir = vec_norm(hitpoint->origin);
+	// if (cylinder->inside_body)
+	// 	hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
+	// hitpoint->origin = vec_add(hitpoint->origin, cylinder->origin);
+	// hitpoint->obj_origin = cylinder->origin;
+	// hitpoint->clr = cylinder->clr;	
+	// if (!disk_intersection(ray, &cylinder))
+	// 	return ;
+	// hitpoint->origin = ray_point(*ray);
+	// hitpoint->dir = cylinder->dir;
+	// if (cylinder->inside_disk)
+	// 	hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
 	hitpoint->obj_origin = cylinder->origin;
 	hitpoint->clr = cylinder->clr;
 }

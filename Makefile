@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+         #
+#    By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 01:20:50 by bsirikam          #+#    #+#              #
-#    Updated: 2023/11/30 18:45:44 by bsirikam         ###   ########.fr        #
+#    Updated: 2023/12/01 20:42:53 by ksaelim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
