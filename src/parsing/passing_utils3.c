@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 22:02:31 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/01 20:56:43 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,37 +45,48 @@ void	free_double_config(char **split, t_scene *scene, char *line)
 	exit(1);
 }
 
+t_atof	init_atof(void)
+{
+	t_atof	atof;
+
+	atof.res = 0.0;
+	atof.sign = 1;
+	atof.factor = 1.0;
+	return (atof);
+}
+
+void	handle_loop(t_atof *atof, char *str)
+{
+	while (ft_isdigit(*str))
+	{
+		atof->factor /= 10.0;
+		atof->res += (*str - '0') * atof->factor;
+		str++;
+	}
+}
+
 float	ft_atof(char *str)
 {
-	float	res;
-	int		sign;
-	float	factor;
+	t_atof	atof;
 
-	res = 0.0;
-	sign = 1;
-	factor = 1.0;
+	atof = init_atof();
 	while (ft_isspace(*str))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			sign = -1;
+			atof.sign = -1;
 		str++;
 	}
 	while (ft_isdigit(*str))
 	{
-		res = res * 10.0 + (*str - '0');
+		atof.res = atof.res * 10.0 + (*str - '0');
 		str++;
 	}
 	if (*str == '.')
 	{
 		str++;
-		while (ft_isdigit(*str))
-		{
-			factor /= 10.0;
-			res += (*str - '0') * factor;
-			str++;
-		}
+		handle_loop(&atof, str);
 	}
-	return (res * sign);
+	return (atof.res * atof.sign);
 }

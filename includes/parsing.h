@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:26:50 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/30 23:28:35 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:51:34 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,13 @@ typedef struct s_scene
 	t_light		light;
 	t_obj		*obj;
 }				t_scene;
+
+typedef struct s_atof
+{
+	float	res;
+	int		sign;
+	float	factor;
+}				t_atof;
 
 int		ft_check(char *str);
 int		ft_isopenable(char *str);

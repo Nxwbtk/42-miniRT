@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_movement.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 23:24:25 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/30 23:25:11 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:59:22 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,5 @@ int	key_hook(int keycode, t_param *param)
 {
 	if (keycode == KEY_ESC)
 		close_win(param);
-	if (param->mode == 0)
-		rotate_camera(keycode, param);
 	return (0);
 }

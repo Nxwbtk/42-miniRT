@@ -61,6 +61,7 @@
     "parsing.h": "c",
     "render.h": "c",
     "mlx.h": "c",
-    "random": "c"
+    "random": "c",
+    "locale": "c"
   }
 }
