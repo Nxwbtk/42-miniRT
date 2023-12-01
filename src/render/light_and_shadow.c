@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_and_shadow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:59:22 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/12/01 20:22:40 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/01 21:41:04 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,30 @@ int	check_cy(t_obj *obj, t_hitpoint hit, t_ray *ray_to_light)
 int	loop_handle(t_obj *obj, t_hitpoint hit, t_ray *ray_to_light)
 {
 	t_obj	*lst;
+	// static int tmp;
+	// static int	i = 0;
 
 	lst = obj;
+	// printf("loop handle\n");
+	// tmp = lst->id;
 	while (lst)
 	{
-		if (obj->type == 1 && hit.id != obj->id)
+		if (lst->type == 1)
 		{
 			// printf("shadow is blocking\n");
-			if (check_pl(obj, hit, ray_to_light))
+			if (check_pl(lst, hit, ray_to_light))
 				return (1);
 		}
-		else if (obj->type == 2 && hit.id != obj->id)
+		else if (lst->type == 2)
 		{
 			// printf("sphere is blocking\n");
-			if (check_sp(obj, hit, ray_to_light))
+			if (check_sp(lst, hit, ray_to_light))
 				return (1);
 		}
-		else if (obj->type == 3 && hit.id != obj->id)
+		else if (lst->type == 3)
 		{
 			// printf("cylinder is blocking\n");
-			if (check_cy(obj, hit, ray_to_light))
+			if (check_cy(lst, hit, ray_to_light))
 				return (1);
 		}
 		lst = lst->next;
@@ -88,6 +92,7 @@ int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj)
 	int		is_shadow;
 	float	t_light;
 
+	// printf("is shadow\n");
 	t_light = vec_sub(obj->light.origin, hit.origin).len;
 	is_shadow = loop_handle(obj, hit, &ray_to_light);
 	if (ray_to_light.t > t_light || ray_to_light.t == -1)

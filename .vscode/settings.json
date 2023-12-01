@@ -62,6 +62,7 @@
     "render.h": "c",
     "mlx.h": "c",
     "random": "c",
-    "locale": "c"
+    "locale": "c",
+    "chrono": "c"
   }
 }
