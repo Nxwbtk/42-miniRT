@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   passing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:06:54 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/01 19:59:51 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,18 @@ int	ft_isopenable(char *str)
 	return (1);
 }
 
+int	ft_is_dot_rt(char *str)
+{
+	char	*tmp;
+
+	tmp = ft_strrchr(str, '.');
+	if (tmp == NULL)
+		return (0);
+	if (ft_strncmp(tmp, ".rt", 4) != 0)
+		return (0);
+	return (1);
+}
+
 int	ft_check(char *str)
 {
 	char	**split;
@@ -67,6 +79,8 @@ int	ft_check(char *str)
 
 	split = NULL;
 	i = 0;
+	if (!ft_is_dot_rt(str))
+		return (0);
 	split = ft_split(str, ' ');
 	while (split[i])
 		i++;
