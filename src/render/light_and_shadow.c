@@ -14,6 +14,7 @@
 
 int	check_pl(t_obj *obj, t_hitpoint hit, t_ray ray_to_light)
 {
+	(void)hit;
 	t_plane	*pl;
 
 	pl = (t_plane *)obj->obj;
@@ -27,6 +28,7 @@ int	check_pl(t_obj *obj, t_hitpoint hit, t_ray ray_to_light)
 
 int	check_sp(t_obj *obj, t_hitpoint hit, t_ray ray_to_light)
 {
+	(void)hit;
 	t_sp	*sp;
 
 	sp = (t_sp *)obj->obj;
@@ -39,6 +41,7 @@ int	check_sp(t_obj *obj, t_hitpoint hit, t_ray ray_to_light)
 
 int	check_cy(t_obj *obj, t_hitpoint hit, t_ray ray_to_light)
 {
+	(void)hit;
 	t_cy	*cy;
 
 	cy = (t_cy *)obj->obj;
@@ -77,7 +80,7 @@ int	loop_handle(t_obj *obj, t_hitpoint hit, t_ray ray_to_light)
 
 int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj)
 {
-	t_obj	*lst;
+	// t_obj	*lst;
 	int		is_shadow;
 	float	t_light;
 

@@ -60,6 +60,7 @@ t_abc	find_abc(t_ray *ray, t_cy **cylinder, t_cor oc)
 	(*cylinder)->dir) * vec_dot_product(oc, (*cylinder)->dir)));
 	abc.c = vec_dot_product(oc, oc) - pow(vec_dot_product(oc, \
 	(*cylinder)->dir), 2) - ((*cylinder)->radius * (*cylinder)->radius);
+	return (abc);
 }
 
 bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder)

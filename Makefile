@@ -64,12 +64,12 @@ $(NAME): cclib $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
 cclib:
-#	@make -C $(LIBFT_DIR)
-#	@make -C $(MLX_DIR)
+	@make -C $(LIBFT_DIR)
+	@make -C $(MLX_DIR)
 
 clean:
-#	@make fclean -C $(LIBFT_DIR)
-#	@make clean -C $(MLX_DIR)
+	@make fclean -C $(LIBFT_DIR)
+	@make clean -C $(MLX_DIR)
 	@$(RM) $(OBJ_DIR)
 
 fclean: clean
