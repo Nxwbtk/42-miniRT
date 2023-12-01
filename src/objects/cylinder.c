@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/01 20:56:47 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/01 23:24:54 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,22 +111,6 @@ void	hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint)
 			hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
 		hitpoint->origin = vec_add(hitpoint->origin, cylinder->origin);
 	}
-	
-	// if (!is_hit_cylinder(ray, &cylinder))
-	// 	return ;
-	// hitpoint->origin = ray_point(*ray);
-	// hitpoint->dir = vec_norm(hitpoint->origin);
-	// if (cylinder->inside_body)
-	// 	hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
-	// hitpoint->origin = vec_add(hitpoint->origin, cylinder->origin);
-	// hitpoint->obj_origin = cylinder->origin;
-	// hitpoint->clr = cylinder->clr;	
-	// if (!disk_intersection(ray, &cylinder))
-	// 	return ;
-	// hitpoint->origin = ray_point(*ray);
-	// hitpoint->dir = cylinder->dir;
-	// if (cylinder->inside_disk)
-	// 	hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
 	hitpoint->obj_origin = cylinder->origin;
 	hitpoint->clr = cylinder->clr;
 }
