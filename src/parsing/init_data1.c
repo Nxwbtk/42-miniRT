@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 00:30:03 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/26 13:51:15 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/03 00:12:59 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_ambient(char **split, t_scene *scene, char *line)
 	if (scene->ambient.is_init == 1)
 		free_double_config(split, scene, line);
 	scene->ambient = init_ambient2();
-	if (!split[1] || !split[2] || split[3])
+	if (!split[1] || !split[2])
 		error_input(line, split, scene);
 	scene->ambient.ratio = ft_atof(split[1]);
 	if (scene->ambient.ratio < 0 || scene->ambient.ratio > 1)
