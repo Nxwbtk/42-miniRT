@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/01 23:24:54 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:04:25 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder)
 		closest = (-abc.b + sqrtf(distance)) / (2 * abc.a);
 		(*cylinder)->inside_body = true;
 	}
-	if (closest < 0 || (closest > ray->t && ray->t != -1))
+	if (closest < 0.00f || (closest > ray->t && ray->t != -1))
 		return (false);
 	(*cylinder)->m = vec_dot_product(ray->dir, (*cylinder)->dir) * \
 	closest + vec_dot_product(oc, (*cylinder)->dir);

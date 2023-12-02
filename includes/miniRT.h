@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/11/30 23:29:08 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/02 09:43:19 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define FRACTIONAL_BIT 16
 # define WD_WIDTH 1280
 # define WD_HEIGHT 720
-# define MIN 0.0001
+# define MIN 0.001
 
 # define PI 3.141592653589793
 

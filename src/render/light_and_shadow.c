@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_and_shadow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:59:22 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/12/01 21:41:04 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:07:09 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,45 +54,35 @@ int	check_cy(t_obj *obj, t_hitpoint hit, t_ray *ray_to_light)
 int	loop_handle(t_obj *obj, t_hitpoint hit, t_ray *ray_to_light)
 {
 	t_obj	*lst;
-	// static int tmp;
-	// static int	i = 0;
 
 	lst = obj;
-	// printf("loop handle\n");
-	// tmp = lst->id;
 	while (lst)
 	{
 		if (lst->type == 1)
 		{
-			// printf("shadow is blocking\n");
 			if (check_pl(lst, hit, ray_to_light))
 				return (1);
 		}
 		else if (lst->type == 2)
 		{
-			// printf("sphere is blocking\n");
 			if (check_sp(lst, hit, ray_to_light))
 				return (1);
 		}
 		else if (lst->type == 3)
 		{
-			// printf("cylinder is blocking\n");
 			if (check_cy(lst, hit, ray_to_light))
 				return (1);
 		}
 		lst = lst->next;
 	}
-	// printf("not block\n");
 	return (0);
 }
 
 int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj)
 {
-	// t_obj	*lst;
 	int		is_shadow;
 	float	t_light;
 
-	// printf("is shadow\n");
 	t_light = vec_sub(obj->light.origin, hit.origin).len;
 	is_shadow = loop_handle(obj, hit, &ray_to_light);
 	if (ray_to_light.t > t_light || ray_to_light.t == -1)
