@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:10 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/01 20:59:11 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/03 00:27:47 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ int	main(int ac, char **av)
 		return (1);
 	param.mode = 0;
 	init_viewport(&param.viewport, param.scene.camera);
-	// create_img(&param);
-	// render_scene(&param);
-	// mlx_hook(param.win, 2, 1L << 0, key_hook, &param);
-	// mlx_hook(param.win, 17, 0, close_win, &param);
-	// mlx_loop(param.mlx);
-	free_scene(&param.scene);
+	create_img(&param);
+	render_scene(&param);
+	mlx_hook(param.win, 2, 1L << 0, key_hook, &param);
+	mlx_hook(param.win, 17, 0, close_win, &param);
+	mlx_loop(param.mlx);
 	return (0);
 }
