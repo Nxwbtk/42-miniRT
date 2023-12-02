@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/02 21:57:51 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 22:51:47 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-float ft_pow(float num)
-{
-	return (num * num);
-}
 bool	d_inter2(t_ray *ray, t_cy **cy, float distance, t_cor pos)
 {
 	t_cor	tmp_hitpoint;
 
-	if (distance < 0.00f || (distance > ray->t && ray->t != -1) || distance < MIN)
+	if (distance < 0.00f || (distance > ray->t && ray->t != -1) \
+	|| distance < MIN)
 		return (false);
 	tmp_hitpoint = vec_add(ray->oringin, vec_multi_scalar(ray->dir, distance));
 	if (vec_sub(tmp_hitpoint, pos).len > (*cy)->radius)
@@ -60,8 +57,8 @@ t_abc	find_abc(t_ray *ray, t_cy **cylinder, t_cor oc)
 {
 	t_abc	abc;
 
-	abc.a = vec_dot_product(ray->dir, ray->dir) - ft_pow(vec_dot_product(ray->dir, \
-	(*cylinder)->dir));
+	abc.a = vec_dot_product(ray->dir, ray->dir) - ft_pow(\
+	vec_dot_product(ray->dir, (*cylinder)->dir));
 	abc.b = 2 * (vec_dot_product(ray->dir, oc) - (vec_dot_product(ray->dir, \
 	(*cylinder)->dir) * vec_dot_product(oc, (*cylinder)->dir)));
 	abc.c = vec_dot_product(oc, oc) - ft_pow(vec_dot_product(oc, \

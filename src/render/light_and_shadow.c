@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_and_shadow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:59:22 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/12/02 22:34:53 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 22:46:35 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	check_sp(t_obj *obj, t_ray *ray_to_light)
 
 static int	check_cy(t_obj *obj, t_ray *ray_to_light)
 {
-	(void)hit;
 	t_cy	*cy;
 
 	cy = (t_cy *)obj->obj;
@@ -44,7 +43,7 @@ static int	check_cy(t_obj *obj, t_ray *ray_to_light)
 	return (0);
 }
 
-int	loop_handle(t_obj *obj, t_hitpoint hit, t_ray *ray_to_light)
+int	loop_handle(t_obj *obj, t_ray *ray_to_light)
 {
 	t_obj	*lst;
 
@@ -77,7 +76,7 @@ int	is_shadow(t_ray ray_to_light, t_hitpoint hit, t_obj *obj)
 	float	t_light;
 
 	t_light = vec_sub(obj->light.origin, hit.origin).len;
-	is_shadow = loop_handle(obj, hit, &ray_to_light);
+	is_shadow = loop_handle(obj, &ray_to_light);
 	if (ray_to_light.t > t_light || ray_to_light.t == -1)
 		is_shadow = 0;
 	return (is_shadow);

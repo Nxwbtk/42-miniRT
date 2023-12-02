@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:31:27 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/30 23:24:58 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:55:30 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	close_win(t_param *param)
 			mlx_destroy_image(param->mlx, param->img.img);
 		if (param->win)
 			mlx_destroy_window(param->mlx, param->win);
-		// if (LINUX_OS)
-		// 	mlx_destroy_display(param->mlx);
 		if (param->mlx)
 			free(param->mlx);
 	}

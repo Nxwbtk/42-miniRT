@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/goinfre/bsirikam/42-miniRT/src/parsing",
-      "program": "/goinfre/bsirikam/42-miniRT/src/parsing/build/Debug/outDebug"
+      "cwd": "/goinfre/bsirikam/42-miniRT/src/render",
+      "program": "/goinfre/bsirikam/42-miniRT/src/render/build/Debug/outDebug"
     }
   ]
 }

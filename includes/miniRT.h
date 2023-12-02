@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:21:35 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/02 09:43:19 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 22:56:39 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,6 @@ void	create_img(t_param *param);
 int		render_scene(t_param *param);
 int		close_win(t_param *param);
 int		key_hook(int keycode, t_param *param);
-
-// print
-void	print_sphere(t_sp *sphere);
-void	print_plane(t_plane *plane);
-void	print_obj(t_obj *obj);
-void	print_camera(t_camera *camera);
-t_cor	print_cor(char *point_name, t_cor vec);
-void	print_topic(char *topic);
-void	print_light(t_light *light);
-void	print_hitPoint(t_hitpoint *hitPoint);
-void	print_ray(t_ray *ray);
-void	print_cylinder(t_cy *cylinder);
+float	ft_pow(float num);
 
 #endif

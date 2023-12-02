@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/12/02 22:05:12 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 22:56:43 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,23 @@ t_hitpoint hitPoint)
 	ambient = ratio_clr(hitPoint.clr, obj->ambient);
 	if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
 		return (ambient);
-	
-	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);		
-	light_dot_normal = vec_dot_product(hitpoint_to_light, hitPoint.dir);		
+	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);
+	light_dot_normal = vec_dot_product(hitpoint_to_light, hitPoint.dir);
 	if (light_dot_normal >= 0)
 		diffuse = ratio_clr(diffuse, light_dot_normal);
 	else
 		diffuse = new_rgb(0, 0, 0);
-
-
-	// don't delete this now
-	// return ((void)diffuse, ambient);
-	// return ((void)ambient, diffuse);
 	return (add_clr(ambient, diffuse));
-	// return ((void)obj, (void)light, (void)hitPoint, diffuse);
 }
 
 static int	ray_tracing(t_ray *ray, t_obj *obj)
 {
 	t_hitpoint	hit_point;
 	t_rgb		clr;
-	static int	i = 0; //del
 
 	clr = new_rgb(0, 0, 0);
 	if (!hit_object(ray, obj, &hit_point))
 		return (rgb_to_clr(clr));
-	if (i++ == 0) //del
-		printf("color hit: %d %d %d\n", hit_point.clr.r, hit_point.clr.g, hit_point.clr.b); // del
 	clr = light_and_shadow(obj, obj->light, hit_point);
 	return (rgb_to_clr(clr));
 }
@@ -91,10 +81,6 @@ int	render_scene(t_param *param)
 	t_pixel	pixel;
 	t_ray	ray;
 
-	print_light(&param->scene.light);
-	print_topic("render_scene");
-	print_camera(&param->scene.camera);
-	print_obj(param->scene.obj);
 	pixel.y = 0;
 	while (pixel.y < WD_HEIGHT)
 	{
