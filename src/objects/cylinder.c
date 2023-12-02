@@ -6,17 +6,21 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/02 12:04:25 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 17:57:26 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+float ft_pow(float num)
+{
+	return (num * num);
+}
 bool	d_inter2(t_ray *ray, t_cy **cy, float distance, t_cor pos)
 {
 	t_cor	tmp_hitpoint;
 
-	if (distance < 0.00f || (distance > ray->t && ray->t != -1))
+	if (distance < 0.00f || (distance > ray->t && ray->t != -1) || distance < MIN)
 		return (false);
 	tmp_hitpoint = vec_add(ray->oringin, vec_multi_scalar(ray->dir, distance));
 	if (vec_sub(tmp_hitpoint, pos).len > (*cy)->radius)
@@ -33,9 +37,10 @@ bool	disk_intersection(t_ray *ray, t_cy **cy)
 	float	distance_bot;
 	t_cor	pos;
 
+	(*cy)->disk = false;
 	(*cy)->inside_disk = false;
 	denom = vec_dot_product(ray->dir, (*cy)->dir);
-	if (ft_abs(denom) < MIN)
+	if (ft_abs(denom) < 0.001f)
 		return (false);
 	if (denom > 0)
 		(*cy)->inside_disk = true;
@@ -55,12 +60,12 @@ t_abc	find_abc(t_ray *ray, t_cy **cylinder, t_cor oc)
 {
 	t_abc	abc;
 
-	abc.a = vec_dot_product(ray->dir, ray->dir) - pow(vec_dot_product(ray->dir, \
-	(*cylinder)->dir), 2);
+	abc.a = vec_dot_product(ray->dir, ray->dir) - ft_pow(vec_dot_product(ray->dir, \
+	(*cylinder)->dir));
 	abc.b = 2 * (vec_dot_product(ray->dir, oc) - (vec_dot_product(ray->dir, \
 	(*cylinder)->dir) * vec_dot_product(oc, (*cylinder)->dir)));
-	abc.c = vec_dot_product(oc, oc) - pow(vec_dot_product(oc, \
-	(*cylinder)->dir), 2) - ((*cylinder)->radius * (*cylinder)->radius);
+	abc.c = vec_dot_product(oc, oc) - ft_pow(vec_dot_product(oc, \
+	(*cylinder)->dir)) - ((*cylinder)->radius * (*cylinder)->radius);
 	return (abc);
 }
 
@@ -75,15 +80,15 @@ bool	is_hit_cylinder(t_ray *ray, t_cy **cylinder)
 	oc = vec_sub(ray->oringin, (*cylinder)->origin);
 	abc = find_abc(ray, cylinder, oc);
 	distance = (abc.b * abc.b) - (4 * abc.a * abc.c);
-	if (distance < 0)
+	if (distance < 0.0f)
 		return (false);
 	closest = (-abc.b - sqrtf(distance)) / (2 * abc.a);
-	if (closest < 0)
+	if (closest < 0.0f)
 	{
 		closest = (-abc.b + sqrtf(distance)) / (2 * abc.a);
 		(*cylinder)->inside_body = true;
 	}
-	if (closest < 0.00f || (closest > ray->t && ray->t != -1))
+	if (closest < 0.00f || (closest > ray->t && ray->t != -1) || closest < MIN)
 		return (false);
 	(*cylinder)->m = vec_dot_product(ray->dir, (*cylinder)->dir) * \
 	closest + vec_dot_product(oc, (*cylinder)->dir);

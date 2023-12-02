@@ -59,6 +59,7 @@ void	init_cy(t_scene *scene, char **split, char *line)
 	cylinder->top = vec_add(cylinder->origin, half_pos);
 	cylinder->bot = vec_sub(cylinder->origin, half_pos);
 	cylinder->disk = false;
+	cylinder->dir = vec_norm(cylinder->dir);
 	new_obj = new_obj_cy(cylinder);
 	if (!new_obj)
 	{

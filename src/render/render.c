@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsirikam <bsirikam@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/11/30 18:58:38 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:32:15 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_hitpoint hitPoint)
 
 	hitpoint_to_light = vec_norm(vec_sub(light.origin, hitPoint.origin));
 	ambient = ratio_clr(hitPoint.clr, obj->ambient);
-	if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
-		return (ambient);
+	// if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
+	// 	return (ambient);
 	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);
 	light_dot_normal = vec_dot_product(hitpoint_to_light, hitPoint.dir);
 	if (light_dot_normal >= 0)
@@ -71,10 +71,13 @@ static int	ray_tracing(t_ray *ray, t_obj *obj)
 {
 	t_hitpoint	hit_point;
 	t_rgb		clr;
+	static int	i = 0; //del
 
 	clr = new_rgb(0, 0, 0);
 	if (!hit_object(ray, obj, &hit_point))
 		return (rgb_to_clr(clr));
+	if (i++ == 0) //del
+		printf("color hit: %d %d %d\n", hit_point.clr.r, hit_point.clr.g, hit_point.clr.b); // del
 	clr = light_and_shadow(obj, obj->light, hit_point);
 	return (rgb_to_clr(clr));
 }
