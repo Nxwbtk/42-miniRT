@@ -6,7 +6,7 @@
 /*   By: bsirikam <bsirikam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:31:27 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/12/02 22:55:30 by bsirikam         ###   ########.fr       */
+/*   Updated: 2023/12/02 23:08:36 by bsirikam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	close_win(t_param *param)
 		if (param->mlx)
 			free(param->mlx);
 	}
+	free_scene(&param->scene);
 	exit (0);
 	return (0);
 }
