@@ -29,7 +29,7 @@ void	error_input(char *line, char **split_line, t_scene *scene)
 	free(line);
 	free_split(split_line);
 	free_scene(scene);
-	printf("Error\n");
+	printf("Error input\n");
 	exit(1);
 }
 

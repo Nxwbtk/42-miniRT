@@ -16,15 +16,21 @@ int	main(int ac, char **av)
 {
 	t_param	param;
 
+	if (ac != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
 	param.scene = init_struct();
 	if (parsing(ac, av, &param.scene))
 		return (1);
 	param.mode = 0;
 	init_viewport(&param.viewport, param.scene.camera);
-	create_img(&param);
-	render_scene(&param);
-	mlx_hook(param.win, 2, 1L << 0, key_hook, &param);
-	mlx_hook(param.win, 17, 0, close_win, &param);
-	mlx_loop(param.mlx);
+	// create_img(&param);
+	// render_scene(&param);
+	// mlx_hook(param.win, 2, 1L << 0, key_hook, &param);
+	// mlx_hook(param.win, 17, 0, close_win, &param);
+	// mlx_loop(param.mlx);
+	free_scene(&param.scene);
 	return (0);
 }

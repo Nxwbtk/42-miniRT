@@ -64,7 +64,7 @@ void	init_ambient(char **split, t_scene *scene, char *line)
 	if (scene->ambient.is_init == 1)
 		free_double_config(split, scene, line);
 	scene->ambient = init_ambient2();
-	if (!split[1] || !split[2])
+	if (!split[1] || !split[2] || split[3])
 		error_input(line, split, scene);
 	scene->ambient.ratio = ft_atof(split[1]);
 	if (scene->ambient.ratio < 0 || scene->ambient.ratio > 1)

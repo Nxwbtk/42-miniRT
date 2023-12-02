@@ -31,7 +31,10 @@ int	check_min_max(char **check_split, int min, int max)
 	ft_atof(check_split[0]) < min || ft_atof(check_split[0]) > max || \
 	ft_atof(check_split[1]) < min || ft_atof(check_split[1]) > max || \
 	ft_atof(check_split[2]) < min || ft_atof(check_split[2]) > max)
+	{
+		free_split(check_split);
 		return (0);
+	}
 	return (1);
 }
 
