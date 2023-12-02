@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:01:08 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/12/02 20:32:15 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 22:05:12 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,29 @@ static t_ray	ray_to_pixel(t_viewport *viewport, t_pixel pixel)
 static t_rgb	light_and_shadow(t_obj *obj, t_light light, \
 t_hitpoint hitPoint)
 {
+	t_cor	hitpoint_to_light;
 	t_rgb	diffuse;
 	float	light_dot_normal;
-	t_cor	hitpoint_to_light;
 	t_rgb	ambient;
 
 	hitpoint_to_light = vec_norm(vec_sub(light.origin, hitPoint.origin));
 	ambient = ratio_clr(hitPoint.clr, obj->ambient);
-	// if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
-	// 	return (ambient);
-	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);
-	light_dot_normal = vec_dot_product(hitpoint_to_light, hitPoint.dir);
+	if (is_shadow(new_ray(hitPoint.origin, hitpoint_to_light), hitPoint, obj))
+		return (ambient);
+	
+	diffuse = ratio_clr(hitPoint.clr, obj->light.ratio);		
+	light_dot_normal = vec_dot_product(hitpoint_to_light, hitPoint.dir);		
 	if (light_dot_normal >= 0)
 		diffuse = ratio_clr(diffuse, light_dot_normal);
 	else
 		diffuse = new_rgb(0, 0, 0);
+
+
 	// don't delete this now
 	// return ((void)diffuse, ambient);
 	// return ((void)ambient, diffuse);
 	return (add_clr(ambient, diffuse));
+	// return ((void)obj, (void)light, (void)hitPoint, diffuse);
 }
 
 static int	ray_tracing(t_ray *ray, t_obj *obj)

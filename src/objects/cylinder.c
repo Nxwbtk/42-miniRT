@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 02:23:20 by bsirikam          #+#    #+#             */
-/*   Updated: 2023/12/02 17:57:26 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/12/02 21:57:51 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	hitpoint_cylinder(t_ray *ray, t_cy *cylinder, t_hitpoint *hitpoint)
 	}
 	else
 	{
-		hitpoint->dir = vec_norm(hitpoint->origin);
+		hitpoint->dir = vec_norm(vec_sub(hitpoint->origin, cylinder->origin));
 		if (cylinder->inside_body)
 			hitpoint->dir = vec_multi_scalar(hitpoint->dir, -1);
 		hitpoint->origin = vec_add(hitpoint->origin, cylinder->origin);

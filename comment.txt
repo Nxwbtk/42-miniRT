@@ -1,3 +1,0 @@
-what hit use for? in check_pl check_sp check_cy on light_and_shadow.c
-
-what *lst use for? in is_shadow on light_and_shadow.c
